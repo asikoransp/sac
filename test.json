@@ -7,7 +7,7 @@
   "vendor": "Adrian",
   "eula": "",
   "license": "MIT",
-  "icon": "https://test-sap-rohitchouhan.loca.lt/icon.png",
+  "icon": "https://github.com/asikoransp/sac/blob/main/icon.png",
   "webcomponents": [
     {
       "kind": "main",
