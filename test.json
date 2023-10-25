@@ -12,14 +12,14 @@
     {
       "kind": "main",
       "tag": "com-adrian-sap-test",
-      "url": "https://test-sap-rohitchouhan.loca.lt/test.js",
+      "url": "https://github.com/asikoransp/sac/blob/main/test.js",
       "integrity": "",
       "ignoreIntegrity": true
     },
     {
       "kind": "builder",
       "tag": "com-adrian-sap-test-builder",
-      "url": "https://test-sap-rohitchouhan.loca.lt/test_Builder.js",
+      "url": "https://github.com/asikoransp/sac/blob/main/test_Builder.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
