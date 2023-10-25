@@ -1,0 +1,30 @@
+{
+  "id": "com.rohitchouhan.adrian.test",
+  "version": "1.0.0",
+  "name": "test",
+  "description": "test",
+  "newInstancePrefix": "test",
+  "vendor": "Adrian",
+  "eula": "",
+  "license": "MIT",
+  "icon": "https://test-sap-rohitchouhan.loca.lt/icon.png",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "com-adrian-sap-test",
+      "url": "https://test-sap-rohitchouhan.loca.lt/test.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    },
+    {
+      "kind": "builder",
+      "tag": "com-adrian-sap-test-builder",
+      "url": "https://test-sap-rohitchouhan.loca.lt/test_Builder.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {},
+  "methods": {},
+  "events": {}
+}
