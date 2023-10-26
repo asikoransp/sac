@@ -9106,7 +9106,7 @@
             {
               label: "Value",
               data: [100, 97, 93, 88, 77, 65, 47, 44, 40, 12],
-              backgroundColor: Utils.transparentize("#4631EE", 0.5),
+              backgroundColor: "#4631EE",
               borderRadius: 5,
             },
           ],
