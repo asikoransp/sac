@@ -1,6 +1,10 @@
 (function () {
   let tmpl = document.createElement("template");
-  tmpl.innerHTML = `<button type="button" id="myBtn">Helper Button</button>`;
+  tmpl.innerHTML = `
+    <h1>TEST</h1>
+    </br>
+    <button type="button" id="myBtn">Helper Button</button>
+    `;
 
   class PerformanceHelp extends HTMLElement {
     constructor() {
@@ -23,5 +27,5 @@
     }
   }
 
-  customElements.define("custom-button", PerformanceHelp);
+  customElements.define("custom-widget", PerformanceHelp);
 })();
