@@ -9086,9 +9086,15 @@
     fireChanged() {
       console.log("Added");
 
-      console.log(this.myDataBinding);
-      console.log(this.dataBindings.getDataBinding().getDataSource());
-      console.log(this.dataBindings.getDataBinding("myDataBinding"));
+      const { data } = this.myDataBinding;
+
+      const labels = data.map((el) => {
+        return el.dimensions_0.label;
+      });
+
+      const value = data.map((el) => {
+        return el.measures_0.raw;
+      });
 
       if (this.chart) return;
 
@@ -9097,22 +9103,11 @@
       this.chart = new Chart(element, {
         type: "bar",
         data: {
-          labels: [
-            "Prod 1",
-            "Prod 2",
-            "Prod 3",
-            "Prod 4",
-            "Prod 5",
-            "Prod 6",
-            "Prod 7",
-            "Prod 8",
-            "Prod 9",
-            "Prod 10",
-          ],
+          labels,
           datasets: [
             {
               label: "Value",
-              data: [100, 97, 93, 88, 77, 65, 47, 44, 40, 12],
+              data: value,
               backgroundColor: "#4631EE",
               borderRadius: 5,
             },
