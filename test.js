@@ -12,27 +12,10 @@
   class testWidget extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({
-        mode: "open",
-      });
-      shadowRoot.appendChild(template.content.cloneNode(true));
-      this._props = {};
+      this.init();
     }
-    async connectedCallback() {
-      this.initMain();
-    }
-    async initMain() {
-      //start your code from here, happy coding :)
-    }
-    onCustomWidgetBeforeUpdate(changedProperties) {
-      this._props = {
-        ...this._props,
-        ...changedProperties,
-      };
-    }
-    onCustomWidgetAfterUpdate(changedProperties) {
-      this.initMain();
-    }
+
+    async init() {}
   }
-  customElements.define("com-adrian-sap-test", testWidget);
+  customElements.define("test-widget", testWidget);
 })();
