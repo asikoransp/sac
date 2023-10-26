@@ -18,6 +18,7 @@
     init() {
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
+      console.log(shadowRoot);
       this.addEventListener("click", (event) => {
         var event = new Event("onClick");
         this.fireChanged();
@@ -28,26 +29,26 @@
       let data1 = [69, 31];
       let colors1 = ["#49A9EA", "#36CAAB"];
 
-      let myDoughnutChart = document.getElementById("myChart").getContext("2d");
+      // let myDoughnutChart = document.getElementById("myChart").getContext("2d");
 
-      let chart1 = new Chart(myDoughnutChart, {
-        type: "doughnut",
-        data: {
-          labels: ["YES", "YES BUT IN GREEN"],
-          datasets: [
-            {
-              data: [69, 31],
-              backgroundColor: ["#49A9EA", "#36CAAB"],
-            },
-          ],
-        },
-        options: {
-          title: {
-            text: "Do you like doughnuts?",
-            display: true,
-          },
-        },
-      });
+      // let chart1 = new Chart(myDoughnutChart, {
+      //   type: "doughnut",
+      //   data: {
+      //     labels: ["YES", "YES BUT IN GREEN"],
+      //     datasets: [
+      //       {
+      //         data: [69, 31],
+      //         backgroundColor: ["#49A9EA", "#36CAAB"],
+      //       },
+      //     ],
+      //   },
+      //   options: {
+      //     title: {
+      //       text: "Do you like doughnuts?",
+      //       display: true,
+      //     },
+      //   },
+      // });
     }
 
     fireChanged() {
