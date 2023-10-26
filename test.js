@@ -9063,6 +9063,8 @@
     `;
 
   class PerformanceHelp extends HTMLElement {
+    temp = null;
+
     constructor() {
       super();
       this.init();
@@ -9078,32 +9080,32 @@
         this.dispatchEvent(event);
       });
 
-      let myDoughnutChart = shadowRoot.querySelector("canvas").getContext("2d");
-
-      setTimeout(() => {
-        new Chart(myDoughnutChart, {
-          type: "doughnut",
-          data: {
-            labels: ["YES", "YES BUT IN GREEN"],
-            datasets: [
-              {
-                data: [69, 31],
-                backgroundColor: ["#49A9EA", "#36CAAB"],
-              },
-            ],
-          },
-          options: {
-            title: {
-              text: "Do you like doughnuts?",
-              display: true,
-            },
-          },
-        });
-      }, 10000);
+      this.temp = shadowRoot;
     }
 
     fireChanged() {
       console.log("OnClick Triggered");
+
+      let myDoughnutChart = this.temp.querySelector("canvas").getContext("2d");
+
+      new Chart(myDoughnutChart, {
+        type: "doughnut",
+        data: {
+          labels: ["YES", "YES BUT IN GREEN"],
+          datasets: [
+            {
+              data: [69, 31],
+              backgroundColor: ["#49A9EA", "#36CAAB"],
+            },
+          ],
+        },
+        options: {
+          title: {
+            text: "Do you like doughnuts?",
+            display: true,
+          },
+        },
+      });
     }
   }
 
