@@ -9086,6 +9086,9 @@
     fireChanged() {
       console.log("Added");
 
+      console.log(this.myDataBinding);
+      console.log(this.dataBindings.getDataBinding("myDataBinding"));
+
       if (this.chart) return;
 
       let element = this.temp.querySelector("canvas").getContext("2d");
