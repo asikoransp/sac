@@ -9087,6 +9087,7 @@
       console.log("Added");
 
       console.log(this.myDataBinding);
+      console.log(this.dataBindings.getDataBinding().getDataSource());
       console.log(this.dataBindings.getDataBinding("myDataBinding"));
 
       if (this.chart) return;
