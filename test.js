@@ -9057,8 +9057,8 @@
     </br>
     <button type="button" id="myBtn">Helper Button</button>
     </br>
-    <div style="display: block;">
-      <canvas id="myChart" width="1000" height="1000"></canvas>
+    <div style="display: block;" width="300" height="300">
+      <canvas id="myChart" width="300" height="300"></canvas>
     </div>
     `;
 
@@ -9073,7 +9073,6 @@
     init() {
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      console.log(shadowRoot);
       this.addEventListener("click", (event) => {
         var event = new Event("onClick");
         this.fireChanged();
@@ -9084,24 +9083,37 @@
     }
 
     fireChanged() {
-      console.log("OnClick Triggered");
+      console.log("Added");
 
-      let myDoughnutChart = this.temp.querySelector("canvas").getContext("2d");
+      let element = this.temp.querySelector("canvas").getContext("2d");
 
-      new Chart(myDoughnutChart, {
-        type: "doughnut",
+      new Chart(element, {
+        type: "bar",
         data: {
-          labels: ["YES", "YES BUT IN GREEN"],
+          labels: [
+            "Prod 1",
+            "Prod 2",
+            "Prod 3",
+            "Prod 4",
+            "Prod 5",
+            "Prod 6",
+            "Prod 7",
+            "Prod 8",
+            "Prod 9",
+            "Prod 10",
+          ],
           datasets: [
             {
-              data: [69, 31],
-              backgroundColor: ["#49A9EA", "#36CAAB"],
+              label: "Value",
+              data: [100, 97, 93, 88, 77, 65, 47, 44, 40, 12],
+              backgroundColor: Utils.transparentize("#4631EE", 0.5),
+              borderRadius: 5,
             },
           ],
         },
         options: {
           title: {
-            text: "Do you like doughnuts?",
+            text: "Top 10 products",
             display: true,
           },
         },
