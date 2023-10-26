@@ -9117,7 +9117,7 @@
           indexAxis: "y",
           responsive: true,
           title: {
-            text: "Top 10 products",
+            text: "Średni poziom rabatowania produktów",
             display: true,
           },
         },
