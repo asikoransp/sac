@@ -9080,24 +9080,26 @@
 
       let myDoughnutChart = shadowRoot.querySelector("canvas").getContext("2d");
 
-      new Chart(myDoughnutChart, {
-        type: "doughnut",
-        data: {
-          labels: ["YES", "YES BUT IN GREEN"],
-          datasets: [
-            {
-              data: [69, 31],
-              backgroundColor: ["#49A9EA", "#36CAAB"],
-            },
-          ],
-        },
-        options: {
-          title: {
-            text: "Do you like doughnuts?",
-            display: true,
+      setTimeout(() => {
+        new Chart(myDoughnutChart, {
+          type: "doughnut",
+          data: {
+            labels: ["YES", "YES BUT IN GREEN"],
+            datasets: [
+              {
+                data: [69, 31],
+                backgroundColor: ["#49A9EA", "#36CAAB"],
+              },
+            ],
           },
-        },
-      });
+          options: {
+            title: {
+              text: "Do you like doughnuts?",
+              display: true,
+            },
+          },
+        });
+      }, 10000);
     }
 
     fireChanged() {
