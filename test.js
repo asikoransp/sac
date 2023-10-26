@@ -9057,7 +9057,9 @@
     </br>
     <button type="button" id="myBtn">Helper Button</button>
     </br>
-    <canvas id="myChart" width="500" height="400"></canvas>
+    <div style="display: block;">
+      <canvas id="myChart" width="1000" height="1000"></canvas>
+    </div>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -9076,13 +9078,9 @@
         this.dispatchEvent(event);
       });
 
-      let labels1 = ["YES", "YES BUT IN GREEN"];
-      let data1 = [69, 31];
-      let colors1 = ["#49A9EA", "#36CAAB"];
-
       let myDoughnutChart = shadowRoot.querySelector("canvas").getContext("2d");
 
-      let chart1 = new Chart(myDoughnutChart, {
+      new Chart(myDoughnutChart, {
         type: "doughnut",
         data: {
           labels: ["YES", "YES BUT IN GREEN"],
