@@ -9057,13 +9057,14 @@
     </br>
     <button type="button" id="myBtn">Helper Button</button>
     </br>
-    <div style="display: block;" width="300" height="300">
-      <canvas id="myChart" width="300" height="300"></canvas>
+    <div style="display: block;">
+      <canvas id="myChart" style="width: 900px !important; height: 450px !important;"></canvas>
     </div>
     `;
 
   class PerformanceHelp extends HTMLElement {
     temp = null;
+    chart = null;
 
     constructor() {
       super();
@@ -9085,9 +9086,11 @@
     fireChanged() {
       console.log("Added");
 
+      if (this.chart) return;
+
       let element = this.temp.querySelector("canvas").getContext("2d");
 
-      new Chart(element, {
+      this.chart = new Chart(element, {
         type: "bar",
         data: {
           labels: [
@@ -9112,6 +9115,8 @@
           ],
         },
         options: {
+          indexAxis: "y",
+          responsive: true,
           title: {
             text: "Top 10 products",
             display: true,
