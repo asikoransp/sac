@@ -9081,6 +9081,8 @@
       });
 
       this.temp = shadowRoot;
+
+      this.fireChanged();
     }
 
     fireChanged() {
