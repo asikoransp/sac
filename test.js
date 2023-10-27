@@ -9087,7 +9087,7 @@
       console.log("Added");
 
       if (this.myDataBinding && this.myDataBinding.data) {
-        const { data } = this.myDataBinding;
+        const data = this.myDataBinding.data;
 
         const labels = data.map((el) => {
           return el.dimensions_0.label;
