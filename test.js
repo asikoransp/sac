@@ -9082,7 +9082,7 @@
 
       this.temp = shadowRoot;
 
-      this.fireChanged();
+      // this.fireChanged();
     }
 
     fireChanged() {
