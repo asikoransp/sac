@@ -9053,11 +9053,17 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <h1>TEST</h1>
+    <style>
+      .chart-wrapper {
+        padding: 1rem;
+        margin: 1rem;
+        border: 1px solid #eee;
+        border-radius: 10px;
+      }
+    </style>
+    <button type="button">Init widget</button>
     </br>
-    <button type="button" id="myBtn">Helper Button</button>
-    </br>
-    <div style="display: block;">
+    <div class="chart-wrapper" style="display: block;">
       <canvas id="myChart" style="width: 900px !important; height: 450px !important;"></canvas>
     </div>
     `;
