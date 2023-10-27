@@ -9088,6 +9088,8 @@
     fireChanged() {
       console.log("Added");
 
+      if (!this.myDataBinding) return;
+
       const { data } = this.myDataBinding;
 
       const labels = data.map((el) => {
