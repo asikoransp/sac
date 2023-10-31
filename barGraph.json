@@ -17,6 +17,9 @@
       "ignoreIntegrity": true
     }
   ],
+  "properties": {},
+  "methods": {},
+  "events": {},
   "dataBindings": {
     "dataSet": {
       "feeds": [
