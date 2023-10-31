@@ -11997,7 +11997,7 @@
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
-    chartColor = "rgba(220,220,220,0)";
+    chartColor = "rgba(70, 49, 238, 0.8)";
 
     constructor() {
       super();
@@ -12040,7 +12040,7 @@
                 data: values,
                 backgroundColor: this.chartColor,
                 borderWidth: 2,
-                borderColor: "#fff",
+                borderColor: this.chartColor,
                 borderRadius: 5,
                 borderSkipped: false,
               },
