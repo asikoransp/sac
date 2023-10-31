@@ -9115,6 +9115,7 @@
                 borderWidth: 2,
                 borderColor: "#4631EE",
                 borderRadius: 10,
+                borderSkipped: false,
               },
             ],
           },
