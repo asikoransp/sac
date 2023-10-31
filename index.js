@@ -9069,7 +9069,7 @@
     `;
 
   class PerformanceHelp extends HTMLElement {
-    temp = null;
+    template = null;
     chart = null;
 
     constructor() {
@@ -9080,21 +9080,16 @@
     init() {
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
-      this.addEventListener("click", (event) => {
-        var event = new Event("onClick");
-        this.dispatchEvent(event);
-      });
-
-      this.temp = shadowRoot;
+      this.template = shadowRoot;
     }
 
     onCustomWidgetAfterUpdate() {
-      this.fireChanged();
+      this.renderChart();
     }
 
-    fireChanged() {
-      if (this.myDataBinding && this.myDataBinding.data) {
-        const data = this.myDataBinding.data;
+    renderChart() {
+      if (this.dataSet && this.dataSet.data) {
+        const data = this.dataSet.data;
 
         const labels = data.map((el) => {
           return el.dimensions_0.label;
@@ -9106,7 +9101,7 @@
 
         if (this.chart) return;
 
-        let element = this.temp.querySelector("canvas").getContext("2d");
+        let element = this.template.querySelector("canvas").getContext("2d");
 
         this.chart = new Chart(element, {
           type: "bar",
@@ -9134,5 +9129,5 @@
     }
   }
 
-  customElements.define("custom-widget", PerformanceHelp);
+  customElements.define("bar-graph", PerformanceHelp);
 })();

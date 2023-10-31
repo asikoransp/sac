@@ -1,0 +1,36 @@
+{
+  "name": "bargraph",
+  "description": "Bar Graph",
+  "newInstancePrefix": "bargraph",
+  "eula": "",
+  "vendor": "Adrian Sikora",
+  "license": "",
+  "id": "bargraph",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "bar-graph",
+      "url": "https://asikoransp.github.io/sac/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "dataBindings": {
+    "dataSet": {
+      "feeds": [
+        {
+          "id": "dimensions",
+          "description": "Dimensions",
+          "type": "dimension"
+        },
+        {
+          "id": "measures",
+          "description": "Measures",
+          "type": "mainStructureMember"
+        }
+      ]
+    }
+  }
+}
