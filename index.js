@@ -12039,7 +12039,7 @@
                 label: "Value",
                 data: values,
                 backgroundColor: this.chartColor,
-                borderWidth: 2,
+                borderWidth: 0,
                 borderColor: this.chartColor,
                 borderRadius: 5,
                 borderSkipped: false,
