@@ -9088,20 +9088,20 @@
     }
 
     renderChart() {
+      if (this.chart) return;
+
       if (this.dataSet && this.dataSet.data) {
-        const data = this.dataSet.data;
+        const dataSet = this.dataSet.data;
 
-        const labels = data.map((el) => {
-          return el.dimensions_0.label;
+        const labels = [];
+        const values = [];
+
+        dataSet.forEach((el) => {
+          labels.push(el.dimensions_0.label);
+          values.push(el.measures_0.raw);
         });
 
-        const value = data.map((el) => {
-          return el.measures_0.raw;
-        });
-
-        if (this.chart) return;
-
-        let element = this.template.querySelector("canvas").getContext("2d");
+        const element = this.template.querySelector("canvas").getContext("2d");
 
         this.chart = new Chart(element, {
           type: "bar",
@@ -9110,8 +9110,10 @@
             datasets: [
               {
                 label: "Value",
-                data: value,
+                data: values,
                 backgroundColor: "#4631EE",
+                borderWidth: 2,
+                borderColor: Utils.CHART_COLORS.red,
                 borderRadius: 10,
               },
             ],
