@@ -9071,6 +9071,7 @@
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
+    chartColor = "#462FEE";
 
     constructor() {
       super();
@@ -9111,9 +9112,9 @@
               {
                 label: "Value",
                 data: values,
-                backgroundColor: "#4631EE",
+                backgroundColor: this.chartColor,
                 borderWidth: 2,
-                borderColor: "#4631EE",
+                borderColor: "#000",
                 borderRadius: 10,
                 borderSkipped: false,
               },
