@@ -9094,8 +9094,8 @@
     fireChanged() {
       console.log("Added");
 
-      let labels = [];
-      let value = [];
+      let labels = ["1"];
+      let value = [1];
 
       if (this.myDataBinding && this.myDataBinding.data) {
         const data = this.myDataBinding.data;
