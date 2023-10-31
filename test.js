@@ -9094,16 +9094,20 @@
     fireChanged() {
       console.log("Added");
 
-      // if (this.myDataBinding && this.myDataBinding.data) {
-      const data = this.myDataBinding.data;
+      let labels = [];
+      let value = [];
 
-      const labels = data.map((el) => {
-        return el.dimensions_0.label;
-      });
+      if (this.myDataBinding && this.myDataBinding.data) {
+        const data = this.myDataBinding.data;
 
-      const value = data.map((el) => {
-        return el.measures_0.raw;
-      });
+        labels = data.map((el) => {
+          return el.dimensions_0.label;
+        });
+
+        value = data.map((el) => {
+          return el.measures_0.raw;
+        });
+      }
 
       if (this.chart) return;
 
@@ -9131,7 +9135,6 @@
           },
         },
       });
-      // }
     }
   }
 
