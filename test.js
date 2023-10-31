@@ -9092,49 +9092,44 @@
     }
 
     fireChanged() {
-      console.log("Added");
-
-      let labels = ["1"];
-      let value = [1];
-
       if (this.myDataBinding && this.myDataBinding.data) {
         const data = this.myDataBinding.data;
 
-        labels = data.map((el) => {
+        const labels = data.map((el) => {
           return el.dimensions_0.label;
         });
 
-        value = data.map((el) => {
+        const value = data.map((el) => {
           return el.measures_0.raw;
         });
-      }
 
-      if (this.chart) return;
+        if (this.chart) return;
 
-      let element = this.temp.querySelector("canvas").getContext("2d");
+        let element = this.temp.querySelector("canvas").getContext("2d");
 
-      this.chart = new Chart(element, {
-        type: "bar",
-        data: {
-          labels,
-          datasets: [
-            {
-              label: "Value",
-              data: value,
-              backgroundColor: "#4631EE",
-              borderRadius: 10,
-            },
-          ],
-        },
-        options: {
-          indexAxis: "y",
-          responsive: true,
-          title: {
-            text: "Średni poziom rabatowania produktów",
-            display: true,
+        this.chart = new Chart(element, {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Value",
+                data: value,
+                backgroundColor: "#4631EE",
+                borderRadius: 10,
+              },
+            ],
           },
-        },
-      });
+          options: {
+            indexAxis: "y",
+            responsive: true,
+            title: {
+              text: "Średni poziom rabatowania produktów",
+              display: true,
+            },
+          },
+        });
+      }
     }
   }
 
