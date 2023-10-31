@@ -12054,9 +12054,7 @@
                 text: "Średni poziom rabatowania produktów",
               },
               legend: {
-                title: {
-                  display: false,
-                },
+                display: false,
               },
             },
           },
