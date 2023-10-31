@@ -12048,10 +12048,16 @@
           },
           options: {
             indexAxis: "x",
-            responsive: true,
-            title: {
-              text: "Średni poziom rabatowania produktów",
-              display: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Średni poziom rabatowania produktów",
+              },
+              legend: {
+                title: {
+                  display: false,
+                },
+              },
             },
           },
         });
