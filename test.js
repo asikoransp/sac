@@ -9065,7 +9065,7 @@
     <button type="button">Init widget</button>
     </br>
     <div class="chart-wrapper" style="display: block;">
-      <canvas id="myChart" style="width: 900px !important; height: 450px !important;"></canvas>
+      <canvas id="myChart" style="width: 900px !important; height: 400px !important;"></canvas>
     </div>
     `;
 
@@ -9088,6 +9088,7 @@
       });
 
       this.temp = shadowRoot;
+      this.fireChanged();
     }
 
     fireChanged() {
@@ -9117,7 +9118,7 @@
                 label: "Value",
                 data: value,
                 backgroundColor: "#4631EE",
-                borderRadius: 5,
+                borderRadius: 10,
               },
             ],
           },
