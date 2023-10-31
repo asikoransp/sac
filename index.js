@@ -9113,7 +9113,7 @@
                 data: values,
                 backgroundColor: "#4631EE",
                 borderWidth: 2,
-                borderColor: Utils.CHART_COLORS.red,
+                borderColor: "#4631EE",
                 borderRadius: 10,
               },
             ],
