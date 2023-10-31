@@ -9091,6 +9091,10 @@
       this.fireChanged();
     }
 
+    onCustomWidgetAfterUpdate() {
+      this.fireChanged();
+    }
+
     fireChanged() {
       if (this.myDataBinding && this.myDataBinding.data) {
         const data = this.myDataBinding.data;
