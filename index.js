@@ -12040,14 +12040,14 @@
                 data: values,
                 backgroundColor: this.chartColor,
                 borderWidth: 2,
-                borderColor: "#000",
-                borderRadius: 10,
+                borderColor: "#fff",
+                borderRadius: 5,
                 borderSkipped: false,
               },
             ],
           },
           options: {
-            indexAxis: "y",
+            indexAxis: "x",
             responsive: true,
             title: {
               text: "Średni poziom rabatowania produktów",
