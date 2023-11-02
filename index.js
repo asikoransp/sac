@@ -12012,12 +12012,14 @@
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
 
-      this.template.querySelector("#testButton").addEventListener((e) => {
-        console.log("click");
-        this.values = this.values.map((el) => {
-          return el / 2;
+      this.template
+        .querySelector("#testButton")
+        .addEventListener("click", (e) => {
+          console.log("click");
+          this.values = this.values.map((el) => {
+            return el / 2;
+          });
         });
-      });
     }
 
     onCustomWidgetAfterUpdate() {
