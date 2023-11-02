@@ -11980,7 +11980,7 @@
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
     <style>
-      .chart-wrapper {
+      .widget-wrapper {
         padding: 1rem;
         margin: 1rem;
         border: 1px solid #fff;
@@ -11988,7 +11988,17 @@
         background: #fff;
       }
 
-      #testButton {
+      .widget-wrapper h2 {
+        margin: 1rem 0 0 1rem;
+        font-size: 1.5rem;
+      }
+
+      .chart-wrapper {
+        display: block !important;
+        height: 370px !important;
+      }
+
+      #randomBtn {
         padding: 0.7rem 1.5rem;
         margin: 0 1rem;
         border-radius: 10px;
@@ -11997,12 +12007,14 @@
         color: #000;
       }
     </style>
-    
-    <div class="chart-wrapper" style="display: block; height: 370px !important;">
-      <canvas id="myChart"></canvas>
+    <div class="widget-wrapper">
+      <h2>Średni poziom rabatowania produktów</h2>
+      <div class="chart-wrapper">
+        <canvas id="barChart"></canvas>
+      </div>
     </div>
 
-    <button id="testButton">Click to randomize data</button>
+    <button id="randomBtn">Click to randomize data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12033,7 +12045,7 @@
 
     onAddEventToButton() {
       this.template
-        .querySelector("#testButton")
+        .querySelector("#randomBtn")
         .addEventListener("click", () => {
           const initData = this.chart.data.datasets[0].data;
           const values = initData.map((el) => {
@@ -12084,7 +12096,7 @@
             indexAxis: "x",
             plugins: {
               title: {
-                display: true,
+                display: false,
                 text: "Średni poziom rabatowania produktów",
               },
               legend: {
