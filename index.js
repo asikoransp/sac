@@ -11989,8 +11989,8 @@
       }
 
       #testButton {
-        padding: 1rem;
-        margin: 1rem;
+        padding: 0.7rem 1.5rem;
+        margin: 0 1rem;
         border-radius: 10px;
         border: none;
         background-color: #fff;
