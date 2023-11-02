@@ -11998,8 +11998,8 @@
       }
     </style>
     
-    <div class="chart-wrapper" style="display: block;">
-      <canvas id="myChart" style="width: 900px !important; height: 400px !important;"></canvas>
+    <div class="chart-wrapper" style="display: block; height: 370px !important;">
+      <canvas id="myChart"></canvas>
     </div>
 
     <button id="testButton">Click!</button>
@@ -12079,6 +12079,8 @@
             ],
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: false,
             indexAxis: "x",
             plugins: {
               title: {
