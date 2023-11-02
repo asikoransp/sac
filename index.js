@@ -11987,6 +11987,15 @@
         border-radius: 15px;
         background: #fff;
       }
+
+      #testButton {
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 10px;
+        border: none;
+        background-color: #fff;
+        color: #000;
+      }
     </style>
     
     <div class="chart-wrapper" style="display: block;">
@@ -12000,8 +12009,6 @@
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
-    values = [];
-    chartElement = null;
 
     constructor() {
       super();
@@ -12013,21 +12020,24 @@
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
 
-      this.template
-        .querySelector("#testButton")
-        .addEventListener("click", (e) => {
-          console.log("click");
-          this.values = this.values.map((el) => {
-            return el / 2;
-          });
-          console.log(this.chart.data);
-          this.chart.data.datasets[0].data = this.values;
-          this.chart.update();
-        });
+      this.onAddEventToButton();
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
+    }
+
+    onAddEventToButton() {
+      this.template
+        .querySelector("#testButton")
+        .addEventListener("click", () => {
+          const initData = this.chart.data.datasets[0].data;
+          const values = initData.map((el) => {
+            return el - 5;
+          });
+          this.chart.data.datasets[0].data = values;
+          this.chart.update();
+        });
     }
 
     renderChart() {
@@ -12037,24 +12047,25 @@
         const dataSet = this.dataSet.data;
 
         const labels = [];
+        const values = [];
 
         dataSet.forEach((el) => {
           labels.push(el.dimensions_0.label);
-          this.values.push(el.measures_0.raw);
+          values.push(el.measures_0.raw);
         });
 
-        this.chartElement = this.template
+        const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
 
-        this.chart = new Chart(this.chartElement, {
+        this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
             labels,
             datasets: [
               {
                 label: "Value",
-                data: this.values,
+                data: values,
                 backgroundColor: this.chartColor,
                 borderWidth: 0,
                 borderColor: this.chartColor,
