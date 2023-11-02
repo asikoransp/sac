@@ -12037,7 +12037,7 @@
         .addEventListener("click", () => {
           const initData = this.chart.data.datasets[0].data;
           const values = initData.map((el) => {
-            return randomIntFromInterval(50, 100);
+            return this.randomIntFromInterval(50, 100);
           });
           this.chart.data.datasets[0].data = values;
           this.chart.update();
