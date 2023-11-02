@@ -12001,6 +12001,7 @@
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
     values = [];
+    chartElement = null;
 
     constructor() {
       super();
@@ -12019,6 +12020,7 @@
           this.values = this.values.map((el) => {
             return el / 2;
           });
+          this.chartElement.data.dataset[0].data = this.values;
           this.chart.update();
         });
     }
@@ -12040,9 +12042,11 @@
           this.values.push(el.measures_0.raw);
         });
 
-        const element = this.template.querySelector("canvas").getContext("2d");
+        this.chartElement = this.template
+          .querySelector("canvas")
+          .getContext("2d");
 
-        this.chart = new Chart(element, {
+        this.chart = new Chart(this.chartElement, {
           type: "bar",
           data: {
             labels,
