@@ -12020,8 +12020,8 @@
           this.values = this.values.map((el) => {
             return el / 2;
           });
-          console.log(this.chartElement.data);
-          this.chartElement.data.datasets[0].data = this.values;
+          console.log(this.chart.data);
+          this.chart.data.datasets[0].data = this.values;
           this.chart.update();
         });
     }
