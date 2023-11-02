@@ -11992,12 +11992,15 @@
     <div class="chart-wrapper" style="display: block;">
       <canvas id="myChart" style="width: 900px !important; height: 400px !important;"></canvas>
     </div>
+
+    <button id="testButton">Click!</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
+    values = [];
 
     constructor() {
       super();
@@ -12008,6 +12011,13 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
+
+      this.template.querySelector("#testButton").addEventListener((e) => {
+        console.log("click");
+        this.values = this.values.map((el) => {
+          return el / 2;
+        });
+      });
     }
 
     onCustomWidgetAfterUpdate() {
@@ -12021,11 +12031,10 @@
         const dataSet = this.dataSet.data;
 
         const labels = [];
-        const values = [];
 
         dataSet.forEach((el) => {
           labels.push(el.dimensions_0.label);
-          values.push(el.measures_0.raw);
+          this.values.push(el.measures_0.raw);
         });
 
         const element = this.template.querySelector("canvas").getContext("2d");
@@ -12037,7 +12046,7 @@
             datasets: [
               {
                 label: "Value",
-                data: values,
+                data: this.values,
                 backgroundColor: this.chartColor,
                 borderWidth: 0,
                 borderColor: this.chartColor,
