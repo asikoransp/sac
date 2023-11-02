@@ -12002,7 +12002,7 @@
       <canvas id="myChart"></canvas>
     </div>
 
-    <button id="testButton">Click!</button>
+    <button id="testButton">Click to randomize data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
