@@ -12021,7 +12021,7 @@
             return el / 2;
           });
           console.log(this.chartElement.data);
-          this.chartElement.data.dataset[0].data = this.values;
+          this.chartElement.data.datasets[0].data = this.values;
           this.chart.update();
         });
     }
