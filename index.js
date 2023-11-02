@@ -12019,6 +12019,7 @@
           this.values = this.values.map((el) => {
             return el / 2;
           });
+          this.chart.update();
         });
     }
 
