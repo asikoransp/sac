@@ -12027,13 +12027,17 @@
       this.renderChart();
     }
 
+    randomIntFromInterval(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
     onAddEventToButton() {
       this.template
         .querySelector("#testButton")
         .addEventListener("click", () => {
           const initData = this.chart.data.datasets[0].data;
           const values = initData.map((el) => {
-            return el - 5;
+            return randomIntFromInterval(50, 100);
           });
           this.chart.data.datasets[0].data = values;
           this.chart.update();
