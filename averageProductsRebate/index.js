@@ -12053,7 +12053,7 @@
           // });
           const dataSet = this.dataSet.data;
 
-          console.log(this.dataset);
+          console.log(Object.assign({}, this.dataset));
 
           const labels = [];
           const values = [];
