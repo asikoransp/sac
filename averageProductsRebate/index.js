@@ -12047,11 +12047,11 @@
       this.template
         .querySelector("#randomBtn")
         .addEventListener("click", () => {
-          const initData = this.chart.data.datasets[0].data;
-          const values = initData.map((el) => {
-            return this.randomIntFromInterval(50, 100);
-          });
-          this.chart.data.datasets[0].data = values;
+          // const initData = this.chart.data.datasets[0].data;
+          // const values = initData.map((el) => {
+          //   return this.randomIntFromInterval(50, 100);
+          // });
+          // this.chart.data.datasets[0].data = values;
           this.chart.update();
         });
     }
