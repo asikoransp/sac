@@ -12014,7 +12014,7 @@
       </div>
     </div>
 
-    <button id="randomBtn">Click to randomize data</button>
+    <button id="randomBtn">Get data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12047,26 +12047,25 @@
       this.template
         .querySelector("#randomBtn")
         .addEventListener("click", () => {
-          // const initData = this.chart.data.datasets[0].data;
-          // const values = initData.map((el) => {
-          //   return this.randomIntFromInterval(50, 100);
-          // });
-          const dataSet = this.dataSet.data;
-
-          console.log(Object.assign({}, this.dataset));
-
-          const labels = [];
-          const values = [];
-
-          dataSet.forEach((el) => {
-            labels.push(el.dimensions_0.label);
-            values.push(el.measures_0.raw);
-          });
-
-          this.chart.data.datasets[0].data = values;
-          this.chart.labels = labels;
+          this.getData();
           this.chart.update();
         });
+    }
+
+    getData() {
+      const dataSet = this.dataSet.data;
+      console.log(dataSet);
+
+      const labels = [];
+      const values = [];
+
+      dataSet.forEach((el) => {
+        labels.push(el.dimensions_0.label);
+        values.push(el.measures_0.raw);
+      });
+
+      this.chart.data.datasets[0].data = values;
+      this.chart.labels = labels;
     }
 
     renderChart() {
