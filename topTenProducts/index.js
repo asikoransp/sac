@@ -12026,10 +12026,6 @@
       this.template = shadowRoot;
 
       this.onAddEventToButton();
-
-      this.dataSet.watch('data', (oldValue, newValue) => {
-        console.log(oldValue, newValue)
-      })
     }
 
     onCustomWidgetAfterUpdate() {
@@ -12074,6 +12070,10 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
+        this.dataSet.watch("data", (oldValue, newValue) => {
+          console.log(oldValue, newValue);
+        });
+
         const data = this.getData();
 
         const chartElement = this.template
