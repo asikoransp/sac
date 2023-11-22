@@ -12052,6 +12052,9 @@
           //   return this.randomIntFromInterval(50, 100);
           // });
           // this.chart.data.datasets[0].data = values;
+          if (this.dataSet && this.dataSet.data) {
+            console.log(this.dataSet.data);
+          }
           this.chart.update();
         });
     }
