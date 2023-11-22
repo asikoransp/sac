@@ -12065,7 +12065,7 @@
       });
 
       this.chart.data.datasets[0].data = values;
-      this.chart.labels = labels;
+      this.chart.data.labels = labels;
     }
 
     renderChart() {
