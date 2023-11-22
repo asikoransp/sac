@@ -12087,8 +12087,12 @@
     renderChart() {
       if (this.chart) return;
 
+      console.log('render fn')
+
       if (JSONData && JSONData.products) {
         const dataSet = JSONData.products.sort((a, b) => a.amount - b.amount);
+
+        console.log(dataSet)
 
         const labels = [];
         const values = [];
