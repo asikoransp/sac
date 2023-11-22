@@ -12070,10 +12070,6 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        Object.observe(this.dataSet, function (changes) {
-          console.log(changes);
-        });
-
         const data = this.getData();
 
         const chartElement = this.template
