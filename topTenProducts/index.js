@@ -12044,14 +12044,13 @@
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
-      console.log(data);
       this.chart.update();
     }
 
     getData() {
-      const dataSet = this.dataSet.data.sort(
-        (a, b) => b.measures_0.raw - a.measures_0.raw
-      );
+      const dataSet = this.dataSet.data
+        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+        .slice(0, 10);
 
       const labels = [];
       const values = [];
