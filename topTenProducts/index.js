@@ -11999,12 +11999,15 @@
       }
 
     </style>
+
     <div class="widget-wrapper">
       <h2>Top 10 Products by Revenue</h2>
       <div class="chart-wrapper">
         <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
+
+    <button id="refreshBtn">Refresh</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12021,31 +12024,53 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
+
+      this.onAddEventToButton();
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
     }
 
-    randomIntFromInterval(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+    onAddEventToButton() {
+      this.template
+        .querySelector("#refreshBtn")
+        .addEventListener("click", () => {
+          this.updateChartData();
+        });
+    }
+
+    updateChartData() {
+      const data = this.getData();
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.labels = data.labels;
+      this.chart.update();
+    }
+
+    getData() {
+      const dataSet = this.dataSet.data.sort(
+        (a, b) => b.measures_0.raw - a.measures_0.raw
+      );
+
+      const labels = [];
+      const values = [];
+
+      dataSet.forEach((el) => {
+        labels.push(el.dimensions_0.label.split("_").join(" "));
+        values.push(el.measures_0.raw);
+      });
+
+      return {
+        labels,
+        values,
+      };
     }
 
     renderChart() {
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        const dataSet = this.dataSet.data.sort(
-          (a, b) => b.measures_0.raw - a.measures_0.raw
-        );
-
-        const labels = [];
-        const values = [];
-
-        dataSet.forEach((el) => {
-          labels.push(el.dimensions_0.label);
-          values.push(el.measures_0.raw);
-        });
+        const data = this.getData();
 
         const chartElement = this.template
           .querySelector("canvas")
@@ -12054,11 +12079,11 @@
         this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
-            labels,
+            labels: data.lebels,
             datasets: [
               {
                 label: "Value",
-                data: values,
+                data: data.values,
                 backgroundColor: this.chartColor,
                 borderWidth: 0,
                 borderColor: this.chartColor,

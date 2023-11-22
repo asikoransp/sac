@@ -12007,14 +12007,13 @@
         color: #000;
       }
     </style>
+    
     <div class="widget-wrapper">
       <h2>Średni poziom rabatowania produktów</h2>
       <div class="chart-wrapper">
         <canvas id="barChart"></canvas>
       </div>
     </div>
-
-    <button id="randomBtn">Get data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12031,41 +12030,10 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      this.onAddEventToButton();
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
-    }
-
-    randomIntFromInterval(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-
-    onAddEventToButton() {
-      this.template
-        .querySelector("#randomBtn")
-        .addEventListener("click", () => {
-          this.getData();
-          this.chart.update();
-        });
-    }
-
-    getData() {
-      const dataSet = this.dataSet.data;
-      console.log(dataSet);
-
-      const labels = [];
-      const values = [];
-
-      dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label);
-        values.push(el.measures_0.raw);
-      });
-
-      this.chart.data.datasets[0].data = values;
-      this.chart.data.labels = labels;
     }
 
     renderChart() {
