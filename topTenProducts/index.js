@@ -12079,7 +12079,7 @@
         this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
-            labels: data.lebels,
+            labels: data.labels,
             datasets: [
               {
                 label: "Value",
