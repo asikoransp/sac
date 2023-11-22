@@ -12035,7 +12035,9 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        const dataSet = this.dataSet.data.sort((a, b) => a.measures_0.raw - b.measures_0.raw);
+        const dataSet = this.dataSet.data.sort(
+          (a, b) => b.measures_0.raw - a.measures_0.raw
+        );
 
         const labels = [];
         const values = [];
