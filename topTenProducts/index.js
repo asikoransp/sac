@@ -12092,6 +12092,8 @@
           values.push(el.amount);
         });
 
+        console.log(labels, values);
+
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
