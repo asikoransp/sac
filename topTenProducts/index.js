@@ -12026,6 +12026,10 @@
       this.template = shadowRoot;
 
       this.onAddEventToButton();
+
+      this.dataSet.watch('data', (oldValue, newValue) => {
+        console.log(oldValue, newValue)
+      })
     }
 
     onCustomWidgetAfterUpdate() {
