@@ -12022,6 +12022,51 @@
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
 
+    mockData = {
+      products: [
+        {
+          name: "Product 1",
+          amount: 50,
+        },
+        {
+          name: "Product 2",
+          amount: 30,
+        },
+        {
+          name: "Product 3",
+          amount: 45,
+        },
+        {
+          name: "Product 4",
+          amount: 22,
+        },
+        {
+          name: "Product 5",
+          amount: 65,
+        },
+        {
+          name: "Product 6",
+          amount: 40,
+        },
+        {
+          name: "Product 7",
+          amount: 75,
+        },
+        {
+          name: "Product 8",
+          amount: 18,
+        },
+        {
+          name: "Product 9",
+          amount: 55,
+        },
+        {
+          name: "Product 10",
+          amount: 33,
+        },
+      ],
+    };
+
     constructor() {
       super();
       this.init();
@@ -12059,15 +12104,15 @@
     renderChart() {
       if (this.chart) return;
 
-      if (this.dataSet && this.dataSet.data) {
-        const dataSet = this.dataSet.data;
+      if (this.mockData && this.mockData.products) {
+        const dataSet = this.mockData.products;
 
         const labels = [];
         const values = [];
 
         dataSet.forEach((el) => {
-          labels.push(el.dimensions_0.label);
-          values.push(el.measures_0.raw);
+          labels.push(el.name);
+          values.push(el.amount);
         });
 
         const chartElement = this.template
