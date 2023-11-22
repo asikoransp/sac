@@ -11977,51 +11977,6 @@
     );
   });
 
-  const JSONData = {
-    products: [
-      {
-        name: "Product 1",
-        amount: 50,
-      },
-      {
-        name: "Product 2",
-        amount: 30,
-      },
-      {
-        name: "Product 3",
-        amount: 45,
-      },
-      {
-        name: "Product 4",
-        amount: 22,
-      },
-      {
-        name: "Product 5",
-        amount: 65,
-      },
-      {
-        name: "Product 6",
-        amount: 40,
-      },
-      {
-        name: "Product 7",
-        amount: 75,
-      },
-      {
-        name: "Product 8",
-        amount: 18,
-      },
-      {
-        name: "Product 9",
-        amount: 55,
-      },
-      {
-        name: "Product 10",
-        amount: 33,
-      },
-    ],
-  };
-
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
     <style>
@@ -12042,14 +11997,24 @@
         display: block !important;
         height: 370px !important;
       }
-    </style>
 
+      #randomBtn {
+        padding: 0.7rem 1.5rem;
+        margin: 0 1rem;
+        border-radius: 10px;
+        border: none;
+        background-color: #fff;
+        color: #000;
+      }
+    </style>
     <div class="widget-wrapper">
-      <h2>Top 10 Products by Revenue</h2>
+      <h2>Średni poziom rabatowania produktów</h2>
       <div class="chart-wrapper">
-        <canvas id="top-ten-products-chart"></canvas>
+        <canvas id="barChart"></canvas>
       </div>
     </div>
+
+    <button id="randomBtn">Click to randomize data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
