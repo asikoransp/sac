@@ -12,7 +12,7 @@
     {
       "kind": "main",
       "tag": "top-ten-products",
-      "url": "https://asikoransp.github.io/sac/dist/src/topTenProducts/index.js",
+      "url": "https://asikoransp.github.io/sac/topTenProducts/index.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
