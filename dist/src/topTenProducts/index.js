@@ -1,79 +1,69 @@
 "use strict";
 // @ts-nocheck
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-const chart_1 = require("src/lib/chart");
+var chart_1 = require("src/lib/chart");
 (function () {
     (0, chart_1.chartJs)();
-    let tmpl = document.createElement("template");
-    tmpl.innerHTML = `
-    <style>
-      .widget-wrapper {
-        padding: 1rem;
-        margin: 1rem;
-        border: 1px solid #fff;
-        border-radius: 15px;
-        background: #fff;
-      }
-
-      .widget-wrapper h2 {
-        margin: 0 0 1rem 0;
-        font-size: 1.5rem;
-      }
-
-      .chart-wrapper {
-        display: block !important;
-        height: 370px !important;
-      }
-
-    </style>
-    <div class="widget-wrapper">
-      <h2>Top 10 Products by Revenue</h2>
-      <div class="chart-wrapper">
-        <canvas id="top-ten-products-chart"></canvas>
-      </div>
-    </div>
-    `;
-    class PerformanceHelp extends HTMLElement {
-        template = null;
-        chart = null;
-        chartColor = "rgba(70, 49, 238, 0.8)";
-        constructor() {
-            super();
-            this.init();
+    var tmpl = document.createElement("template");
+    tmpl.innerHTML = "\n    <style>\n      .widget-wrapper {\n        padding: 1rem;\n        margin: 1rem;\n        border: 1px solid #fff;\n        border-radius: 15px;\n        background: #fff;\n      }\n\n      .widget-wrapper h2 {\n        margin: 0 0 1rem 0;\n        font-size: 1.5rem;\n      }\n\n      .chart-wrapper {\n        display: block !important;\n        height: 370px !important;\n      }\n\n    </style>\n    <div class=\"widget-wrapper\">\n      <h2>Top 10 Products by Revenue</h2>\n      <div class=\"chart-wrapper\">\n        <canvas id=\"top-ten-products-chart\"></canvas>\n      </div>\n    </div>\n    ";
+    var PerformanceHelp = /** @class */ (function (_super) {
+        __extends(PerformanceHelp, _super);
+        function PerformanceHelp() {
+            var _this = _super.call(this) || this;
+            _this.template = null;
+            _this.chart = null;
+            _this.chartColor = "rgba(70, 49, 238, 0.8)";
+            _this.init();
+            return _this;
         }
-        init() {
-            let shadowRoot = this.attachShadow({ mode: "open" });
+        PerformanceHelp.prototype.init = function () {
+            var shadowRoot = this.attachShadow({ mode: "open" });
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this.template = shadowRoot;
-        }
-        onCustomWidgetAfterUpdate() {
+        };
+        PerformanceHelp.prototype.onCustomWidgetAfterUpdate = function () {
             this.renderChart();
-        }
-        randomIntFromInterval(min, max) {
+        };
+        PerformanceHelp.prototype.randomIntFromInterval = function (min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
-        }
-        renderChart() {
+        };
+        PerformanceHelp.prototype.renderChart = function () {
             if (this.chart)
                 return;
             if (this.dataSet && this.dataSet.data) {
-                const dataSet = this.dataSet.data.sort((a, b) => b.measures_0.raw - a.measures_0.raw);
-                const labels = [];
-                const values = [];
-                dataSet.forEach((el) => {
-                    labels.push(el.dimensions_0.label);
-                    values.push(el.measures_0.raw);
+                var dataSet = this.dataSet.data.sort(function (a, b) { return b.measures_0.raw - a.measures_0.raw; });
+                var labels_1 = [];
+                var values_1 = [];
+                dataSet.forEach(function (el) {
+                    labels_1.push(el.dimensions_0.label);
+                    values_1.push(el.measures_0.raw);
                 });
-                const chartElement = this.template
+                var chartElement = this.template
                     .querySelector("canvas")
                     .getContext("2d");
                 this.chart = new Chart(chartElement, {
                     type: "bar",
                     data: {
-                        labels,
+                        labels: labels_1,
                         datasets: [
                             {
                                 label: "Value",
-                                data: values,
+                                data: values_1,
                                 backgroundColor: this.chartColor,
                                 borderWidth: 0,
                                 borderColor: this.chartColor,
@@ -97,7 +87,8 @@ const chart_1 = require("src/lib/chart");
                     },
                 });
             }
-        }
-    }
+        };
+        return PerformanceHelp;
+    }(HTMLElement));
     customElements.define("top-ten-products", PerformanceHelp);
 })();
