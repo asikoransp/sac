@@ -12044,6 +12044,7 @@
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
+      console.log(data);
       this.chart.update();
     }
 
