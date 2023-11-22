@@ -12042,15 +12042,6 @@
         display: block !important;
         height: 370px !important;
       }
-
-      #randomBtn {
-        padding: 0.7rem 1.5rem;
-        margin: 0 1rem;
-        border-radius: 10px;
-        border: none;
-        background-color: #fff;
-        color: #000;
-      }
     </style>
 
     <div class="widget-wrapper">
@@ -12079,10 +12070,8 @@
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
-    }
-
-    randomIntFromInterval(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+      this.renderChart();
+      this.chart.update();
     }
 
     renderChart() {
