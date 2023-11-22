@@ -1,0 +1,24 @@
+{
+  "name": "toptenproducts",
+  "description": "Top 10 Products",
+  "newInstancePrefix": "toptenproducts",
+  "eula": "",
+  "vendor": "Adrian Sikora",
+  "license": "",
+  "id": "toptenproducts",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "top-ten-products",
+      "url": "https://asikoransp.github.io/sac/topTenProducts/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {},
+  "methods": {},
+  "events": {},
+  "dataBindings": {}
+}

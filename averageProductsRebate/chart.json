@@ -1,18 +1,18 @@
 {
-  "name": "bargraph",
-  "description": "Bar Graph",
-  "newInstancePrefix": "bargraph",
+  "name": "averageproductsrebate",
+  "description": "Average Products Rebate",
+  "newInstancePrefix": "averageproductsrebate",
   "eula": "",
   "vendor": "Adrian Sikora",
   "license": "",
-  "id": "bargraph",
+  "id": "averageproductsrebate",
   "version": "1.0.0",
   "icon": "",
   "webcomponents": [
     {
       "kind": "main",
-      "tag": "bar-graph",
-      "url": "https://asikoransp.github.io/sac/index.js",
+      "tag": "average-products-rebate",
+      "url": "https://asikoransp.github.io/sac/averageProductsRebate/index.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
