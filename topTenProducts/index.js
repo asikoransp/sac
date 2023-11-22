@@ -12070,12 +12070,8 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        const objProxy = new Proxy(this.dataSet, {
-          set: function (target, key, value) {
-            console.log(`${key} set from ${obj.data} to ${value}`);
-            target[key] = value;
-            return true;
-          },
+        Object.observe(this.dataSet, function (changes) {
+          console.log(changes);
         });
 
         const data = this.getData();
