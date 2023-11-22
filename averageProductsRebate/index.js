@@ -12053,6 +12053,8 @@
           // });
           const dataSet = this.dataSet.data;
 
+          console.log(this.dataset);
+
           const labels = [];
           const values = [];
 
