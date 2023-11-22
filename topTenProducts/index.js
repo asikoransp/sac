@@ -12052,10 +12052,11 @@
         color: #000;
       }
     </style>
+
     <div class="widget-wrapper">
       <h2>Top 10 Products by Revenue</h2>
       <div class="chart-wrapper">
-        <canvas id="barChart"></canvas>
+        <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
     `;
@@ -12087,12 +12088,12 @@
     renderChart() {
       if (this.chart) return;
 
-      console.log('render fn')
+      console.log("render fn");
 
       if (JSONData && JSONData.products) {
         const dataSet = JSONData.products.sort((a, b) => a.amount - b.amount);
 
-        console.log(dataSet)
+        console.log(dataSet);
 
         const labels = [];
         const values = [];
@@ -12105,6 +12106,8 @@
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
+
+        console.log(chartElement);
 
         this.chart = new Chart(chartElement, {
           type: "bar",
@@ -12136,6 +12139,8 @@
             },
           },
         });
+
+        console.log(this.chart);
       }
     }
   }
