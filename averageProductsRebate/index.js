@@ -12051,10 +12051,18 @@
           // const values = initData.map((el) => {
           //   return this.randomIntFromInterval(50, 100);
           // });
-          // this.chart.data.datasets[0].data = values;
-          if (this.dataSet && this.dataSet.data) {
-            console.log(this.dataSet.data);
-          }
+          const dataSet = this.dataSet.data;
+
+          const labels = [];
+          const values = [];
+
+          dataSet.forEach((el) => {
+            labels.push(el.dimensions_0.label);
+            values.push(el.measures_0.raw);
+          });
+
+          this.chart.data.datasets[0].data = values;
+          this.chart.labels = labels;
           this.chart.update();
         });
     }
