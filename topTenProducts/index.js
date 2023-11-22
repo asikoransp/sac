@@ -12066,39 +12066,48 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
+
+      this.onAddEventToButton();
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
-      this.renderChart();
-      this.chart.update();
+    }
+
+    randomIntFromInterval(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    onAddEventToButton() {
+      this.template
+        .querySelector("#randomBtn")
+        .addEventListener("click", () => {
+          const initData = this.chart.data.datasets[0].data;
+          const values = initData.map((el) => {
+            return this.randomIntFromInterval(50, 100);
+          });
+          this.chart.data.datasets[0].data = values;
+          this.chart.update();
+        });
     }
 
     renderChart() {
       if (this.chart) return;
 
-      console.log("render fn");
-
-      if (JSONData && JSONData.products) {
-        const dataSet = JSONData.products.sort((a, b) => a.amount - b.amount);
-
-        console.log(dataSet);
+      if (this.dataSet && this.dataSet.data) {
+        const dataSet = this.dataSet.data;
 
         const labels = [];
         const values = [];
 
         dataSet.forEach((el) => {
-          labels.push(el.name);
-          values.push(el.amount);
+          labels.push(el.dimensions_0.label);
+          values.push(el.measures_0.raw);
         });
-
-        console.log(labels, values);
 
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
-
-        console.log(chartElement);
 
         this.chart = new Chart(chartElement, {
           type: "bar",
@@ -12106,7 +12115,7 @@
             labels,
             datasets: [
               {
-                label: "Amount",
+                label: "Value",
                 data: values,
                 backgroundColor: this.chartColor,
                 borderWidth: 0,
@@ -12130,8 +12139,6 @@
             },
           },
         });
-
-        console.log(this.chart);
       }
     }
   }

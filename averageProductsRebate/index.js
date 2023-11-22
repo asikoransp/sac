@@ -12070,8 +12070,6 @@
           values.push(el.measures_0.raw);
         });
 
-        console.log(labels, values);
-
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
