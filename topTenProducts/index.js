@@ -11998,74 +11998,19 @@
         height: 370px !important;
       }
 
-      #randomBtn {
-        padding: 0.7rem 1.5rem;
-        margin: 0 1rem;
-        border-radius: 10px;
-        border: none;
-        background-color: #fff;
-        color: #000;
-      }
     </style>
     <div class="widget-wrapper">
-      <h2>Średni poziom rabatowania produktów</h2>
+      <h2>Top 10 Products by Revenue</h2>
       <div class="chart-wrapper">
-        <canvas id="barChart"></canvas>
+        <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
-
-    <button id="randomBtn">Click to randomize data</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
-
-    mockData = {
-      products: [
-        {
-          name: "Product 1",
-          amount: 50,
-        },
-        {
-          name: "Product 2",
-          amount: 30,
-        },
-        {
-          name: "Product 3",
-          amount: 45,
-        },
-        {
-          name: "Product 4",
-          amount: 22,
-        },
-        {
-          name: "Product 5",
-          amount: 65,
-        },
-        {
-          name: "Product 6",
-          amount: 40,
-        },
-        {
-          name: "Product 7",
-          amount: 75,
-        },
-        {
-          name: "Product 8",
-          amount: 18,
-        },
-        {
-          name: "Product 9",
-          amount: 55,
-        },
-        {
-          name: "Product 10",
-          amount: 33,
-        },
-      ],
-    };
 
     constructor() {
       super();
@@ -12076,8 +12021,6 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      this.onAddEventToButton();
     }
 
     onCustomWidgetAfterUpdate() {
@@ -12088,31 +12031,18 @@
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    onAddEventToButton() {
-      this.template
-        .querySelector("#randomBtn")
-        .addEventListener("click", () => {
-          const initData = this.chart.data.datasets[0].data;
-          const values = initData.map((el) => {
-            return this.randomIntFromInterval(50, 100);
-          });
-          this.chart.data.datasets[0].data = values;
-          this.chart.update();
-        });
-    }
-
     renderChart() {
       if (this.chart) return;
 
-      if (this.mockData && this.mockData.products) {
-        const dataSet = this.mockData.products;
+      if (this.dataSet && this.dataSet.data) {
+        const dataSet = this.dataSet.data;
 
         const labels = [];
         const values = [];
 
         dataSet.forEach((el) => {
-          labels.push(el.name);
-          values.push(el.amount);
+          labels.push(el.dimensions_0.label);
+          values.push(el.measures_0.raw);
         });
 
         const chartElement = this.template
