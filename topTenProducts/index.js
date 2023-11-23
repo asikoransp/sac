@@ -12074,6 +12074,8 @@
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
 
+      console.log(dataSet);
+
       const labels = [];
       const values = [];
 
@@ -12092,30 +12094,6 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        // var handler = function () {
-        //   return {
-        //     get: function (obj, prop) {
-        //       console.log("got it!");
-        //       if (
-        //         ["[object Object]", "[object Array]"].indexOf(
-        //           Object.prototype.toString.call(obj[prop])
-        //         ) > -1
-        //       ) {
-        //         return new Proxy(obj[prop], handler());
-        //       }
-        //       return obj[prop];
-        //     },
-        //     set: function (obj, prop, value) {
-        //       console.log("set it");
-        //       console.log(this.dataSet, this.dataSet.data);
-        //       obj[prop] = value;
-        //       return true;
-        //     },
-        //   };
-        // };
-
-        // this.dataSet = new Proxy(this.dataSet, handler());
-
         const data = this.getData();
 
         const chartElement = this.template
