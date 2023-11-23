@@ -12072,23 +12072,30 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      if (this.dataSet && this.dataSet.data) {
+        const dataSet = this.dataSet.data
+          .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+          .slice(0, 10);
 
-      console.log(dataSet);
+        console.log(dataSet);
 
-      const labels = [];
-      const values = [];
+        const labels = [];
+        const values = [];
 
-      dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
-      });
+        dataSet.forEach((el) => {
+          labels.push(el.dimensions_0.label.split("_").join(" "));
+          values.push(el.measures_0.raw);
+        });
+
+        return {
+          labels,
+          values,
+        };
+      }
 
       return {
-        labels,
-        values,
+        labels: [],
+        values: [],
       };
     }
 
