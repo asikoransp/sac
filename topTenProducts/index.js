@@ -12074,10 +12074,16 @@
       if (this.chart) return;
 
       document
-        .querySelector(".sapEpmUiDialogOkButton")
+        .querySelector(".sapFilterLineIcon")
         .addEventListener("click", () => {
-          console.log("click");
-          this.chart.update();
+          setTimeout(() => {
+            document
+              .querySelector(".sapEpmUiDialogOkButton")
+              .addEventListener("click", () => {
+                console.log("click");
+                this.chart.update();
+              });
+          }, 1000);
         });
 
       if (this.dataSet && this.dataSet.data) {
