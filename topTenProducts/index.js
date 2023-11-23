@@ -12056,10 +12056,10 @@
 
       document.addEventListener("click", (e) => {
         console.log(e.target);
-        // if (e.target.id && e.target.id.contains("ms-ok-btn-BDI-content")) {
-        //   console.log("OK!");
-        //   that.updateChartData();
-        // }
+        if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
+          console.log("OK!");
+          setTimeout(that.updateChartData(), 200);
+        }
       });
     }
 
