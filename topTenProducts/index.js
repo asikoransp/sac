@@ -12030,15 +12030,6 @@
       // setInterval(() => {
       //   this.updateChartData();
       // }, 1000);
-
-      const handler = {
-        set(target, prop, value) {
-          console.log(`changed ${prop} from ${target[prop]} to ${value}`);
-          target[prop] = value;
-        },
-      };
-
-      const proxy = new Proxy(this.dataSet, handler);
     }
 
     onCustomWidgetAfterUpdate() {
@@ -12083,6 +12074,15 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
+        const handler = {
+          set(target, prop, value) {
+            console.log(`changed ${prop} from ${target[prop]} to ${value}`);
+            target[prop] = value;
+          },
+        };
+
+        this.dataSet = new Proxy(this.dataSet, handler);
+
         const data = this.getData();
 
         const chartElement = this.template
