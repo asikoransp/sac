@@ -12027,14 +12027,9 @@
 
       this.onAddEventToButton();
 
-      sap.ui
-        .getCore()
-        .getEventBus()
-        .subscribe("sap.sac.ui", "filterChanged", this.onFilterChanged, this);
-    }
-
-    onFilterChanged() {
-      console.log("filtering");
+      setInterval(() => {
+        console.log(this.getData())
+      }, 500)
     }
 
     onCustomWidgetAfterUpdate() {
