@@ -12083,6 +12083,8 @@
 
         this.dataSet = new Proxy(this.dataSet, handler);
 
+        console.log(this.dataSet);
+
         const data = this.getData();
 
         const chartElement = this.template
