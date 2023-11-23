@@ -12037,22 +12037,27 @@
 
       const that = this;
 
-      setTimeout(() => {
-        document
-          .querySelector(".sapFilterLineIcon")
-          .addEventListener("click", () => {
-            console.log("ikona");
-            setTimeout(() => {
-              document
-                .querySelector(".sapEpmUiDialogOkButton")
-                .addEventListener("click", () => {
-                  console.log("button");
+      // setTimeout(() => {
+      //   document
+      //     .querySelector(".sapFilterLineIcon")
+      //     .addEventListener("click", () => {
+      //       console.log("ikona");
+      //       setTimeout(() => {
+      //         document
+      //           .querySelector(".sapEpmUiDialogOkButton")
+      //           .addEventListener("click", () => {
+      //             console.log("button");
 
-                  that.updateChartData();
-                });
-            }, 2000);
-          });
-      }, 1000);
+      //             that.updateChartData();
+      //           });
+      //       }, 2000);
+      //     });
+      // }, 1000);
+
+      document.addEventListener("click", (e) => {
+        console.log(e.target.classList);
+        // if (e.target.classList)
+      });
     }
 
     onAddEventToButton() {
