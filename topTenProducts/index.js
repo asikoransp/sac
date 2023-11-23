@@ -12006,8 +12006,6 @@
         <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
-
-    <button id="refreshBtn">Refresh</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12051,28 +12049,21 @@
     }
 
     getData() {
-      if (this.dataSet && this.dataSet.data) {
-        const dataSet = this.dataSet.data
-          .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-          .slice(0, 10);
+      const dataSet = this.dataSet.data
+        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+        .slice(0, 10);
 
-        const labels = [];
-        const values = [];
+      const labels = [];
+      const values = [];
 
-        dataSet.forEach((el) => {
-          labels.push(el.dimensions_0.label.split("_").join(" "));
-          values.push(el.measures_0.raw);
-        });
-
-        return {
-          labels,
-          values,
-        };
-      }
+      dataSet.forEach((el) => {
+        labels.push(el.dimensions_0.label.split("_").join(" "));
+        values.push(el.measures_0.raw);
+      });
 
       return {
-        labels: [],
-        values: [],
+        labels,
+        values,
       };
     }
 
