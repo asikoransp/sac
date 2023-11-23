@@ -12041,32 +12041,33 @@
     }
 
     updateChartData() {
-      const that = this;
-      setTimeout(() => {
-        const data = that.getData();
-        this.chart.data.datasets[0].data = data.values;
-        this.chart.data.labels = data.labels;
-        this.chart.update();
-      }, 300);
+      // const that = this;
+
+      const data = that.getData();
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.labels = data.labels;
+      this.chart.update();
     }
 
     getData() {
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      setTimeout(() => {
+        const dataSet = this.dataSet.data
+          .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+          .slice(0, 10);
 
-      const labels = [];
-      const values = [];
+        const labels = [];
+        const values = [];
 
-      dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
-      });
+        dataSet.forEach((el) => {
+          labels.push(el.dimensions_0.label.split("_").join(" "));
+          values.push(el.measures_0.raw);
+        });
 
-      return {
-        labels,
-        values,
-      };
+        return {
+          labels,
+          values,
+        };
+      }, 300);
     }
 
     renderChart() {
