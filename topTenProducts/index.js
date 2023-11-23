@@ -12081,11 +12081,9 @@
           },
         };
 
-        this.dataSet = new Proxy(this.dataSet, handler);
+        this.dataSet.data = new Proxy(this.dataSet.data, handler);
 
-        this.dataSet = this.dataSet;
-
-        console.log(this.dataSet);
+        console.log(this.dataSet.data);
 
         const data = this.getData();
 
