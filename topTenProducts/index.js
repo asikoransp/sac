@@ -12073,43 +12073,30 @@
     renderChart() {
       if (this.chart) return;
 
-      document
-        .querySelector(".sapFilterLineIcon")
-        .addEventListener("click", () => {
-          setTimeout(() => {
-            document
-              .querySelector(".sapEpmUiDialogOkButton")
-              .addEventListener("click", () => {
-                console.log("click");
-                this.chart.update();
-              });
-          }, 1000);
-        });
-
       if (this.dataSet && this.dataSet.data) {
-        var handler = function () {
-          return {
-            get: function (obj, prop) {
-              console.log("got it!");
-              if (
-                ["[object Object]", "[object Array]"].indexOf(
-                  Object.prototype.toString.call(obj[prop])
-                ) > -1
-              ) {
-                return new Proxy(obj[prop], handler());
-              }
-              return obj[prop];
-            },
-            set: function (obj, prop, value) {
-              console.log("set it");
-              console.log(this.dataSet, this.dataSet.data);
-              obj[prop] = value;
-              return true;
-            },
-          };
-        };
+        // var handler = function () {
+        //   return {
+        //     get: function (obj, prop) {
+        //       console.log("got it!");
+        //       if (
+        //         ["[object Object]", "[object Array]"].indexOf(
+        //           Object.prototype.toString.call(obj[prop])
+        //         ) > -1
+        //       ) {
+        //         return new Proxy(obj[prop], handler());
+        //       }
+        //       return obj[prop];
+        //     },
+        //     set: function (obj, prop, value) {
+        //       console.log("set it");
+        //       console.log(this.dataSet, this.dataSet.data);
+        //       obj[prop] = value;
+        //       return true;
+        //     },
+        //   };
+        // };
 
-        this.dataSet = new Proxy(this.dataSet, handler());
+        // this.dataSet = new Proxy(this.dataSet, handler());
 
         const data = this.getData();
 
@@ -12147,6 +12134,21 @@
             },
           },
         });
+
+        setTimeout(() => {
+          document
+            .querySelector(".sapFilterLineIcon")
+            .addEventListener("click", () => {
+              setTimeout(() => {
+                document
+                  .querySelector(".sapEpmUiDialogOkButton")
+                  .addEventListener("click", () => {
+                    console.log("click");
+                    this.chart.update();
+                  });
+              }, 1000);
+            });
+        }, 2000);
       }
     }
   }
