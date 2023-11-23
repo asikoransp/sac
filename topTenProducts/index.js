@@ -12047,9 +12047,8 @@
                 .querySelector(".sapEpmUiDialogOkButton")
                 .addEventListener("click", () => {
                   console.log("button");
-                  // setTimeout(() => {
+
                   that.updateChartData();
-                  // }, 500);
                 });
             }, 2000);
           });
@@ -12065,10 +12064,12 @@
     }
 
     updateChartData() {
-      const data = this.getData();
-      this.chart.data.datasets[0].data = data.values;
-      this.chart.data.labels = data.labels;
-      this.chart.update();
+      setTimeout(() => {
+        const data = this.getData();
+        this.chart.data.datasets[0].data = data.values;
+        this.chart.data.labels = data.labels;
+        this.chart.update();
+      }, 500);
     }
 
     getData() {
