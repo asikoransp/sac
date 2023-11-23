@@ -12144,11 +12144,11 @@
                   .querySelector(".sapEpmUiDialogOkButton")
                   .addEventListener("click", () => {
                     console.log("click");
-                    this.chart.update();
+                    this.updateChartData();
                   });
-              }, 1000);
+              }, 5000);
             });
-        }, 2000);
+        }, 5000);
       }
     }
   }
