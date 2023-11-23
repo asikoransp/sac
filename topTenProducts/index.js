@@ -12035,6 +12035,8 @@
     onCustomWidgetAfterUpdate() {
       this.renderChart();
 
+      const that = this;
+
       setTimeout(() => {
         document
           .querySelector(".sapFilterLineIcon")
@@ -12044,7 +12046,7 @@
                 .querySelector(".sapEpmUiDialogOkButton")
                 .addEventListener("click", () => {
                   console.log("click");
-                  this.updateChartData().bind(this);
+                  that.updateChartData();
                 });
             }, 3000);
           });
