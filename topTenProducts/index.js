@@ -12035,19 +12035,21 @@
       const that = this;
       document.addEventListener("click", (e) => {
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
-          that.updateChartData();
+          setTimeout(() => {
+            that.updateChartData();
+          }, 1000);
         }
       });
     }
 
     updateChartData() {
       const that = this;
-      setTimeout(() => {
-        const data = that.getData();
-        this.chart.data.datasets[0].data = data.values;
-        this.chart.data.labels = data.labels;
-        this.chart.update();
-      }, 1000);
+      // setTimeout(() => {
+      const data = that.getData();
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.labels = data.labels;
+      this.chart.update();
+      // }, 1000);
     }
 
     getData() {
