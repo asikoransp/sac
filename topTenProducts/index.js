@@ -12038,40 +12038,20 @@
       const that = this;
 
       setTimeout(() => {
-        document.querySelector(".sapFilterLineIcon").addEventListener(
-          "click",
-          () => {
-            console.log("icon");
-            setTimeout(
-              () => {
-                document
-                  .querySelector(".sapFilterLine-popover")
-                  .addEventListener(
-                    "click",
-                    () => {
-                      console.log("item");
-                      setTimeout(() => {
-                        document
-                          .querySelector(".sapEpmUiDialogOkButton")
-                          .addEventListener(
-                            "click",
-                            () => {
-                              console.log("button");
+        document
+          .querySelector(".sapFilterLineIcon")
+          .addEventListener("click", () => {
+            console.log("ikona");
+            setTimeout(() => {
+              document
+                .querySelector(".sapEpmUiDialogOkButton")
+                .addEventListener("click", () => {
+                  console.log("button");
 
-                              that.updateChartData();
-                            },
-                            { once: true }
-                          );
-                      }, 200);
-                    },
-                    { once: true }
-                  );
-              },
-              { once: true }
-            );
-          },
-          200
-        );
+                  that.updateChartData();
+                });
+            }, 2000);
+          });
       }, 1000);
     }
 
@@ -12090,7 +12070,7 @@
         this.chart.data.datasets[0].data = data.values;
         this.chart.data.labels = data.labels;
         this.chart.update();
-      }, 200);
+      }, 1000);
     }
 
     getData() {
