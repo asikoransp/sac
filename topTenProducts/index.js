@@ -12056,7 +12056,7 @@
 
       document.addEventListener("click", (e) => {
         console.log(e.target.classList);
-        if (e.target.id.contains("ms-ok-btn-BDI-content")) {
+        if (e.target.id && e.target.id.contains("ms-ok-btn-BDI-content")) {
           console.log("OK!");
           that.updateChartData();
         }
