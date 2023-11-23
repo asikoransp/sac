@@ -12064,12 +12064,13 @@
     }
 
     updateChartData() {
+      const that = this
       setTimeout(() => {
-        const data = this.getData();
+        const data = that.getData();
         this.chart.data.datasets[0].data = data.values;
         this.chart.data.labels = data.labels;
         this.chart.update();
-      }, 500);
+      }, 1000);
     }
 
     getData() {
