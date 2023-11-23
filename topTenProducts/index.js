@@ -12029,6 +12029,8 @@
       this.addFilterListeners();
     }
 
+    // .sapFilterLineHideTokenDeleteButton
+
     addFilterListeners() {
       const that = this;
       document.addEventListener("click", (e) => {
@@ -12045,7 +12047,7 @@
         this.chart.data.datasets[0].data = data.values;
         this.chart.data.labels = data.labels;
         this.chart.update();
-      }, 1000);
+      }, 300);
     }
 
     getData() {
