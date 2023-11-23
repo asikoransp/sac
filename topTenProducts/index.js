@@ -12041,14 +12041,15 @@
         document
           .querySelector(".sapFilterLineIcon")
           .addEventListener("click", () => {
+            console.log("ikona");
             setTimeout(() => {
               document
                 .querySelector(".sapEpmUiDialogOkButton")
                 .addEventListener("click", () => {
-                  console.log("click");
+                  console.log("button");
                   that.updateChartData();
                 });
-            }, 3000);
+            }, 2000);
           });
       }, 1000);
     }
