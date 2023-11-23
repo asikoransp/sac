@@ -12029,11 +12029,14 @@
       this.addFilterListeners();
     }
 
-    // .sapFilterLineHideTokenDeleteButton
-
     addFilterListeners() {
       document.addEventListener("click", (e) => {
-        if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
+        const isFilterBtn =
+          e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
+        const isDeleteBtn =
+          e.target.classList &&
+          e.target.classList.contains("sapFilterLineHideTokenDeleteButton");
+        if (isFilterBtn || isDeleteBtn) {
           setTimeout(() => {
             this.updateChartData();
           }, 500);
