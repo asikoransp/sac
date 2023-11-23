@@ -12006,8 +12006,6 @@
         <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
-
-    <button id="refreshBtn">Refresh</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12024,42 +12022,27 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      this.onAddEventToButton();
-
-      // setInterval(() => {
-      //   this.updateChartData();
-      // }, 1000);
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
 
       const that = this;
-
       document.addEventListener("click", (e) => {
-        console.log(e.target);
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
-          console.log("OK!");
-          setTimeout(that.updateChartData(), 200);
+          that.updateChartData();
         }
       });
     }
 
-    onAddEventToButton() {
-      this.template
-        .querySelector("#refreshBtn")
-        .addEventListener("click", () => {
-          this.updateChartData();
-        });
-    }
-
     updateChartData() {
       const that = this;
-      const data = that.getData();
-      this.chart.data.datasets[0].data = data.values;
-      this.chart.data.labels = data.labels;
-      this.chart.update();
+      setTimeout(() => {
+        const data = that.getData();
+        this.chart.data.datasets[0].data = data.values;
+        this.chart.data.labels = data.labels;
+        this.chart.update();
+      }, 200);
     }
 
     getData() {
