@@ -12037,23 +12037,6 @@
 
       const that = this;
 
-      // setTimeout(() => {
-      //   document
-      //     .querySelector(".sapFilterLineIcon")
-      //     .addEventListener("click", () => {
-      //       console.log("ikona");
-      //       setTimeout(() => {
-      //         document
-      //           .querySelector(".sapEpmUiDialogOkButton")
-      //           .addEventListener("click", () => {
-      //             console.log("button");
-
-      //             that.updateChartData();
-      //           });
-      //       }, 2000);
-      //     });
-      // }, 1000);
-
       document.addEventListener("click", (e) => {
         console.log(e.target);
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
@@ -12073,39 +12056,28 @@
 
     updateChartData() {
       const that = this;
-      setTimeout(() => {
-        const data = that.getData();
-        this.chart.data.datasets[0].data = data.values;
-        this.chart.data.labels = data.labels;
-        this.chart.update();
-      }, 1000);
+      const data = that.getData();
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.labels = data.labels;
+      this.chart.update();
     }
 
     getData() {
-      if (this.dataSet && this.dataSet.data) {
-        const dataSet = this.dataSet.data
-          .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-          .slice(0, 10);
+      const dataSet = this.dataSet.data
+        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+        .slice(0, 10);
 
-        console.log(dataSet);
+      const labels = [];
+      const values = [];
 
-        const labels = [];
-        const values = [];
-
-        dataSet.forEach((el) => {
-          labels.push(el.dimensions_0.label.split("_").join(" "));
-          values.push(el.measures_0.raw);
-        });
-
-        return {
-          labels,
-          values,
-        };
-      }
+      dataSet.forEach((el) => {
+        labels.push(el.dimensions_0.label.split("_").join(" "));
+        values.push(el.measures_0.raw);
+      });
 
       return {
-        labels: [],
-        values: [],
+        labels,
+        values,
       };
     }
 
