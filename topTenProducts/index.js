@@ -12047,7 +12047,9 @@
                 .querySelector(".sapEpmUiDialogOkButton")
                 .addEventListener("click", () => {
                   console.log("button");
-                  that.updateChartData();
+                  setTimeout(() => {
+                    that.updateChartData();
+                  }, 500);
                 });
             }, 2000);
           });
