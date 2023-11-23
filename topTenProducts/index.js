@@ -12056,7 +12056,10 @@
 
       document.addEventListener("click", (e) => {
         console.log(e.target.classList);
-        if (e.target.classList.contains('sapEpmUiDialogOkButton')) console.log('OK!')
+        if (e.target.id.contains("ms-ok-btn-BDI-content")) {
+          console.log("OK!");
+          that.updateChartData();
+        }
       });
     }
 
