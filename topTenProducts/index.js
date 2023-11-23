@@ -12032,24 +12032,20 @@
     // .sapFilterLineHideTokenDeleteButton
 
     addFilterListeners() {
-      const that = this;
       document.addEventListener("click", (e) => {
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
           setTimeout(() => {
-            that.updateChartData();
-          }, 200);
+            this.updateChartData();
+          }, 500);
         }
       });
     }
 
     updateChartData() {
-      const that = this;
-      // setTimeout(() => {
-      const data = that.getData();
+      const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
       this.chart.update();
-      // }, 1000);
     }
 
     getData() {
