@@ -12014,7 +12014,6 @@
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
-    myData = null;
 
     constructor() {
       super();
@@ -12053,7 +12052,7 @@
     }
 
     getData() {
-      const dataSet = this.myData.data
+      const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
 
@@ -12074,6 +12073,8 @@
     renderChart() {
       if (this.chart) return;
 
+      console.log(document, window);
+
       if (this.dataSet && this.dataSet.data) {
         var handler = function () {
           return {
@@ -12090,14 +12091,14 @@
             },
             set: function (obj, prop, value) {
               console.log("set it");
-              // this.myData = value;
+              console.log(this.dataSet, this.dataSet.data);
               obj[prop] = value;
               return true;
             },
           };
         };
 
-        this.myData = new Proxy(this.dataSet, handler());
+        this.dataSet = new Proxy(this.dataSet, handler());
 
         const data = this.getData();
 
