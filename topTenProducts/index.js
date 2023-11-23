@@ -12056,7 +12056,7 @@
 
       document.addEventListener("click", (e) => {
         console.log(e.target.classList);
-        // if (e.target.classList)
+        if (e.target.classList.contains('sapEpmUiDialogOkButton')) console.log('OK!')
       });
     }
 
