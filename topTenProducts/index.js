@@ -12037,7 +12037,7 @@
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
           setTimeout(() => {
             that.updateChartData();
-          }, 1000);
+          }, 200);
         }
       });
     }
