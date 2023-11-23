@@ -12025,7 +12025,7 @@
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
 
-      this.onAddEventToButton();
+      // this.onAddEventToButton();
 
       // setInterval(() => {
       //   this.updateChartData();
@@ -12034,43 +12034,25 @@
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
-
-      const that = this;
-
-      setTimeout(() => {
-        document
-          .querySelector(".sapFilterLineIcon")
-          .addEventListener("click", () => {
-            console.log("ikona");
-            setTimeout(() => {
-              document
-                .querySelector(".sapEpmUiDialogOkButton")
-                .addEventListener("click", () => {
-                  console.log("button");
-
-                  that.updateChartData();
-                });
-            }, 2000);
-          });
-      }, 1000);
+      this.addEvents();
     }
 
-    onAddEventToButton() {
-      this.template
-        .querySelector("#refreshBtn")
-        .addEventListener("click", () => {
-          this.updateChartData();
-        });
-    }
+    // onAddEventToButton() {
+    //   this.template
+    //     .querySelector("#refreshBtn")
+    //     .addEventListener("click", () => {
+    //       this.updateChartData();
+    //     });
+    // }
 
     updateChartData() {
-      const that = this
+      const that = this;
       setTimeout(() => {
         const data = that.getData();
         this.chart.data.datasets[0].data = data.values;
         this.chart.data.labels = data.labels;
         this.chart.update();
-      }, 1000);
+      }, 200);
     }
 
     getData() {
@@ -12142,6 +12124,46 @@
           },
         });
       }
+    }
+
+    addEvents() {
+      const that = this;
+      setTimeout(() => {
+        document.querySelector(".sapFilterLineIcon").addEventListener(
+          "click",
+          () => {
+            console.log("icon");
+            setTimeout(
+              () => {
+                document
+                  .querySelector(".sapFilterLine-popover")
+                  .addEventListener(
+                    "click",
+                    () => {
+                      console.log("item");
+                      setTimeout(() => {
+                        document
+                          .querySelector(".sapEpmUiDialogOkButton")
+                          .addEventListener(
+                            "click",
+                            () => {
+                              console.log("button");
+
+                              that.updateChartData();
+                            },
+                            { once: true }
+                          );
+                      }, 200);
+                    },
+                    { once: true }
+                  );
+              },
+              { once: true }
+            );
+          },
+          200
+        );
+      }, 5000);
     }
   }
 
