@@ -12025,7 +12025,7 @@
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
 
-      // this.onAddEventToButton();
+      this.onAddEventToButton();
 
       // setInterval(() => {
       //   this.updateChartData();
@@ -12034,16 +12034,54 @@
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
-      this.addEvents();
+
+      const that = this;
+
+      setTimeout(() => {
+        document.querySelector(".sapFilterLineIcon").addEventListener(
+          "click",
+          () => {
+            console.log("icon");
+            setTimeout(
+              () => {
+                document
+                  .querySelector(".sapFilterLine-popover")
+                  .addEventListener(
+                    "click",
+                    () => {
+                      console.log("item");
+                      setTimeout(() => {
+                        document
+                          .querySelector(".sapEpmUiDialogOkButton")
+                          .addEventListener(
+                            "click",
+                            () => {
+                              console.log("button");
+
+                              that.updateChartData();
+                            },
+                            { once: true }
+                          );
+                      }, 200);
+                    },
+                    { once: true }
+                  );
+              },
+              { once: true }
+            );
+          },
+          200
+        );
+      }, 1000);
     }
 
-    // onAddEventToButton() {
-    //   this.template
-    //     .querySelector("#refreshBtn")
-    //     .addEventListener("click", () => {
-    //       this.updateChartData();
-    //     });
-    // }
+    onAddEventToButton() {
+      this.template
+        .querySelector("#refreshBtn")
+        .addEventListener("click", () => {
+          this.updateChartData();
+        });
+    }
 
     updateChartData() {
       const that = this;
@@ -12124,46 +12162,6 @@
           },
         });
       }
-    }
-
-    addEvents() {
-      const that = this;
-      setTimeout(() => {
-        document.querySelector(".sapFilterLineIcon").addEventListener(
-          "click",
-          () => {
-            console.log("icon");
-            setTimeout(
-              () => {
-                document
-                  .querySelector(".sapFilterLine-popover")
-                  .addEventListener(
-                    "click",
-                    () => {
-                      console.log("item");
-                      setTimeout(() => {
-                        document
-                          .querySelector(".sapEpmUiDialogOkButton")
-                          .addEventListener(
-                            "click",
-                            () => {
-                              console.log("button");
-
-                              that.updateChartData();
-                            },
-                            { once: true }
-                          );
-                      }, 200);
-                    },
-                    { once: true }
-                  );
-              },
-              { once: true }
-            );
-          },
-          200
-        );
-      }, 5000);
     }
   }
 
