@@ -12035,7 +12035,7 @@
           e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
         const isDeleteBtn =
           e.target.classList &&
-          e.target.classList.contains("sapFilterLineHideTokenDeleteButton");
+          e.target.classList.contains("sapFilterLineTokenDeleteButton");
         if (isFilterBtn || isDeleteBtn) {
           setTimeout(() => {
             this.updateChartData();
