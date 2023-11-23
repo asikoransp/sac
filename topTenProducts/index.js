@@ -12024,51 +12024,20 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      this.onAddEventToButton();
-
-      // setInterval(() => {
-      //   this.updateChartData();
-      // }, 1000);
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
+      this.addFilterListeners();
+    }
 
+    addFilterListeners() {
       const that = this;
-
-      // setTimeout(() => {
-      //   document
-      //     .querySelector(".sapFilterLineIcon")
-      //     .addEventListener("click", () => {
-      //       console.log("ikona");
-      //       setTimeout(() => {
-      //         document
-      //           .querySelector(".sapEpmUiDialogOkButton")
-      //           .addEventListener("click", () => {
-      //             console.log("button");
-
-      //             that.updateChartData();
-      //           });
-      //       }, 2000);
-      //     });
-      // }, 1000);
-
       document.addEventListener("click", (e) => {
-        console.log(e.target);
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
-          console.log("OK!");
           that.updateChartData();
         }
       });
-    }
-
-    onAddEventToButton() {
-      this.template
-        .querySelector("#refreshBtn")
-        .addEventListener("click", () => {
-          this.updateChartData();
-        });
     }
 
     updateChartData() {
@@ -12086,8 +12055,6 @@
         const dataSet = this.dataSet.data
           .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
           .slice(0, 10);
-
-        console.log(dataSet);
 
         const labels = [];
         const values = [];
