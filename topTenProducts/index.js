@@ -12034,6 +12034,21 @@
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
+
+      setTimeout(() => {
+        document
+          .querySelector(".sapFilterLineIcon")
+          .addEventListener("click", () => {
+            setTimeout(() => {
+              document
+                .querySelector(".sapEpmUiDialogOkButton")
+                .addEventListener("click", () => {
+                  console.log("click");
+                  this.updateChartData().bind(this);
+                });
+            }, 3000);
+          });
+      }, 1000);
     }
 
     onAddEventToButton() {
@@ -12134,21 +12149,6 @@
             },
           },
         });
-
-        setTimeout(() => {
-          document
-            .querySelector(".sapFilterLineIcon")
-            .addEventListener("click", () => {
-              setTimeout(() => {
-                document
-                  .querySelector(".sapEpmUiDialogOkButton")
-                  .addEventListener("click", () => {
-                    console.log("click");
-                    this.updateChartData();
-                  });
-              }, 5000);
-            });
-        }, 5000);
       }
     }
   }
