@@ -12026,6 +12026,15 @@
       this.template = shadowRoot;
 
       this.onAddEventToButton();
+
+      sap.ui
+        .getCore()
+        .getEventBus()
+        .subscribe("sap.sac.ui", "filterChanged", this.onFilterChanged, this);
+    }
+
+    onFilterChanged() {
+      console.log("filtering");
     }
 
     onCustomWidgetAfterUpdate() {
