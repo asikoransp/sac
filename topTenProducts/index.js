@@ -12028,8 +12028,8 @@
       this.onAddEventToButton();
 
       setInterval(() => {
-        console.log(this.getData())
-      }, 500)
+        this.updateChartData();
+      }, 1000);
     }
 
     onCustomWidgetAfterUpdate() {
