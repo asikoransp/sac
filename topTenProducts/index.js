@@ -12073,7 +12073,12 @@
     renderChart() {
       if (this.chart) return;
 
-      console.log(document, window);
+      document
+        .querySelector(".sapEpmUiDialogOkButton")
+        .addEventListener("click", () => {
+          console.log("click");
+          this.chart.update();
+        });
 
       if (this.dataSet && this.dataSet.data) {
         var handler = function () {
