@@ -12006,6 +12006,8 @@
         <canvas id="top-ten-products-chart"></canvas>
       </div>
     </div>
+
+    <button id="refreshBtn">Refresh</button>
     `;
 
   class PerformanceHelp extends HTMLElement {
@@ -12022,17 +12024,51 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
+
+      this.onAddEventToButton();
+
+      // setInterval(() => {
+      //   this.updateChartData();
+      // }, 1000);
     }
 
     onCustomWidgetAfterUpdate() {
       this.renderChart();
 
       const that = this;
+
+      // setTimeout(() => {
+      //   document
+      //     .querySelector(".sapFilterLineIcon")
+      //     .addEventListener("click", () => {
+      //       console.log("ikona");
+      //       setTimeout(() => {
+      //         document
+      //           .querySelector(".sapEpmUiDialogOkButton")
+      //           .addEventListener("click", () => {
+      //             console.log("button");
+
+      //             that.updateChartData();
+      //           });
+      //       }, 2000);
+      //     });
+      // }, 1000);
+
       document.addEventListener("click", (e) => {
+        console.log(e.target);
         if (e.target.id && e.target.id.includes("ms-ok-btn-BDI-content")) {
+          console.log("OK!");
           that.updateChartData();
         }
       });
+    }
+
+    onAddEventToButton() {
+      this.template
+        .querySelector("#refreshBtn")
+        .addEventListener("click", () => {
+          this.updateChartData();
+        });
     }
 
     updateChartData() {
@@ -12042,25 +12078,34 @@
         this.chart.data.datasets[0].data = data.values;
         this.chart.data.labels = data.labels;
         this.chart.update();
-      }, 200);
+      }, 1000);
     }
 
     getData() {
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      if (this.dataSet && this.dataSet.data) {
+        const dataSet = this.dataSet.data
+          .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+          .slice(0, 10);
 
-      const labels = [];
-      const values = [];
+        console.log(dataSet);
 
-      dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
-      });
+        const labels = [];
+        const values = [];
+
+        dataSet.forEach((el) => {
+          labels.push(el.dimensions_0.label.split("_").join(" "));
+          values.push(el.measures_0.raw);
+        });
+
+        return {
+          labels,
+          values,
+        };
+      }
 
       return {
-        labels,
-        values,
+        labels: [],
+        values: [],
       };
     }
 
