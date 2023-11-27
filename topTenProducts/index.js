@@ -12062,7 +12062,8 @@
     }
 
     getData() {
-      this.currentData = this.dataSet.data;
+      if (this.dataSet && this.dataSet.data)
+        this.currentData = this.dataSet.data;
 
       this.currentData
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
