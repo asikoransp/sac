@@ -12049,36 +12049,9 @@
               this.updateChartData();
             }
           }, 100);
-          // setTimeout(() => {
-          //   this.updateChartData();
-          // }, 500);
         }
       });
     }
-
-    // addFilterListeners() {
-    //   document.addEventListener("click", (e) => {
-    //     const isFilterBtn =
-    //       e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
-    //     const isDeleteBtn =
-    //       e.target.classList &&
-    //       e.target.classList.contains("sapFilterLineTokenDeleteButton");
-    //     if (isFilterBtn || isDeleteBtn) {
-    //       const refresh = setInterval(() => {
-    //         console.log(this.dataSet.data);
-    //         if (
-    //           JSON.stringify(this.dataSet.data) !==
-    //             JSON.stringify(this.currentData) &&
-    //           this.dataSet &&
-    //           this.dataSet.data
-    //         ) {
-    //           clearInterval(refresh);
-    //           this.updateChartData();
-    //         }
-    //       }, 50);
-    //     }
-    //   });
-    // }
 
     updateChartData() {
       const data = this.getData();
