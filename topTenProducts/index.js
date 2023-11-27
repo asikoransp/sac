@@ -12053,11 +12053,16 @@
       });
     }
 
-    updateChartData() {
+    updateChartData(changedProperties) {
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
       this.chart.update();
+
+      if ("color" in changedProperties) {
+        this.$color = changedProperties["color"];
+        console.log(this.$color);
+      }
     }
 
     getData() {
