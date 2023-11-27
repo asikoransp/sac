@@ -12040,7 +12040,10 @@
           const currentData = JSON.stringify(this.dataSet.data);
           const refresh = setInterval(() => {
             console.log(this.dataSet.data);
-            if (JSON.stringify(this.dataSet.data) !== currentData) {
+            if (
+              JSON.stringify(this.dataSet.data) !== currentData &&
+              this.dataSet.data
+            ) {
               clearInterval(refresh);
               this.updateChartData();
             }
