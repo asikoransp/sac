@@ -12012,6 +12012,7 @@
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
+    currentData = undefined;
 
     constructor() {
       super();
@@ -12037,21 +12038,18 @@
           e.target.classList &&
           e.target.classList.contains("sapFilterLineTokenDeleteButton");
         if (isFilterBtn || isDeleteBtn) {
-          const currentData = JSON.stringify(this.dataSet.data);
           const refresh = setInterval(() => {
             console.log(this.dataSet.data);
             if (
-              JSON.stringify(this.dataSet.data) !== currentData &&
+              JSON.stringify(this.dataSet.data) !==
+                JSON.stringify(this.currentData) &&
+              this.dataSet &&
               this.dataSet.data
             ) {
               clearInterval(refresh);
               this.updateChartData();
             }
           }, 50);
-
-          // setTimeout(() => {
-
-          // }, 500);
         }
       });
     }
@@ -12064,7 +12062,9 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data
+      this.currentData = this.dataSet.data;
+
+      this.currentData
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
 
