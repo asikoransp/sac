@@ -12012,7 +12012,6 @@
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
-    currentValidData = undefined;
 
     constructor() {
       super();
@@ -12027,36 +12026,14 @@
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
-      // this.addFilterListeners();
 
       console.log(changedProperties);
       this.updateChartData();
     }
 
-    // addFilterListeners() {
-    //   document.addEventListener("click", (e) => {
-    //     const isFilterBtn =
-    //       e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
-    //     const isDeleteBtn =
-    //       e.target.classList &&
-    //       e.target.classList.contains("sapFilterLineTokenDeleteButton");
-    //     if (isFilterBtn || isDeleteBtn) {
-    //       const refresh = setInterval(() => {
-    //         if (
-    //           this.dataSet &&
-    //           this.dataSet.data &&
-    //           JSON.stringify(this.dataSet.data) !==
-    //             JSON.stringify(this.currentValidData)
-    //         ) {
-    //           clearInterval(refresh);
-    //           this.updateChartData();
-    //         }
-    //       }, 100);
-    //     }
-    //   });
-    // }
-
     updateChartData() {
+      if (!this.dataSet || !this.dataSet.data) return;
+
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
@@ -12064,8 +12041,6 @@
     }
 
     getData() {
-      this.currentValidData = this.dataSet.data;
-
       const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
