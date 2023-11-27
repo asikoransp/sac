@@ -12012,7 +12012,7 @@
     template = null;
     chart = null;
     chartColor = "rgba(70, 49, 238, 0.8)";
-    currentData = undefined;
+    currentValidData = undefined;
 
     constructor() {
       super();
@@ -12039,20 +12039,46 @@
           e.target.classList.contains("sapFilterLineTokenDeleteButton");
         if (isFilterBtn || isDeleteBtn) {
           const refresh = setInterval(() => {
-            console.log(this.dataSet.data);
             if (
-              JSON.stringify(this.dataSet.data) !==
-                JSON.stringify(this.currentData) &&
               this.dataSet &&
-              this.dataSet.data
+              this.dataSet.data &&
+              JSON.stringify(this.dataSet.data) !==
+                JSON.stringify(this.currentValidData)
             ) {
               clearInterval(refresh);
               this.updateChartData();
             }
-          }, 50);
+          }, 100);
+          // setTimeout(() => {
+          //   this.updateChartData();
+          // }, 500);
         }
       });
     }
+
+    // addFilterListeners() {
+    //   document.addEventListener("click", (e) => {
+    //     const isFilterBtn =
+    //       e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
+    //     const isDeleteBtn =
+    //       e.target.classList &&
+    //       e.target.classList.contains("sapFilterLineTokenDeleteButton");
+    //     if (isFilterBtn || isDeleteBtn) {
+    //       const refresh = setInterval(() => {
+    //         console.log(this.dataSet.data);
+    //         if (
+    //           JSON.stringify(this.dataSet.data) !==
+    //             JSON.stringify(this.currentData) &&
+    //           this.dataSet &&
+    //           this.dataSet.data
+    //         ) {
+    //           clearInterval(refresh);
+    //           this.updateChartData();
+    //         }
+    //       }, 50);
+    //     }
+    //   });
+    // }
 
     updateChartData() {
       const data = this.getData();
@@ -12062,10 +12088,9 @@
     }
 
     getData() {
-      if (this.dataSet && this.dataSet.data)
-        this.currentData = this.dataSet.data;
+      this.currentValidData = this.dataSet.data;
 
-      this.currentData
+      const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
 
