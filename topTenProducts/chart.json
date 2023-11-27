@@ -15,10 +15,40 @@
       "url": "https://asikoransp.github.io/sac/topTenProducts/index.js",
       "integrity": "",
       "ignoreIntegrity": true
+    },
+    {
+      "kind": "styling",
+      "tag": "top-ten-products-sps",
+      "url": "https://asikoransp.github.io/sac/topTenProducts/styling.js",
+      "integrity": "",
+      "ignoreIntegrity": true
     }
   ],
-  "properties": {},
-  "methods": {},
+  "properties": {
+    "color": {
+      "type": "string",
+      "description": "Chart color",
+      "default": "rgba(70, 49, 238, 0.8)"
+    }
+  },
+  "methods": {
+    "setColor": {
+      "description": "Set chart color",
+      "parameters": [
+        {
+          "name": "newColor",
+          "type": "string",
+          "description": "New color of the chart"
+        }
+      ],
+      "body": "this.color = newColor;"
+    },
+    "getColor": {
+      "returnType": "string",
+      "description": "Returns color of the chart",
+      "body": "return this.color;"
+    }
+  },
   "events": {},
   "dataBindings": {
     "dataSet": {

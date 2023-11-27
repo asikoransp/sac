@@ -12025,9 +12025,14 @@
       this.template = shadowRoot;
     }
 
-    onCustomWidgetAfterUpdate() {
+    onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
       this.addFilterListeners();
+
+      if ("color" in changedProperties) {
+        this.$color = changedProperties["color"];
+        console.log(this.$color);
+      }
     }
 
     addFilterListeners() {
@@ -12053,16 +12058,11 @@
       });
     }
 
-    updateChartData(changedProperties) {
+    updateChartData() {
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
       this.chart.update();
-
-      if ("color" in changedProperties) {
-        this.$color = changedProperties["color"];
-        console.log(this.$color);
-      }
     }
 
     getData() {
