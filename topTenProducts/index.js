@@ -12037,9 +12037,18 @@
           e.target.classList &&
           e.target.classList.contains("sapFilterLineTokenDeleteButton");
         if (isFilterBtn || isDeleteBtn) {
-          setTimeout(() => {
-            this.updateChartData();
-          }, 500);
+          const currentData = JSON.stringify(this.dataSet.data);
+          const refresh = setInterval(() => {
+            console.log(this.dataSet.data);
+            if (JSON.stringify(this.dataSet.data) !== currentData) {
+              clearInterval(refresh);
+              this.updateChartData();
+            }
+          }, 50);
+
+          // setTimeout(() => {
+
+          // }, 500);
         }
       });
     }
