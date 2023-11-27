@@ -12030,30 +12030,31 @@
       this.addFilterListeners();
 
       console.log(changedProperties);
+      this.updateChartData();
     }
 
-    addFilterListeners() {
-      document.addEventListener("click", (e) => {
-        const isFilterBtn =
-          e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
-        const isDeleteBtn =
-          e.target.classList &&
-          e.target.classList.contains("sapFilterLineTokenDeleteButton");
-        if (isFilterBtn || isDeleteBtn) {
-          const refresh = setInterval(() => {
-            if (
-              this.dataSet &&
-              this.dataSet.data &&
-              JSON.stringify(this.dataSet.data) !==
-                JSON.stringify(this.currentValidData)
-            ) {
-              clearInterval(refresh);
-              this.updateChartData();
-            }
-          }, 100);
-        }
-      });
-    }
+    // addFilterListeners() {
+    //   document.addEventListener("click", (e) => {
+    //     const isFilterBtn =
+    //       e.target.id && e.target.id.includes("ms-ok-btn-BDI-content");
+    //     const isDeleteBtn =
+    //       e.target.classList &&
+    //       e.target.classList.contains("sapFilterLineTokenDeleteButton");
+    //     if (isFilterBtn || isDeleteBtn) {
+    //       const refresh = setInterval(() => {
+    //         if (
+    //           this.dataSet &&
+    //           this.dataSet.data &&
+    //           JSON.stringify(this.dataSet.data) !==
+    //             JSON.stringify(this.currentValidData)
+    //         ) {
+    //           clearInterval(refresh);
+    //           this.updateChartData();
+    //         }
+    //       }, 100);
+    //     }
+    //   });
+    // }
 
     updateChartData() {
       const data = this.getData();
