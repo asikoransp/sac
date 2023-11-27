@@ -12029,6 +12029,9 @@
       this.renderChart();
       this.addFilterListeners();
 
+      console.log(this.$color);
+      console.log(this.getColor());
+
       if ("color" in changedProperties) {
         this.$color = changedProperties["color"];
         console.log(this.$color);
