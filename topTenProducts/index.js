@@ -12027,7 +12027,7 @@
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
-      this.addFilterListeners();
+      // this.addFilterListeners();
 
       console.log(changedProperties);
       this.updateChartData();
