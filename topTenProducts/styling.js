@@ -26,9 +26,6 @@
     }
 
     _submit(e) {
-      console.log("submit");
-      console.log(this.color);
-      document.querySelector("body").classList.add("dark-mode");
       e.preventDefault();
       this.dispatchEvent(
         new CustomEvent("propertiesChanged", {
