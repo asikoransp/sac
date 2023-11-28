@@ -1,0 +1,39 @@
+{
+  "name": "companysalesrevenue",
+  "description": "Company Sales Revenue",
+  "newInstancePrefix": "companysalesrevenue",
+  "eula": "",
+  "vendor": "Daniel Budzynski",
+  "license": "",
+  "id": "companysalesrevenue",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "company-sales-revenue",
+      "url": "https://asikoransp.github.io/sac/companySalesRevenue/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {},
+  "methods": {},
+  "events": {},
+  "dataBindings": {
+    "dataSet": {
+      "feeds": [
+        {
+          "id": "dimensions",
+          "description": "Dimensions",
+          "type": "dimension"
+        },
+        {
+          "id": "measures",
+          "description": "Measures",
+          "type": "mainStructureMember"
+        }
+      ]
+    }
+  }
+}
