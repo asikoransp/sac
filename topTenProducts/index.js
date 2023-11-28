@@ -11988,10 +11988,6 @@
         background: #fff;
       }
 
-      .sap-user-defined-dark-mode-theme .widget-wrapper {
-        background: #eee;
-      }
-
       .widget-wrapper h2 {
         margin: 0 0 1rem 0;
         font-size: 1.5rem;
@@ -12004,7 +12000,7 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2 class="dark-mode-toggle">Top 10 Products by Revenue</h2>
+      <h2>Top 10 Products by Revenue</h2>
       <div class="chart-wrapper">
         <canvas id="top-ten-products-chart"></canvas>
       </div>
@@ -12027,19 +12023,19 @@
       this.template = shadowRoot;
     }
 
-    // onCustomWidgetBeforeUpdate(changedProperties) {}
-
-    onCustomWidgetAfterUpdate(changedProperties) {
-      this.renderChart();
-      this.updateChartData();
-
+    onCustomWidgetBeforeUpdate(changedProperties) {
       const element = document.querySelector(
         ".sap-user-defined-dark-mode-theme"
       );
 
       if (element) {
-        console.log(element);
+        this.chartColor = "rgba(100, 49, 10, 0.8)";
       }
+    }
+
+    onCustomWidgetAfterUpdate(changedProperties) {
+      this.renderChart();
+      this.updateChartData();
     }
 
     // sap-user-defined-dark-mode-theme
