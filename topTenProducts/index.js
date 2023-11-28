@@ -12085,13 +12085,6 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      document
-        .querySelector(".dark-mode-toggle")
-        .addEventListener("click", (e) => {
-          document.querySelector(".widget-wrapper").style.backgroundColor =
-            "#000";
-        });
     }
 
     // onCustomWidgetBeforeUpdate(changedProperties) {}
@@ -12099,6 +12092,13 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
       this.updateChartData();
+
+      document
+        .querySelector(".dark-mode-toggle")
+        .addEventListener("click", (e) => {
+          document.querySelector(".widget-wrapper").style.backgroundColor =
+            "#000";
+        });
     }
 
     updateChartData() {
