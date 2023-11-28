@@ -12065,6 +12065,7 @@
       if (this.dataSet && this.dataSet.data) {
         console.log(this.dataSet.data);
         const data = this.getData();
+        console.log("data",data)
 
         const chartElement = this.template
           .querySelector("canvas")
@@ -12077,7 +12078,7 @@
             datasets: [
               {
                 label: '2018',
-                data: [1,2,3,4],
+                data: this.dataSet.data,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 order: 1,
@@ -12085,7 +12086,7 @@
               },
                   {
                 label: '2019',
-                data: [4,5,6,7],
+                data: this.dataSet.data,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 order: 1,
@@ -12093,7 +12094,7 @@
               },
               {
                 label: 'Change',
-                data: [2,3,4,5],
+                data: this.dataSet.data,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 type: 'line',
