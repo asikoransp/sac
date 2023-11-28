@@ -12026,6 +12026,10 @@
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       // this._props = { ...this._props, ...changedProperties };
+      const isDarkMode = document
+        .querySelector("body")
+        .classList.includes("dark-mode");
+      console.log(isDarkMode);
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
