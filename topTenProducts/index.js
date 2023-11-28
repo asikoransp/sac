@@ -12029,6 +12029,7 @@
 
       console.log(changedProperties);
       this.updateChartData();
+      console.log(this.color);
     }
 
     get color() {
