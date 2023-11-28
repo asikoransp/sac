@@ -26,6 +26,8 @@
     }
 
     _submit(e) {
+      console.log("submit");
+      console.log(this.color);
       e.preventDefault();
       this.dispatchEvent(
         new CustomEvent("propertiesChanged", {

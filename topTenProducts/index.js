@@ -12022,19 +12022,15 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      console.log("init", this.getColor());
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       // this._props = { ...this._props, ...changedProperties };
-      console.log("before", this.getColor());
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
       this.updateChartData();
-      console.log("after", this.getColor());
     }
 
     updateChartData() {
