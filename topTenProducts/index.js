@@ -12032,6 +12032,14 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
       this.updateChartData();
+
+      const element = document.querySelector(
+        ".sap-user-defined-dark-mode-theme"
+      );
+
+      if (element) {
+        console.log(element);
+      }
     }
 
     // sap-user-defined-dark-mode-theme
@@ -12110,3 +12118,4 @@
 
   customElements.define("top-ten-products", PerformanceHelp);
 })();
+const element = document.querySelector(".sap-user-defined-dark-mode-theme");
