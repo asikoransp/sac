@@ -12031,6 +12031,14 @@
       this.updateChartData();
     }
 
+    get color() {
+      return this._tagType;
+    }
+
+    set color(value) {
+      this._tagText = value;
+    }
+
     updateChartData() {
       if (!this.dataSet || !this.dataSet.data) return;
 
