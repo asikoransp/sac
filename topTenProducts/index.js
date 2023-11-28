@@ -12034,6 +12034,7 @@
       this.updateChartData();
 
       console.log(changedProperties);
+      console.log(this._props);
       if ("color" in changedProperties) {
         console.log(changedProperties["color"]);
       }
