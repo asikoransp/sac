@@ -47,5 +47,5 @@
     }
   }
 
-  customElements.define("top-ten-products-styling", BoxSps);
+  customElements.define("top-ten-products-sps", BoxSps);
 })();
