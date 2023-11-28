@@ -12063,6 +12063,7 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
+        console.log(this.dataSet.data);
         const data = this.getData();
 
         const chartElement = this.template
@@ -12072,7 +12073,7 @@
         this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
-            labels: labels,
+            labels: data.labels,
             datasets: [
               {
                 label: '2018',
