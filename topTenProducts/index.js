@@ -12010,7 +12010,25 @@
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
-    chartColor = "rgba(70, 49, 238, 0.8)";
+    currentColor = undefined;
+    colors = {
+      lightMode: {
+        background: "#fff",
+        text: "#2e2e2e",
+        chart: {
+          primary: "rgba(70, 49, 238, 0.5)",
+          secondary: "rgba(255, 70, 118, 0.5)",
+        },
+      },
+      darkMode: {
+        background: "#003566",
+        text: "#edf2f4",
+        chart: {
+          primary: "#390099",
+          secondary: "#9e0059",
+        },
+      },
+    };
 
     constructor() {
       super();
@@ -12028,17 +12046,19 @@
         ".sap-user-defined-dark-mode-theme"
       );
 
-      if (element) {
-        this.chartColor = "#1b1b1b";
-      }
+      this.currentColor = element ? colors.darkMode : this.colors.lightMode;
+
+      document.querySelector(".widget-wrapper").style.background =
+        this.currentColor.background;
+      document
+        .querySelector(".widget-wrapper")
+        .querySelector("h2").style.color = this.currentColor.text;
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
       this.updateChartData();
     }
-
-    // sap-user-defined-dark-mode-theme
 
     updateChartData() {
       if (!this.dataSet || !this.dataSet.data) return;
@@ -12086,9 +12106,9 @@
               {
                 label: "Value",
                 data: data.values,
-                backgroundColor: this.chartColor,
+                backgroundColor: this.currentColor.chart.primary,
                 borderWidth: 0,
-                borderColor: this.chartColor,
+                borderColor: this.currentColor.chart.primary,
                 borderRadius: 5,
                 borderSkipped: false,
               },
