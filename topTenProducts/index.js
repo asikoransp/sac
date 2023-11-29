@@ -12029,7 +12029,7 @@
       );
 
       if (element) {
-        this.chartColor = "rgba(100, 49, 10, 0.8)";
+        this.chartColor = "#1b1b1b";
       }
     }
 
