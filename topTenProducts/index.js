@@ -12054,9 +12054,10 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
 
+      this.adjustStyles();
+
       if (this.chart) {
         this.updateChartData();
-        this.adjustStyles();
         return;
       }
 
