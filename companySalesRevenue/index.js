@@ -12001,7 +12001,7 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2>Top 10 Products by Revenue</h2>
+      <h2>Company Sales Revenue</h2>
       <div class="chart-wrapper">
         <canvas id="company-sales-revenue-chart"></canvas>
       </div>
@@ -12011,7 +12011,10 @@
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
-    chartColor = "rgba(70, 49, 238, 0.8)";
+    chartColors = { purple: "rgba(70, 49, 238, 0.5)",
+                    pink: "rgba(255, 70, 118, 0.5)",
+                    blue: "rgba(0, 82, 255, 0.6)"
+                  };
 
     constructor() {
       super();
@@ -12036,6 +12039,8 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
+      this.chart.data.datasets[1].data = data.values;
+      this.chart.data.datasets[2].data = data.values;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12043,7 +12048,7 @@
     getData() {
       const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+        // .slice(0, 10);
 
       const labels = [];
       const values = [];
@@ -12078,25 +12083,25 @@
             datasets: [
               {
                 label: '2018',
-                data: this.dataSet.data,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                data: data.values,
+                borderColor: this.chartColors.purple,
+                backgroundColor: this.chartColors.purple,
                 order: 1,
                 borderRadius: 6,
               },
                   {
                 label: '2019',
-                data: this.dataSet.data,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                data: data.values,
+                borderColor: this.chartColors.pink,
+                backgroundColor: this.chartColors.pink,
                 order: 1,
                 borderRadius: 6,
               },
               {
                 label: 'Change',
-                data: this.dataSet.data,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                data: data.values,
+                borderColor: this.chartColors.blue,
+                backgroundColor: this.chartColors.blue,
                 type: 'line',
                 order: 0,
                 tension: 0.4
