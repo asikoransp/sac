@@ -12055,9 +12055,9 @@
       this.renderChart();
       this.updateChartData();
 
-      document.querySelector(".widget-wrapper").style.background =
+      this.template.querySelector(".widget-wrapper").style.background =
         this.currentColor.background;
-      document
+      this.template
         .querySelector(".widget-wrapper")
         .querySelector("h2").style.color = this.currentColor.text;
     }
