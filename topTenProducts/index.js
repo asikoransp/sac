@@ -12008,8 +12008,8 @@
     `;
 
   class PerformanceHelp extends HTMLElement {
-    template = null;
-    chart = null;
+    template = undefined;
+    chart = undefined;
     currentColor = undefined;
     colors = {
       lightMode: {
@@ -12022,10 +12022,10 @@
       },
       darkMode: {
         background: "#003566",
-        text: "#edf2f4",
+        text: "rgba(236, 236, 236, 0.562)",
         chart: {
-          primary: "#390099",
-          secondary: "#9e0059",
+          primary: "rgba(70, 49, 238, 0.5)",
+          secondary: "rgba(255, 70, 118, 0.5)",
         },
       },
     };
@@ -12052,19 +12052,18 @@
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
-      this.renderChart();
-      this.updateChartData();
+      if (!this.dataSet || !this.dataSet.data) return;
 
-      this.template.querySelector(".widget-wrapper").style.background =
-        this.currentColor.background;
-      this.template
-        .querySelector(".widget-wrapper")
-        .querySelector("h2").style.color = this.currentColor.text;
+      if (this.chart) {
+        this.updateChartData();
+        this.adjustStyles();
+        return;
+      }
+
+      this.renderChart();
     }
 
     updateChartData() {
-      if (!this.dataSet || !this.dataSet.data) return;
-
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
       this.chart.data.labels = data.labels;
@@ -12076,13 +12075,10 @@
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         .slice(0, 10);
 
-      const labels = [];
-      const values = [];
-
-      dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
-      });
+      const labels = dataSet.map((el) =>
+        el.dimensions_0.label.split("_").join(" ")
+      );
+      const values = dataSet.map((el) => el.measures_0.raw);
 
       return {
         labels,
@@ -12091,67 +12087,70 @@
     }
 
     renderChart() {
-      if (this.chart) return;
+      const data = this.getData();
 
-      if (this.dataSet && this.dataSet.data) {
-        const data = this.getData();
+      const chartElement = this.template
+        .querySelector("canvas")
+        .getContext("2d");
 
-        const chartElement = this.template
-          .querySelector("canvas")
-          .getContext("2d");
-
-        this.chart = new Chart(chartElement, {
-          type: "bar",
-          data: {
-            labels: data.labels,
-            datasets: [
-              {
-                label: "Value",
-                data: data.values,
-                backgroundColor: this.currentColor.chart.primary,
-                borderWidth: 0,
-                borderColor: this.currentColor.chart.primary,
-                borderRadius: 5,
-                borderSkipped: false,
+      this.chart = new Chart(chartElement, {
+        type: "bar",
+        data: {
+          labels: data.labels,
+          datasets: [
+            {
+              label: "Value",
+              data: data.values,
+              backgroundColor: this.currentColor.chart.primary,
+              borderWidth: 0,
+              borderColor: this.currentColor.chart.primary,
+              borderRadius: 5,
+              borderSkipped: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: "x",
+          scales: {
+            x: {
+              grid: {
+                color: this.currentColor.text,
               },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: "x",
-            scales: {
-              x: {
-                grid: {
-                  color: this.currentColor.text,
-                },
-                ticks: {
-                  color: this.currentColor.text,
-                },
-              },
-              y: {
-                grid: {
-                  color: this.currentColor.text,
-                },
-                ticks: {
-                  color: this.currentColor.text,
-                },
+              ticks: {
+                color: this.currentColor.text,
               },
             },
-            plugins: {
-              title: {
-                display: false,
+            y: {
+              grid: {
+                color: this.currentColor.text,
               },
-              legend: {
-                display: false,
+              ticks: {
+                color: this.currentColor.text,
               },
             },
           },
-        });
-      }
+          plugins: {
+            title: {
+              display: false,
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    }
+
+    adjustStyles() {
+      this.template.querySelector(".widget-wrapper").style.background =
+        this.currentColor.background;
+      this.template
+        .querySelector(".widget-wrapper")
+        .querySelector("h2").style.color = this.currentColor.text;
     }
   }
 
   customElements.define("top-ten-products", PerformanceHelp);
 })();
-const element = document.querySelector(".sap-user-defined-dark-mode-theme");
