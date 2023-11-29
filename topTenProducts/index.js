@@ -12118,6 +12118,24 @@
             responsive: true,
             maintainAspectRatio: false,
             indexAxis: "x",
+            scales: {
+              x: {
+                grid: {
+                  color: this.currentColor.text,
+                },
+                ticks: {
+                  color: this.currentColor.text,
+                },
+              },
+              y: {
+                grid: {
+                  color: this.currentColor.text,
+                },
+                ticks: {
+                  color: this.currentColor.text,
+                },
+              },
+            },
             plugins: {
               title: {
                 display: false,
