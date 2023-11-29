@@ -12049,17 +12049,17 @@
       this.currentColor = element
         ? this.colors.darkMode
         : this.colors.lightMode;
+    }
+
+    onCustomWidgetAfterUpdate(changedProperties) {
+      this.renderChart();
+      this.updateChartData();
 
       document.querySelector(".widget-wrapper").style.background =
         this.currentColor.background;
       document
         .querySelector(".widget-wrapper")
         .querySelector("h2").style.color = this.currentColor.text;
-    }
-
-    onCustomWidgetAfterUpdate(changedProperties) {
-      this.renderChart();
-      this.updateChartData();
     }
 
     updateChartData() {
