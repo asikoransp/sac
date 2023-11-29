@@ -12078,7 +12078,7 @@
             datasets: [
               {
                 label: '2018',
-                data: this.dataSet.data,
+                data: data.values,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 order: 1,
@@ -12086,7 +12086,7 @@
               },
                   {
                 label: '2019',
-                data: this.dataSet.data,
+                data: data.values,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 order: 1,
@@ -12094,7 +12094,7 @@
               },
               {
                 label: 'Change',
-                data: this.dataSet.data,
+                data: data.values,
                 borderColor: this.chartColor,
                 backgroundColor: this.chartColor,
                 type: 'line',
