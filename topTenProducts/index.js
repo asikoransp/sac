@@ -12022,9 +12022,9 @@
       },
       darkMode: {
         background: "#003566",
-        text: "rgba(236, 236, 236, 0.562)",
+        text: "rgba(245, 245, 245, 0.6)",
         chart: {
-          primary: "rgba(70, 49, 238, 0.5)",
+          primary: "rgba(255, 70, 118, 0.8)",
           secondary: "rgba(255, 70, 118, 0.5)",
         },
       },
