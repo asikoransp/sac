@@ -12001,7 +12001,7 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2>Top 10 Products by Revenue</h2>
+      <h2>Company Sales Revenue</h2>
       <div class="chart-wrapper">
         <canvas id="company-sales-revenue-chart"></canvas>
       </div>
