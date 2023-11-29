@@ -11997,7 +11997,6 @@
         display: block !important;
         height: 370px !important;
       }
-
     </style>
 
     <div class="widget-wrapper">
@@ -12024,12 +12023,22 @@
       this.template = shadowRoot;
     }
 
+    onCustomWidgetBeforeUpdate(changedProperties) {
+      const element = document.querySelector(
+        ".sap-user-defined-dark-mode-theme"
+      );
+
+      if (element) {
+        this.chartColor = "rgba(100, 49, 10, 0.8)";
+      }
+    }
+
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
-
-      console.log(changedProperties);
       this.updateChartData();
     }
+
+    // sap-user-defined-dark-mode-theme
 
     updateChartData() {
       if (!this.dataSet || !this.dataSet.data) return;
@@ -12105,3 +12114,4 @@
 
   customElements.define("top-ten-products", PerformanceHelp);
 })();
+const element = document.querySelector(".sap-user-defined-dark-mode-theme");
