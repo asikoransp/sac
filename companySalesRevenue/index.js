@@ -12011,7 +12011,10 @@
   class PerformanceHelp extends HTMLElement {
     template = null;
     chart = null;
-    chartColor = "rgba(70, 49, 238, 0.8)";
+    chartColors = { purple: "rgba(70, 49, 238, 0.5)",
+                    pink: "rgba(255, 70, 118, 0.5)",
+                    blue: "rgba(0, 82, 255, 0.6)"
+                  };
 
     constructor() {
       super();
@@ -12079,24 +12082,24 @@
               {
                 label: '2018',
                 data: data.values,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                borderColor: this.chartColors.purple,
+                backgroundColor: this.chartColors.purple,
                 order: 1,
                 borderRadius: 6,
               },
                   {
                 label: '2019',
                 data: data.values,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                borderColor: this.chartColors.pink,
+                backgroundColor: this.chartColors.pink,
                 order: 1,
                 borderRadius: 6,
               },
               {
                 label: 'Change',
                 data: data.values,
-                borderColor: this.chartColor,
-                backgroundColor: this.chartColor,
+                borderColor: this.chartColors.blue,
+                backgroundColor: this.chartColors.blue,
                 type: 'line',
                 order: 0,
                 tension: 0.4
