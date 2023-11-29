@@ -12046,7 +12046,9 @@
         ".sap-user-defined-dark-mode-theme"
       );
 
-      this.currentColor = element ? colors.darkMode : this.colors.lightMode;
+      this.currentColor = element
+        ? this.colors.darkMode
+        : this.colors.lightMode;
 
       document.querySelector(".widget-wrapper").style.background =
         this.currentColor.background;
