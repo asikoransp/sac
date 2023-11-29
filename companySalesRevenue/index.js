@@ -12046,7 +12046,7 @@
     getData() {
       const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+        // .slice(0, 10);
 
       const labels = [];
       const values = [];
