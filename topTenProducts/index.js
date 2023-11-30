@@ -12021,7 +12021,7 @@
         },
       },
       darkMode: {
-        background: "rgba(25, 25, 25, 0.5)", // dark grey
+        background: "rgba(70, 70, 70, 1)", // dark grey
         text: "rgba(210, 210, 210, 0.7)", // light grey
         grid: "rgba(210, 210, 210, 0.5)", // light grey
         chart: {
