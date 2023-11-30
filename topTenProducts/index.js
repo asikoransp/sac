@@ -12006,27 +12006,30 @@
     </div>
     `;
 
+  // grid opacity 0.5 for blending
+  // background opacity 1 for filtering
+  // chart opacity 0.8 for blending
   class PerformanceHelp extends HTMLElement {
     template = undefined;
     chart = undefined;
     currentColor = undefined;
     colors = {
       lightMode: {
-        background: "rgba(220, 220, 220, 1)", // light grey
-        background: "rgba(70, 70, 70, 1)", // dark grey
-        grid: "rgba(100, 100, 100, 0.5)", // dark grey
+        background: "rgba(220, 220, 220, 1)",
+        text: "rgba(70, 70, 70, 1)",
+        grid: "rgba(100, 100, 100, 0.5)",
         chart: {
-          primary: "rgba(70, 49, 238, 0.8)", // purple
-          secondary: "rgba(255, 70, 118, 0.8)", // red
+          primary: "rgba(70, 49, 238, 0.8)",
+          secondary: "rgba(255, 70, 118, 0.8)",
         },
       },
       darkMode: {
-        background: "rgba(70, 70, 70, 1)", // dark grey
-        text: "rgba(220, 220, 220, 1)", // light grey
-        grid: "rgba(210, 210, 210, 0.5)", // light grey
+        background: "rgba(70, 70, 70, 1)",
+        text: "rgba(220, 220, 220, 1)",
+        grid: "rgba(210, 210, 210, 0.5)",
         chart: {
-          primary: "rgba(210, 210, 210, 0.8)", // light grey
-          secondary: "rgba(255, 70, 118, 0.8)", // red
+          primary: "rgba(210, 210, 210, 0.8)",
+          secondary: "rgba(255, 70, 118, 0.8)",
         },
       },
     };
