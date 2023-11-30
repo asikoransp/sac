@@ -12009,6 +12009,7 @@
   // grid opacity 0.5 for blending
   // background opacity 1 for filtering
   // chart opacity 0.8 for blending
+
   class PerformanceHelp extends HTMLElement {
     template = undefined;
     chart = undefined;
@@ -12017,7 +12018,7 @@
       lightMode: {
         background: "rgba(220, 220, 220, 1)",
         text: "rgba(70, 70, 70, 1)",
-        grid: "rgba(100, 100, 100, 0.5)",
+        grid: "rgba(130, 130, 130, 0.5)",
         chart: {
           primary: "rgba(70, 49, 238, 0.8)",
           secondary: "rgba(255, 70, 118, 0.8)",
