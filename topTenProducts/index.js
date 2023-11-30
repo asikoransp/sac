@@ -12016,7 +12016,7 @@
     currentColor = undefined;
     colors = {
       lightMode: {
-        background: "rgba(220, 220, 220, 1)",
+        background: "rgba(230, 230, 230, 1)",
         text: "rgba(70, 70, 70, 1)",
         grid: "rgba(130, 130, 130, 0.5)",
         chart: {
