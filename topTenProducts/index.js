@@ -12022,10 +12022,10 @@
       },
       darkMode: {
         background: "rgba(25, 25, 25, 0.5)", // dark grey
-        text: "rgba(194, 194, 194, 0.7)", // light grey
-        grid: "rgba(194, 194, 194, 0.5)", // light grey
+        text: "rgba(210, 210, 210, 0.7)", // light grey
+        grid: "rgba(210, 210, 210, 0.5)", // light grey
         chart: {
-          primary: "rgba(194, 194, 194, 0.7)", // light grey
+          primary: "rgba(210, 210, 210, 0.8)", // light grey
           secondary: "rgba(255, 70, 118, 0.8)", // red
         },
       },
