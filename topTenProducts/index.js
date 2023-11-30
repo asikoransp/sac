@@ -12023,7 +12023,7 @@
         background: "rgba(25, 25, 25, 0.5)", // dark grey
         text: "rgba(194, 194, 194, 0.5)", // light grey
         chart: {
-          primary: "rgba(70, 49, 238, 0.8)", // purple
+          primary: "rgba(194, 194, 194, 0.5)", // light grey
           secondary: "rgba(255, 70, 118, 0.8)", // red
         },
       },
