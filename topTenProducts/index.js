@@ -12013,19 +12013,19 @@
     currentColor = undefined;
     colors = {
       lightMode: {
-        background: "#fff",
-        text: "#2e2e2e",
+        background: "rgba(194, 194, 194, 0.5)", // light grey
+        text: "rgba(25, 25, 25, 0.5)", // dark grey
         chart: {
-          primary: "rgba(70, 49, 238, 0.5)",
-          secondary: "rgba(255, 70, 118, 0.5)",
+          primary: "rgba(70, 49, 238, 0.5)", // purple
+          secondary: "rgba(255, 70, 118, 0.5)", // red
         },
       },
       darkMode: {
-        background: "#003566",
-        text: "rgba(245, 245, 245, 0.6)",
+        background: "rgba(25, 25, 25, 0.5)", // dark grey
+        text: "rgba(194, 194, 194, 0.5)", // light grey
         chart: {
-          primary: "rgba(255, 70, 118, 0.8)",
-          secondary: "rgba(255, 70, 118, 0.5)",
+          primary: "rgba(70, 49, 238, 0.8)", // purple
+          secondary: "rgba(255, 70, 118, 0.8)", // red
         },
       },
     };
