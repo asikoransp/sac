@@ -12013,7 +12013,8 @@
     colors = {
       lightMode: {
         background: "rgba(194, 194, 194, 0.5)", // light grey
-        text: "rgba(25, 25, 25, 0.5)", // dark grey
+        text: "rgba(25, 25, 25, 0.7)", // dark grey
+        grid: "rgba(100, 100, 100, 0.5)", // dark grey
         chart: {
           primary: "rgba(70, 49, 238, 0.5)", // purple
           secondary: "rgba(255, 70, 118, 0.5)", // red
@@ -12021,9 +12022,10 @@
       },
       darkMode: {
         background: "rgba(25, 25, 25, 0.5)", // dark grey
-        text: "rgba(194, 194, 194, 0.5)", // light grey
+        text: "rgba(194, 194, 194, 0.7)", // light grey
+        grid: "rgba(194, 194, 194, 0.5)", // light grey
         chart: {
-          primary: "rgba(194, 194, 194, 0.5)", // light grey
+          primary: "rgba(194, 194, 194, 0.7)", // light grey
           secondary: "rgba(255, 70, 118, 0.8)", // red
         },
       },
@@ -12116,7 +12118,7 @@
           scales: {
             x: {
               grid: {
-                color: this.currentColor.text,
+                color: this.currentColor.grid,
               },
               ticks: {
                 color: this.currentColor.text,
@@ -12124,7 +12126,7 @@
             },
             y: {
               grid: {
-                color: this.currentColor.text,
+                color: this.currentColor.grid,
               },
               ticks: {
                 color: this.currentColor.text,
