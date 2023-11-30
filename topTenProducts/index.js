@@ -11983,7 +11983,6 @@
       .widget-wrapper {
         padding: 1rem;
         margin: 1rem;
-        border: 1px solid #fff;
         border-radius: 15px;
         background: #fff;
       }
