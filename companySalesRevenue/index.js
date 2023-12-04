@@ -12096,7 +12096,7 @@
                 order: 1,
                 borderRadius: 6,
               },
-                  {
+              {
                 label: '2019',
                 data: data.values1,
                 borderColor: this.chartColors.pink,
