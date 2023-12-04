@@ -12049,18 +12049,25 @@
       const dataSet = this.dataSet.data
         .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
         // .slice(0, 10);
+        const dataSet1 = this.dataSet.data
+        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
 
       const labels = [];
       const values = [];
+      const values1 = [];
 
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
         values.push(el.measures_0.raw);
       });
+      dataSet1.forEach((el) => {
+        values1.push(el.measures_1.raw);
+      });
 
       return {
         labels,
         values,
+        values1
       };
     }
 
@@ -12091,7 +12098,7 @@
               },
                   {
                 label: '2019',
-                data: data.values,
+                data: data.values1,
                 borderColor: this.chartColors.pink,
                 backgroundColor: this.chartColors.pink,
                 order: 1,
