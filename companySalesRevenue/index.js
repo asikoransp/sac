@@ -12048,7 +12048,7 @@
     getData() {
       console.log("data in getData()",this.dataSet.data);
       const dataSet = this.dataSet.data
-         .sort((a, b) => b.measures_0.raw - a.measures_1.raw)
+         .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
         // .slice(0, 10);
         // const dataSet1 = this.dataSet.data
         // .sort((a, b) => b.measures_1.raw - a.measures_1.raw)
