@@ -12039,7 +12039,7 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      // this.chart.data.datasets[1].data = data.values1;
+      this.chart.data.datasets[1].data = data.values1;
       this.chart.data.datasets[2].data = data.values;
       this.chart.data.labels = data.labels;
       this.chart.update();
@@ -12055,18 +12055,18 @@
 
       const labels = [];
       const values = [];
-      // const values1 = [];
+      const values1 = [];
 
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
         values.push(el.measures_0.raw);
-        // values1.push(el.measures_1.raw);
+        values1.push(el.measures_1.raw);
       });
 
       return {
         labels,
         values,
-        // values1
+        values1
       };
     }
 
@@ -12097,7 +12097,7 @@
               },
               {
                 label: '2019',
-                data: data.values,
+                data: data.values1,
                 borderColor: this.chartColors.pink,
                 backgroundColor: this.chartColors.pink,
                 order: 1,
