@@ -12076,8 +12076,8 @@
       if (this.dataSet && this.dataSet.data) {
         console.log(this.dataSet.data);
         const data = this.getData();
-        console.log("data",data)
 
+        console.log("data",data);
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
