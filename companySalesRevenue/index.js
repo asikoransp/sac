@@ -12185,6 +12185,11 @@
                 display: false,
               },
             },
+            scales: {
+              y: {
+                stacked: true
+              }
+            }
           },
         });
       }
