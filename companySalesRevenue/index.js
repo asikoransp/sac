@@ -12106,7 +12106,7 @@
           console.log("incrase", incrase);
           console.log("values1[index] - values[index]", values1[index] - values[index]);
           console.log("(incrase / values[index]) * 100", (incrase / values[index]) * 100);
-          change.push((incrase / values[index]) * 100);
+          change.push((incrase / values[index]) * 10000);
         }
       }else{
         console.log("V1 > V");
