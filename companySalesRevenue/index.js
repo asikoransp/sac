@@ -12097,8 +12097,13 @@
       if(values.length >= values1.length){
         console.log("V > V1");
         for (let index = 0; index < values.length; ++index) {
-          console.log("calculated change", ((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
-          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
+          console.log("values1.length", values1.length);
+          console.log("index", index);
+          console.log("values1[index]", values1[index]);
+          console.log("values[index]", 0 - values[index]);
+          console.log("0 - values[index]", 0 - values[index]);
+          console.log("calculated change", ((values1.length <= index ? values1[index] : 0 - values[index] - values[index]) / values[index]) * 100);
+          change.push(((values1.length <= index ? values1[index] - values[index] : 0 - values[index]) / values[index]) * 100);
         }
       }else{
         console.log("V1 > V");
