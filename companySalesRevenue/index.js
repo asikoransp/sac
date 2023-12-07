@@ -12064,6 +12064,7 @@
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
         console.log("foreach el", el);
+        currentYear = 2024;
         if(el.dimensions_0.id.indexOf(currentYear) != -1){
           values1.push(el.measures_0.raw);
         } else {
@@ -12076,7 +12077,8 @@
       return {
         labels,
         values,
-        values1
+        values1,
+        currentYear
       };
     }
 
@@ -12098,7 +12100,7 @@
             labels: data.labels,
             datasets: [
               {
-                label: '2023',
+                label: currentYear-1,
                 data: data.values,
                 borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
@@ -12106,7 +12108,7 @@
                 borderRadius: 6,
               },
               {
-                label: '2019',
+                label: currentYear,
                 data: data.values1,
                 borderColor: this.chartColors.pink,
                 backgroundColor: this.chartColors.pink,
