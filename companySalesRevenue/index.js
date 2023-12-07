@@ -12055,7 +12055,7 @@
         // const dataSet1 = this.dataSet.data
         // .sort((a, b) => b.measures_1.raw - a.measures_1.raw)
 
-      const labels = [],
+      let labels = [],
       values = [],
       values1 = [],
       years = [],
