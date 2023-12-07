@@ -12168,7 +12168,8 @@
                 backgroundColor: this.chartColors.blue,
                 type: 'line',
                 order: 0,
-                tension: 0.4
+                tension: 0.4,
+                yAxisID: 'y2'
               },
               
             ]
@@ -12188,7 +12189,10 @@
             scales: {
               y: {
                 stacked: true
-              }
+              },
+              y2: {
+                min: 10,
+                max: 50,
             }
           },
         });
