@@ -12073,6 +12073,9 @@
       });
       labels = [...new Set(labels)];
       // labels.sort((a, b) => a.localeCompare(b));
+      if(labels.length == 2){
+        labels = [labels[0]+'/'+labels[1]]
+      }
 
       return {
         labels,
