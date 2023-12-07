@@ -12191,8 +12191,8 @@
                 stacked: true
               },
               y2: {
-                min: 10,
-                max: 50
+                min: -100,
+                max: 100
               }
             }
           },
