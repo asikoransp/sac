@@ -12055,20 +12055,22 @@
         // const dataSet1 = this.dataSet.data
         // .sort((a, b) => b.measures_1.raw - a.measures_1.raw)
 
-      const labels = [];
-      const values = [];
-      const values1 = [];
+      const labels = [],
+      values = [],
+      values1 = [],
+      years = [],
+      currentYear = new Date().getFullYear();
 
       dataSet.forEach((el) => {
-        let label = el.dimensions_0.label.split("_").join(" ");
+        labels.push(el.dimensions_0.label.split("_").join(" "));
         console.log("foreach el", el);
-        if(label === "2023"){
-          values.push(el.measures_0.raw);
-        } else {
+        if(el.dimensions_0.id.indexOf(currentYear) != -1){
           values1.push(el.measures_0.raw);
+        } else {
+          values.push(el.measures_0.raw);
         }               
       });
-      labels.push("2023/2024");
+      labels = [...new Set(labels)];
 
       return {
         labels,
@@ -12095,7 +12097,7 @@
             labels: data.labels,
             datasets: [
               {
-                label: '2018',
+                label: '2023',
                 data: data.values,
                 borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
