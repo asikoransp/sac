@@ -12071,6 +12071,7 @@
         }               
       });
       labels = [...new Set(labels)];
+      labels.sort((a, b) => a.localeCompare(b));
 
       return {
         labels,
