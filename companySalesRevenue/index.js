@@ -12100,7 +12100,7 @@
             labels: data.labels,
             datasets: [
               {
-                label: currentYear-1,
+                label: data.currentYear-1,
                 data: data.values,
                 borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
@@ -12108,7 +12108,7 @@
                 borderRadius: 6,
               },
               {
-                label: currentYear,
+                label: data.currentYear,
                 data: data.values1,
                 borderColor: this.chartColors.pink,
                 backgroundColor: this.chartColors.pink,
