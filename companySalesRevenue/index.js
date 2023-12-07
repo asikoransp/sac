@@ -12048,7 +12048,7 @@
     getData() {
       console.log("data in getData()",this.dataSet.data);
       const dataSet = this.dataSet.data
-         .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
+         .sort((a, b) =>  a.dimensions_0.label.localeCompare(b.dimensions_0.label));
         //  dataSet1 = this.dataSet.data
         //    .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
         // .slice(0, 10);
@@ -12071,7 +12071,7 @@
         }               
       });
       labels = [...new Set(labels)];
-      labels.sort((a, b) => a.localeCompare(b));
+      // labels.sort((a, b) => a.localeCompare(b));
 
       return {
         labels,
