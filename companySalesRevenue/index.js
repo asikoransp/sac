@@ -12058,8 +12058,12 @@
       let labels = [],
       values = [],
       values1 = [],
+      change = [],
       years = [],
       currentYear = new Date().getFullYear();
+
+
+
 
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
@@ -12077,10 +12081,33 @@
         labels = [labels[0]+'/'+labels[1]]
       }
 
+      // Calculate change
+
+//       To calculate the percentage increase:
+//       First: work out the difference (increase) between the two numbers you are comparing.
+
+//       Increase = New Number - Original Number
+
+//       Then:  divide the increase by the original number and multiply the answer by 100.
+
+//       % increase = Increase ÷ Original Number × 100.
+
+//       If your answer is a negative number, then this is a percentage decrease.
+
+      if(values.length >= values1.length){
+        for (let index = 0; index < values.length; ++index) {
+          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100)
+        }
+      }else{
+
+      }
+
+
       return {
         labels,
         values,
         values1,
+        change,
         currentYear
       };
     }
@@ -12120,7 +12147,7 @@
               },
               {
                 label: 'Change',
-                data: data.values,
+                data: data.change,
                 borderColor: this.chartColors.blue,
                 backgroundColor: this.chartColors.blue,
                 type: 'line',
