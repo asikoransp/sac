@@ -12193,7 +12193,10 @@
               y2: {
                 position: 'right',
                 min: -100,
-                max: 100
+                max: 100,
+                grid: {
+                  display: false
+                }
               }
             }
           },
