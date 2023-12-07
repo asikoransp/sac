@@ -12099,7 +12099,9 @@
           change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100)
         }
       }else{
-
+        for (let index = 0; index < values1.length; ++index) {
+          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100)
+        }
       }
 
 
