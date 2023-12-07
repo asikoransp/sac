@@ -12159,6 +12159,7 @@
                 backgroundColor: this.chartColors.pink,
                 order: 1,
                 borderRadius: 6,
+                stack: 'combined'
               },
               {
                 label: 'Change',
