@@ -12061,13 +12061,13 @@
 
       dataSet.forEach((el) => {
         let label = el.dimensions_0.label.split("_").join(" ");
-        labels.push(label);
         if(label === "2023"){
           values.push(el.measures_0.raw);
         } else {
           values1.push(el.measures_0.raw);
         }               
       });
+      labels.push("2023/2024");
 
       return {
         labels,
