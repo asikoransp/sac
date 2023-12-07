@@ -12049,8 +12049,8 @@
       console.log("data in getData()",this.dataSet.data);
       const dataSet = this.dataSet.data
          .sort((a, b) => b.measures_0.raw - a.measures_0.raw),
-         dataSet1 = this.dataSet.data
-           .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
+        //  dataSet1 = this.dataSet.data
+        //    .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
         // .slice(0, 10);
         // const dataSet1 = this.dataSet.data
         // .sort((a, b) => b.measures_1.raw - a.measures_1.raw)
@@ -12060,9 +12060,13 @@
       const values1 = [];
 
       dataSet.forEach((el) => {
-        labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
-        values1.push(el.measures_0.raw);
+        let label = el.dimensions_0.label.split("_").join(" ");
+        labels.push(label);
+        if(label === "2023"){
+          values.push(el.measures_0.raw);
+        } else {
+          values1.push(el.measures_0.raw);
+        }               
       });
 
       return {
