@@ -12168,8 +12168,7 @@
                 backgroundColor: this.chartColors.blue,
                 type: 'line',
                 order: 0,
-                tension: 0.4,
-                stack: 'combined'
+                tension: 0.4
               },
               
             ]
