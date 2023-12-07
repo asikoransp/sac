@@ -12095,14 +12095,19 @@
 //       If your answer is a negative number, then this is a percentage decrease.
 
       if(values.length >= values1.length){
+        console.log("V > V1");
         for (let index = 0; index < values.length; ++index) {
-          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100)
+          console.log("calculated change", ((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
+          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
         }
       }else{
+        console.log("V1 > V");
         for (let index = 0; index < values1.length; ++index) {
-          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100)
+          console.log("calculated change", ((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
+          change.push(((values1.length <= index ? values1[index] : 0 - values[index]) / values[index]) * 100);
         }
       }
+      console.log("full change", change);
 
 
       return {
