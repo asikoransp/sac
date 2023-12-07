@@ -12061,6 +12061,7 @@
 
       dataSet.forEach((el) => {
         let label = el.dimensions_0.label.split("_").join(" ");
+        console.log("foreach el", el);
         if(label === "2023"){
           values.push(el.measures_0.raw);
         } else {
