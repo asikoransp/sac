@@ -12082,19 +12082,19 @@
       }
 
       // Calculate change
-      if(values.length >= values1.length){
+      if (values.length >= values1.length) {
         for (let index = 0; index < values.length; ++index) {
-          let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : 0  : 0);
-          change.push((incrase / values[index]) * 100);
+          let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : -1 : -1);
+          let test = values1[index] ? values[index] : 1;
+          change.push((incrase / test) * 100);
         }
-      }else{
-        console.log("V1 > V");
+      } else {
         for (let index = 0; index < values1.length; ++index) {
-          let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 0  : 0);
-          change.push((incrase / values[index]?values[index]:1) * 100);
+            let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 1 : 1);
+            let test = values[index] ? values[index] : 1;
+          change.push((incrase / test) * 100);
         }
       }
-      console.log("full change", change);
 
 
       return {
