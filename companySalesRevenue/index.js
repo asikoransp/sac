@@ -12138,7 +12138,7 @@
                 backgroundColor: this.chartColors.pink,
                 order: 1,
                 borderRadius: 6,
-                stack: 'combined'
+                // stack: 'combined'
               },
               {
                 label: 'Change',
@@ -12167,7 +12167,7 @@
             },
             scales: {
               y: {
-                stacked: true
+                // stacked: true
               },
               y2: {
                 position: 'right',
