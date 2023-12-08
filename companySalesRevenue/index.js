@@ -12171,8 +12171,8 @@
               },
               y2: {
                 position: 'right',
-                min: -100,
-                max: 2000,
+                suggestedMin: -100,
+                suggestedMax: 100,
                 grid: {
                   display: false
                 }
