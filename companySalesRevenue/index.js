@@ -12091,7 +12091,7 @@
         console.log("V1 > V");
         for (let index = 0; index < values1.length; ++index) {
           let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 0  : 0);
-          change.push((incrase / values[index]) * 100);
+          change.push((incrase / values[index]?values[index]:1) * 100);
         }
       }
       console.log("full change", change);
