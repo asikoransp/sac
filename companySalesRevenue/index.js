@@ -12070,9 +12070,9 @@
         console.log("foreach el", el);
         currentYear = 2024;
         if(el.dimensions_0.id.indexOf(currentYear) != -1){
-          values.push(el.measures_0.raw);
-        } else {
           values1.push(el.measures_0.raw);
+        } else {
+          values.push(el.measures_0.raw);
         }               
       });
       labels = [...new Set(labels)];
