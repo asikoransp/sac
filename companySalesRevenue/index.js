@@ -12068,7 +12068,7 @@
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
         console.log("foreach el", el);
-        currentYear = 2024;
+        // currentYear = 2024;
         if(el.dimensions_0.id.indexOf(currentYear) != -1){
           values1.push(el.measures_0.raw);
         } else {
