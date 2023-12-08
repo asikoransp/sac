@@ -12144,6 +12144,7 @@
               },
             },
             scales: {
+              y: {},
               y2: {
                 position: 'right',
                 suggestedMin: -100,
