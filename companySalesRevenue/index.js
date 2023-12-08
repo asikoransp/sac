@@ -12029,8 +12029,6 @@
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
-
-      console.log(changedProperties);
       this.updateChartData();
     }
 
@@ -12046,29 +12044,15 @@
     }
 
     getData() {
-      console.log("data in getData()",this.dataSet.data);
       const dataSet = this.dataSet.data
          .sort((a, b) =>  a.dimensions_0.id.localeCompare(b.dimensions_0.id));
-        //  dataSet1 = this.dataSet.data
-        //    .sort((a, b) => b.measures_0.raw - a.measures_0.raw);
-        // .slice(0, 10);
-        // const dataSet1 = this.dataSet.data
-        // .sort((a, b) => b.measures_1.raw - a.measures_1.raw)
-
       let labels = [],
       values = [],
       values1 = [],
       change = [],
-      years = [],
       currentYear = new Date().getFullYear();
-
-
-
-
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
-        console.log("foreach el", el);
-        // currentYear = 2024;
         if(el.dimensions_0.id.indexOf(currentYear) != -1){
           values1.push(el.measures_0.raw);
         } else {
@@ -12076,7 +12060,6 @@
         }               
       });
       labels = [...new Set(labels)];
-      // labels.sort((a, b) => a.localeCompare(b));
       if(labels.length == 2){
         labels = [labels[0]+'/'+labels[1]]
       }
@@ -12096,7 +12079,6 @@
         }
       }
 
-
       return {
         labels,
         values,
@@ -12110,10 +12092,7 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        console.log(this.dataSet.data);
         const data = this.getData();
-
-        console.log("data",data);
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
