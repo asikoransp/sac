@@ -12172,7 +12172,7 @@
               y2: {
                 position: 'right',
                 min: -100,
-                max: 200,
+                max: 20000,
                 grid: {
                   display: false
                 }
