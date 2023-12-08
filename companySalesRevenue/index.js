@@ -12070,9 +12070,9 @@
         console.log("foreach el", el);
         currentYear = 2024;
         if(el.dimensions_0.id.indexOf(currentYear) != -1){
-          values1.push(el.measures_0.raw);
-        } else {
           values.push(el.measures_0.raw);
+        } else {
+          values1.push(el.measures_0.raw);
         }               
       });
       labels = [...new Set(labels)];
@@ -12090,7 +12090,7 @@
       }else{
         console.log("V1 > V");
         for (let index = 0; index < values1.length; ++index) {
-          let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : 0  : 0);
+          let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 0  : 0);
           change.push((incrase / values[index]) * 100);
         }
       }
