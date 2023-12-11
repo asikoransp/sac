@@ -12059,7 +12059,7 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (changedProperties && changedProperties.color) {
         this.colors.lightMode.chart.primary = changedProperties.color;
-        this.chart.update();
+        this.chart?.update();
       }
 
       if (!this.dataSet || !this.dataSet.data) return;
