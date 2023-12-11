@@ -20,7 +20,7 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._shadowRoot
-        .getElementById("bar-color")
+        .getElementById("light-mode-bar-color")
         .addEventListener("change", this._submit.bind(this));
     }
 
@@ -34,6 +34,17 @@
       const blue = parseInt(hexColor.substring(4, 6), 16);
 
       return `rgba(${red}, ${green}, ${blue}, 0.8)`;
+    }
+
+    convertRGBAToHex(rgbaColor) {
+      const rgbaValues = rgbaColor.match(/\d+/g);
+      const red = parseInt(rgbaValues[0]);
+      const green = parseInt(rgbaValues[1]);
+      const blue = parseInt(rgbaValues[2]);
+
+      return `#${red.toString(16).padStart(2, "0")}${green
+        .toString(16)
+        .padStart(2, "0")}${blue.toString(16).padStart(2, "0")}`;
     }
 
     _submit(e) {
@@ -50,7 +61,8 @@
     }
 
     set color(newColor) {
-      this._shadowRoot.getElementById("light-mode-bar-color").value = newColor;
+      this._shadowRoot.getElementById("light-mode-bar-color").value =
+        this.convertRGBAToHex(newColor);
     }
 
     get color() {
