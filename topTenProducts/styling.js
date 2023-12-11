@@ -1,18 +1,10 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-		<form id="form">
-			<fieldset>
-				<legend>Color Properties</legend>
-				<table>
-					<tr>
-						<td>Color</td>
-						<td><input id="sps_color" type="color" size="40" maxlength="40"></td>
-					</tr>
-				</table>
-				<input type="submit" style="display:none;">
-			</fieldset>
-		</form>
+    <div style="display: flex;">
+      <legend>Chart bar color</legend>
+      <input id="bar-color" type="color">
+    </div>
 	`;
 
   class BoxSps extends HTMLElement {
@@ -21,7 +13,7 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._shadowRoot
-        .getElementById("sps_color")
+        .getElementById("bar-color")
         .addEventListener("change", this._submit.bind(this));
     }
 
@@ -39,11 +31,11 @@
     }
 
     set color(newColor) {
-      this._shadowRoot.getElementById("sps_color").value = newColor;
+      this._shadowRoot.getElementById("bar-color").value = newColor;
     }
 
     get color() {
-      return this._shadowRoot.getElementById("sps_color").value;
+      return this._shadowRoot.getElementById("bar-color").value;
     }
   }
 
