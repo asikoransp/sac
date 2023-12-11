@@ -13,6 +13,8 @@
       <input class="styling-panel-property" id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 
+    </br>
+
     <legend style="margin-bottom: 0.5rem;">Chart title</legend>
     <input class="styling-panel-property" id="chart-title" type="text">
 	`;
@@ -90,8 +92,7 @@
     }
 
     set chartTitle(newChartTitle) {
-      this._shadowRoot.getElementById("chart-title").value =
-        this.convertRGBAToHex(newChartTitle);
+      this._shadowRoot.getElementById("chart-title").value = newChartTitle;
     }
 
     get chartTitle() {
