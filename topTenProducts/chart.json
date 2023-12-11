@@ -28,7 +28,7 @@
     "lightModeChartColor": {
       "type": "string",
       "description": "Light mode chart color",
-      "default": "#000000"
+      "default": "#4631ee"
     }
   },
   "methods": {
