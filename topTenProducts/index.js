@@ -12047,18 +12047,6 @@
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
-      console.log("changedProperties", changedProperties);
-
-      const element = document.querySelector(
-        ".sap-user-defined-dark-mode-theme"
-      );
-
-      this.currentColor = element
-        ? this.colors.darkMode
-        : this.colors.lightMode;
-    }
-
-    onCustomWidgetAfterUpdate(changedProperties) {
       if (changedProperties) {
         if (changedProperties.lightModeChartColor)
           this.colors.lightMode.chart.primary =
@@ -12073,6 +12061,16 @@
             changedProperties.chartTitle;
       }
 
+      const element = document.querySelector(
+        ".sap-user-defined-dark-mode-theme"
+      );
+
+      this.currentColor = element
+        ? this.colors.darkMode
+        : this.colors.lightMode;
+    }
+
+    onCustomWidgetAfterUpdate(changedProperties) {
       if (this.chart) {
         this.chart.update();
       }
