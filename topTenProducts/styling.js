@@ -1,9 +1,9 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-    <div style="display: flex;">
+    <div style="display: flex; align-items: center;">
       <legend>Chart bar color</legend>
-      <input id="bar-color" type="color">
+      <input id="bar-color" type="color" style="border: none; background: none; width: 1rem; height: 1rem;">
     </div>
 	`;
 
@@ -17,13 +17,30 @@
         .addEventListener("change", this._submit.bind(this));
     }
 
+    convertHexToRGBA(hexColor) {
+      // Remove the '#' symbol if present
+      if (hexColor.startsWith("#")) {
+        hexColor = hexColor.slice(1);
+      }
+
+      // Convert the hex color to RGB values
+      const red = parseInt(hexColor.substring(0, 2), 16);
+      const green = parseInt(hexColor.substring(2, 4), 16);
+      const blue = parseInt(hexColor.substring(4, 6), 16);
+
+      // Create the RGBA string with opacity 0.8
+      const rgbaColor = `rgba(${red}, ${green}, ${blue}, 0.8)`;
+
+      return rgbaColor;
+    }
+
     _submit(e) {
       e.preventDefault();
       this.dispatchEvent(
         new CustomEvent("propertiesChanged", {
           detail: {
             properties: {
-              color: this.color,
+              color: this.convertHexToRGBA(this.color),
             },
           },
         })
