@@ -12071,10 +12071,6 @@
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
-      if (this.chart) {
-        this.chart.update();
-      }
-
       if (!this.dataSet || !this.dataSet.data) return;
 
       this.adjustStyles();
