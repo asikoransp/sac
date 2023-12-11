@@ -1,14 +1,14 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-    <legend style="margin-bottom: 0.5rem;">Chart bar color</legend>
+    <legend style="margin-bottom: 0.5rem;">Chart chart color</legend>
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="font-size: 0.8rem;">Light mode</legend>
-      <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      <legend style="font-size: 0.8rem; width: 5rem;">Light mode</legend>
+      <input id="light-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="font-size: 0.8rem;">Dark mode</legend>
-      <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      <legend style="font-size: 0.8rem; width: 5rem;">Dark mode</legend>
+      <input id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
 
@@ -18,7 +18,7 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._shadowRoot
-        .getElementById("light-mode-bar-color")
+        .getElementById("light-mode-chart-color")
         .addEventListener("change", this._submit.bind(this));
     }
 
@@ -51,20 +51,22 @@
         new CustomEvent("propertiesChanged", {
           detail: {
             properties: {
-              color: this.convertHexToRGBA(this.color),
+              lightModeChartColor: this.convertHexToRGBA(
+                this.lightModeChartColor
+              ),
             },
           },
         })
       );
     }
 
-    set color(newColor) {
-      this._shadowRoot.getElementById("light-mode-bar-color").value =
-        this.convertRGBAToHex(newColor);
+    set lightModeChartColor(newLightModeChartColor) {
+      this._shadowRoot.getElementById("light-mode-chart-color").value =
+        this.convertRGBAToHex(newLightModeChartColor);
     }
 
-    get color() {
-      return this._shadowRoot.getElementById("light-mode-bar-color").value;
+    get lightModeChartColor() {
+      return this._shadowRoot.getElementById("light-mode-chart-color").value;
     }
   }
 

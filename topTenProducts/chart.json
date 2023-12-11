@@ -25,28 +25,28 @@
     }
   ],
   "properties": {
-    "color": {
+    "lightModeChartColor": {
       "type": "string",
-      "description": "Chart color",
-      "default": "red"
+      "description": "Light mode chart color",
+      "default": "#000000"
     }
   },
   "methods": {
-    "setColor": {
-      "description": "Set chart color",
+    "setLightModeChartColor": {
+      "description": "Set light mode chart color",
       "parameters": [
         {
-          "name": "newColor",
+          "name": "newLightModeChartColor",
           "type": "string",
-          "description": "New color of the chart"
+          "description": "New light mode chart color"
         }
       ],
-      "body": "this.color = newColor;"
+      "body": "this.lightModeChartColor = newLightModeChartColor;"
     },
-    "getColor": {
+    "getLightModeChartColor": {
       "returnType": "string",
-      "description": "Returns color of the chart",
-      "body": "return this.color;"
+      "description": "Returns light mode chart color",
+      "body": "return this.lightModeChartColor;"
     }
   },
   "events": {},
