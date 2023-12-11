@@ -12047,6 +12047,8 @@
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
+      console.log("changedProperties", changedProperties);
+
       const element = document.querySelector(
         ".sap-user-defined-dark-mode-theme"
       );
@@ -12059,11 +12061,11 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (changedProperties) {
         if (changedProperties.lightModeChartColor)
-          this.currentColor.chart.primary =
+          this.colors.lightMode.chart.primary =
             changedProperties.lightModeChartColor;
 
         if (changedProperties.darkModeChartColor)
-          this.currentColor.chart.primary =
+          this.colors.darkMode.chart.primary =
             changedProperties.darkModeChartColor;
 
         if (changedProperties.chartTitle)
