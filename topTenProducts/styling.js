@@ -2,13 +2,12 @@
   let template = document.createElement("template");
   template.innerHTML = `
     <legend>Chart bar color</legend>
-    </br>
     <div style="display: flex; align-items: center;">
-      <span>Light mode</span>
+      <span style="font-size: 0.8rem;">Light mode</span>
       <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
     <div style="display: flex; align-items: center;">
-      <span>Dark mode</span>
+      <span style="font-size: 0.8rem;">Dark mode</span>
       <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
