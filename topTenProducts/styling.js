@@ -4,11 +4,11 @@
     <legend>Chart bar color</legend>
     </br>
     <div style="display: flex; align-items: center;">
-      <legend>Light mode</legend>
+      <span>Light mode</span>
       <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
     <div style="display: flex; align-items: center;">
-      <legend>Dark mode</legend>
+      <span>Dark mode</span>
       <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
