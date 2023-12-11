@@ -34,6 +34,11 @@
       "type": "string",
       "description": "Dark mode chart color",
       "default": "#d2d2d2"
+    },
+    "chartTitle": {
+      "type": "string",
+      "description": "Chart title",
+      "default": "Top 10 Products by Revenue"
     }
   },
   "methods": {
@@ -68,6 +73,22 @@
         }
       ],
       "body": "this.darkModeChartColor = newDarkModeChartColor;"
+    },
+    "getChartTitle": {
+      "returnType": "string",
+      "description": "Returns chart title",
+      "body": "return this.chartTitle;"
+    },
+    "setChartTitle": {
+      "description": "Set chart title",
+      "parameters": [
+        {
+          "name": "newChartTitle",
+          "type": "string",
+          "description": "New chart title"
+        }
+      ],
+      "body": "this.chartTitle = newChartTitle;"
     }
   },
   "events": {},

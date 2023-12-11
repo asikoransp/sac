@@ -11999,7 +11999,7 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2>Top 10 Products by Revenue</h2>
+      <h2 id="chart-title">Top 10 Products by Revenue</h2>
       <div class="chart-wrapper">
         <canvas id="top-ten-products-chart"></canvas>
       </div>
@@ -12065,6 +12065,10 @@
         if (changedProperties.darkModeChartColor)
           this.colors.darkMode.chart.primary =
             changedProperties.darkModeChartColor;
+
+        if (changedProperties.chartTitle)
+          this.template.getElementById("chart-title").innerText =
+            changedProperties.chartTitle;
       }
 
       if (!this.dataSet || !this.dataSet.data) return;

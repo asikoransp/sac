@@ -2,14 +2,19 @@
   let template = document.createElement("template");
   template.innerHTML = `
     <legend style="margin-bottom: 0.5rem;">Chart chart color</legend>
+
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
       <legend style="font-size: 0.8rem; width: 5rem;">Light mode</legend>
-      <input id="light-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      <input class="styling-panel-property" id="light-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
+
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
       <legend style="font-size: 0.8rem; width: 5rem;">Dark mode</legend>
-      <input id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      <input class="styling-panel-property" id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
+
+    <legend style="margin-bottom: 0.5rem;">Chart title</legend>
+    <input class="styling-panel-property" id="chart-title" type="text">
 	`;
 
   class BoxSps extends HTMLElement {
@@ -18,12 +23,10 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._shadowRoot
-        .getElementById("light-mode-chart-color")
-        .addEventListener("change", this._submit.bind(this));
-
-      this._shadowRoot
-        .getElementById("dark-mode-chart-color")
-        .addEventListener("change", this._submit.bind(this));
+        .querySelectorAll(".styling-panel-property")
+        .forEach((property) => {
+          property.addEventListener("change", this._submit.bind(this));
+        });
     }
 
     convertHexToRGBA(hexColor) {
@@ -61,6 +64,7 @@
               darkModeChartColor: this.convertHexToRGBA(
                 this.darkModeChartColor
               ),
+              chartTitle: this.chartTitle,
             },
           },
         })
@@ -83,6 +87,15 @@
 
     get darkModeChartColor() {
       return this._shadowRoot.getElementById("dark-mode-chart-color").value;
+    }
+
+    set chartTitle(newChartTitle) {
+      this._shadowRoot.getElementById("chart-title").value =
+        this.convertRGBAToHex(newChartTitle);
+    }
+
+    get chartTitle() {
+      return this._shadowRoot.getElementById("chart-title").value;
     }
   }
 
