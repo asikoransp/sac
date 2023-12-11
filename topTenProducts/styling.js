@@ -1,12 +1,12 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-    <legend>Chart bar color</legend>
-    <div style="display: flex; align-items: center;">
+    <legend style="margin-bottom: 0.5rem;">Chart bar color</legend>
+    <div style="display: flex; align-items: center; margin-left: 0.5rem;">
       <legend style="font-size: 0.8rem;">Light mode</legend>
       <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
-    <div style="display: flex; align-items: center;">
+    <div style="display: flex; align-items: center; margin-left: 0.5rem;">
       <legend style="font-size: 0.8rem;">Dark mode</legend>
       <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
