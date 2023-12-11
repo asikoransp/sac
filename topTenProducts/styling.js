@@ -48,8 +48,5 @@
     }
   }
 
-  customElements.define(
-    "com-sap-sample-coloredbox-styling",
-    ColoredBoxStylingPanel
-  );
+  customElements.define("top-ten-products-styling", ColoredBoxStylingPanel);
 });

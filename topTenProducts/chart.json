@@ -18,7 +18,7 @@
     },
     {
       "kind": "styling",
-      "tag": "com-sap-sample-coloredbox-styling",
+      "tag": "top-ten-products-styling",
       "url": "https://asikoransp.github.io/sac/topTenProducts/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
