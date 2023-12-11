@@ -12049,6 +12049,7 @@
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
+      console.log('before',changedProperties);
       this._props = { ...this._props, ...changedProperties };
 
       const element = document.querySelector(
@@ -12061,7 +12062,10 @@
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
-      console.log(changedProperties);
+      console.log('after', changedProperties)
+      if (changedProperties && changedProperties.color) {
+        this.colors.lightMode.chart.primary = changedProperties.color;
+      }
 
       if (!this.dataSet || !this.dataSet.data) return;
 
