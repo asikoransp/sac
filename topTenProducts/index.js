@@ -12044,14 +12044,9 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      this._props = {};
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
-      console.log('before',changedProperties);
-      this._props = { ...this._props, ...changedProperties };
-
       const element = document.querySelector(
         ".sap-user-defined-dark-mode-theme"
       );
@@ -12062,9 +12057,9 @@
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
-      console.log('after', changedProperties)
       if (changedProperties && changedProperties.color) {
         this.colors.lightMode.chart.primary = changedProperties.color;
+        this.chart.update();
       }
 
       if (!this.dataSet || !this.dataSet.data) return;
