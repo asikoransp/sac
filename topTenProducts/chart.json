@@ -18,7 +18,7 @@
     },
     {
       "kind": "styling",
-      "tag": "top-ten-products-sps",
+      "tag": "com-sap-sample-coloredbox-styling",
       "url": "https://asikoransp.github.io/sac/topTenProducts/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
@@ -27,25 +27,25 @@
   "properties": {
     "color": {
       "type": "string",
-      "description": "Chart color",
-      "default": "rgba(70, 49, 238, 0.8)"
+      "description": "Background color",
+      "default": "red"
     }
   },
   "methods": {
     "setColor": {
-      "description": "Set chart color",
+      "description": "Sets the background color.",
       "parameters": [
         {
           "name": "newColor",
           "type": "string",
-          "description": "New color of the chart"
+          "description": "The new background color"
         }
       ],
       "body": "this.color = newColor;"
     },
     "getColor": {
       "returnType": "string",
-      "description": "Returns color of the chart",
+      "description": "Returns the background color.",
       "body": "return this.color;"
     }
   },
