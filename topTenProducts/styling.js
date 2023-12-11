@@ -1,9 +1,16 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
+    <legend>Chart bar color</legend>
+    </br>
     <div style="display: flex; align-items: center;">
-      <legend>Chart bar color</legend>
-      <input id="bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      <legend>Light mode</legend>
+      <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+    </div>
+    </br>
+    <div style="display: flex; align-items: center;">
+      <legend>Dark mode/legend>
+      <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
 
@@ -43,11 +50,11 @@
     }
 
     set color(newColor) {
-      this._shadowRoot.getElementById("bar-color").value = newColor;
+      this._shadowRoot.getElementById("light-mode-bar-color").value = newColor;
     }
 
     get color() {
-      return this._shadowRoot.getElementById("bar-color").value;
+      return this._shadowRoot.getElementById("light-mode-bar-color").value;
     }
   }
 
