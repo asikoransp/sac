@@ -16,7 +16,7 @@
     </br>
 
     <legend style="margin-bottom: 0.5rem;">Chart title</legend>
-    <input class="styling-panel-property" id="chart-title" type="text">
+    <input class="styling-panel-property" id="chart-title" type="text" style="width: 100%;">
 	`;
 
   class BoxSps extends HTMLElement {
