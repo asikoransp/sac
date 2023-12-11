@@ -7,9 +7,8 @@
       <legend>Light mode</legend>
       <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
-    </br>
     <div style="display: flex; align-items: center;">
-      <legend>Dark mode/legend>
+      <legend>Dark mode</legend>
       <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
