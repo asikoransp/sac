@@ -12071,6 +12071,8 @@
             changedProperties.chartTitle;
       }
 
+      this.chart.update();
+
       if (!this.dataSet || !this.dataSet.data) return;
 
       this.adjustStyles();
