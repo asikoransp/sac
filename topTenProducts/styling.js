@@ -27,7 +27,6 @@
 
     _submit(e) {
       e.preventDefault();
-      console.log("submitted");
       this.dispatchEvent(
         new CustomEvent("propertiesChanged", {
           detail: {
@@ -48,5 +47,5 @@
     }
   }
 
-  customElements.define("top-ten-products-styling", BoxSps);
-});
+  customElements.define("top-ten-products-sps", BoxSps);
+})();

@@ -18,7 +18,7 @@
     },
     {
       "kind": "styling",
-      "tag": "top-ten-products-styling",
+      "tag": "top-ten-products-sps",
       "url": "https://asikoransp.github.io/sac/topTenProducts/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
@@ -27,25 +27,25 @@
   "properties": {
     "color": {
       "type": "string",
-      "description": "Background color",
+      "description": "Chart color",
       "default": "red"
     }
   },
   "methods": {
     "setColor": {
-      "description": "Sets the background color.",
+      "description": "Set chart color",
       "parameters": [
         {
           "name": "newColor",
           "type": "string",
-          "description": "The new background color"
+          "description": "New color of the chart"
         }
       ],
       "body": "this.color = newColor;"
     },
     "getColor": {
       "returnType": "string",
-      "description": "Returns the background color.",
+      "description": "Returns color of the chart",
       "body": "return this.color;"
     }
   },
