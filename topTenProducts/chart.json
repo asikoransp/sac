@@ -29,6 +29,11 @@
       "type": "string",
       "description": "Light mode chart color",
       "default": "#4631ee"
+    },
+    "darkModeChartColor": {
+      "type": "string",
+      "description": "Dark mode chart color",
+      "default": "#d2d2d2"
     }
   },
   "methods": {
@@ -47,6 +52,22 @@
       "returnType": "string",
       "description": "Returns light mode chart color",
       "body": "return this.lightModeChartColor;"
+    },
+    "getDarkModeChartColor": {
+      "returnType": "string",
+      "description": "Returns dark mode chart color",
+      "body": "return this.darkModeChartColor;"
+    },
+    "setDarkModeChartColor": {
+      "description": "Set dark mode chart color",
+      "parameters": [
+        {
+          "name": "newDarkModeChartColor",
+          "type": "string",
+          "description": "New dark mode chart color"
+        }
+      ],
+      "body": "this.darkModeChartColor = newDarkModeChartColor;"
     }
   },
   "events": {},

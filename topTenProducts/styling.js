@@ -20,6 +20,10 @@
       this._shadowRoot
         .getElementById("light-mode-chart-color")
         .addEventListener("change", this._submit.bind(this));
+
+      this._shadowRoot
+        .getElementById("dark-mode-chart-color")
+        .addEventListener("change", this._submit.bind(this));
     }
 
     convertHexToRGBA(hexColor) {
@@ -54,6 +58,9 @@
               lightModeChartColor: this.convertHexToRGBA(
                 this.lightModeChartColor
               ),
+              darkModeChartColor: this.convertHexToRGBA(
+                this.darkModeChartColor
+              ),
             },
           },
         })
@@ -67,6 +74,15 @@
 
     get lightModeChartColor() {
       return this._shadowRoot.getElementById("light-mode-chart-color").value;
+    }
+
+    set darkModeChartColor(newDarkModeChartColor) {
+      this._shadowRoot.getElementById("dark-mode-chart-color").value =
+        this.convertRGBAToHex(newDarkModeChartColor);
+    }
+
+    get darkModeChartColor() {
+      return this._shadowRoot.getElementById("dark-mode-chart-color").value;
     }
   }
 
