@@ -3,7 +3,7 @@
   template.innerHTML = `
     <div style="display: flex; align-items: center;">
       <legend>Chart bar color</legend>
-      <input id="bar-color" type="color" style="border: none; background: none; width: 1rem; height: 1rem;">
+      <input id="bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
 
@@ -18,20 +18,15 @@
     }
 
     convertHexToRGBA(hexColor) {
-      // Remove the '#' symbol if present
       if (hexColor.startsWith("#")) {
         hexColor = hexColor.slice(1);
       }
 
-      // Convert the hex color to RGB values
       const red = parseInt(hexColor.substring(0, 2), 16);
       const green = parseInt(hexColor.substring(2, 4), 16);
       const blue = parseInt(hexColor.substring(4, 6), 16);
 
-      // Create the RGBA string with opacity 0.8
-      const rgbaColor = `rgba(${red}, ${green}, ${blue}, 0.8)`;
-
-      return rgbaColor;
+      return `rgba(${red}, ${green}, ${blue}, 0.8)`;
     }
 
     _submit(e) {
