@@ -3,11 +3,11 @@
   template.innerHTML = `
     <legend>Chart bar color</legend>
     <div style="display: flex; align-items: center;">
-      <span style="font-size: 0.8rem;">Light mode</span>
+      <legend style="font-size: 0.8rem;">Light mode</legend>
       <input id="light-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
     <div style="display: flex; align-items: center;">
-      <span style="font-size: 0.8rem;">Dark mode</span>
+      <legend style="font-size: 0.8rem;">Dark mode</legend>
       <input id="dark-mode-bar-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 	`;
