@@ -12059,11 +12059,11 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (changedProperties) {
         if (changedProperties.lightModeChartColor)
-          this.colors.lightMode.chart.primary =
+          this.currentColor.chart.primary =
             changedProperties.lightModeChartColor;
 
         if (changedProperties.darkModeChartColor)
-          this.colors.darkMode.chart.primary =
+          this.currentColor.chart.primary =
             changedProperties.darkModeChartColor;
 
         if (changedProperties.chartTitle)
