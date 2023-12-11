@@ -3,11 +3,11 @@
   template.innerHTML = `
 		<form id="form">
 			<fieldset>
-				<legend>Test color</legend>
+				<legend>Color Properties</legend>
 				<table>
 					<tr>
 						<td>Color</td>
-						<td><input id="styling_color" type="text" size="40" maxlength="40"></td>
+						<td><input id="sps_color" type="text" size="40" maxlength="40"></td>
 					</tr>
 				</table>
 				<input type="submit" style="display:none;">
@@ -15,7 +15,7 @@
 		</form>
 	`;
 
-  class ColoredBoxStylingPanel extends HTMLElement {
+  class BoxSps extends HTMLElement {
     constructor() {
       super();
       this._shadowRoot = this.attachShadow({ mode: "open" });
@@ -40,13 +40,13 @@
     }
 
     set color(newColor) {
-      this._shadowRoot.getElementById("styling_color").value = newColor;
+      this._shadowRoot.getElementById("sps_color").value = newColor;
     }
 
     get color() {
-      return this._shadowRoot.getElementById("styling_color").value;
+      return this._shadowRoot.getElementById("sps_color").value;
     }
   }
 
-  customElements.define("top-ten-products-styling", ColoredBoxStylingPanel);
+  customElements.define("top-ten-products-styling", BoxSps);
 });
