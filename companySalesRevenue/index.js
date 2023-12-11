@@ -12029,8 +12029,6 @@
 
     onCustomWidgetAfterUpdate(changedProperties) {
       this.renderChart();
-
-      console.log(changedProperties);
       this.updateChartData();
     }
 
@@ -12039,28 +12037,54 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      this.chart.data.datasets[1].data = data.values;
-      this.chart.data.datasets[2].data = data.values;
+      this.chart.data.datasets[1].data = data.values1;
+      this.chart.data.datasets[2].data = data.change;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
 
     getData() {
       const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        // .slice(0, 10);
-
-      const labels = [];
-      const values = [];
-
+         .sort((a, b) =>  a.dimensions_0.id.localeCompare(b.dimensions_0.id));
+      let labels = [],
+      values = [],
+      values1 = [],
+      change = [],
+      currentYear = new Date().getFullYear();
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
-        values.push(el.measures_0.raw);
+        if(el.dimensions_0.id.indexOf(currentYear) != -1){
+          values1.push(el.measures_0.raw);
+        } else {
+          values.push(el.measures_0.raw);
+        }               
       });
+      labels = [...new Set(labels)];
+      if(labels.length == 2){
+        labels = [labels[0]+'/'+labels[1]]
+      }
+
+      // Calculate change
+      if (values.length >= values1.length) {
+        for (let index = 0; index < values.length; ++index) {
+          let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : -1 : -1);
+          let test = values1[index] ? values[index] : 1;
+          change.push((incrase / test) * 100);
+        }
+      } else {
+        for (let index = 0; index < values1.length; ++index) {
+            let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 1 : 1);
+            let test = values[index] ? values[index] : 1;
+          change.push((incrase / test) * 100);
+        }
+      }
 
       return {
         labels,
         values,
+        values1,
+        change,
+        currentYear
       };
     }
 
@@ -12068,10 +12092,7 @@
       if (this.chart) return;
 
       if (this.dataSet && this.dataSet.data) {
-        console.log(this.dataSet.data);
         const data = this.getData();
-        console.log("data",data)
-
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
@@ -12082,29 +12103,30 @@
             labels: data.labels,
             datasets: [
               {
-                label: '2018',
+                label: data.currentYear-1,
                 data: data.values,
                 borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
                 order: 1,
                 borderRadius: 6,
               },
-                  {
-                label: '2019',
-                data: data.values,
+              {
+                label: data.currentYear,
+                data: data.values1,
                 borderColor: this.chartColors.pink,
                 backgroundColor: this.chartColors.pink,
                 order: 1,
-                borderRadius: 6,
+                borderRadius: 6
               },
               {
                 label: 'Change',
-                data: data.values,
+                data: data.change,
                 borderColor: this.chartColors.blue,
                 backgroundColor: this.chartColors.blue,
                 type: 'line',
                 order: 0,
-                tension: 0.4
+                tension: 0.4,
+                yAxisID: 'y2'
               },
               
             ]
@@ -12121,6 +12143,17 @@
                 display: false,
               },
             },
+            scales: {
+              y: {},
+              y2: {
+                position: 'right',
+                suggestedMin: -100,
+                suggestedMax: 100,
+                grid: {
+                  display: false
+                }
+              }
+            }
           },
         });
       }
