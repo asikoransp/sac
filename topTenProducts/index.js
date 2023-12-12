@@ -12068,12 +12068,12 @@
       this.currentColor = element
         ? this.colors.darkMode
         : this.colors.lightMode;
+
+      this.adjustStyles();
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
-
-      this.adjustStyles();
 
       if (this.chart) {
         this.updateChartData();

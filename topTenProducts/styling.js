@@ -1,22 +1,22 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-    <legend style="margin-bottom: 0.5rem;">Chart chart color</legend>
+    <legend style="margin-bottom: 0.5rem; color: #979797; font-size: 0.9rem;">Chart chart color</legend>
 
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="font-size: 0.8rem; width: 5rem;">Light mode</legend>
+      <legend style="color: #979797; font-size: 0.9rem; width: 5rem;">Light mode</legend>
       <input class="styling-panel-property" id="light-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 
     <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="font-size: 0.8rem; width: 5rem;">Dark mode</legend>
+      <legend style="color: #979797; font-size: 0.9rem; width: 5rem;">Dark mode</legend>
       <input class="styling-panel-property" id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
     </div>
 
     </br>
 
-    <legend style="margin-bottom: 0.5rem;">Chart title</legend>
-    <input class="styling-panel-property" id="chart-title" type="text" style="width: 100%;">
+    <legend style="margin-bottom: 0.2rem; color: #979797; font-size: 0.9rem;">Chart title</legend>
+    <input class="styling-panel-property" id="chart-title" type="text" style="width: 95%; padding: 0.3rem 0.5rem; border: 1px solid #c2c2c2; color: #2c2c2c">
 	`;
 
   class BoxSps extends HTMLElement {
