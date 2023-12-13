@@ -12079,9 +12079,9 @@
                 backgroundColor: this.chartColors.purple,
                 order: 1,
                 borderRadius: 6,
-                legend: {
-                  display: true,
-                }
+                // legend: {
+                //   display: true,
+                // }
               },
               {
                 label: 'Customer Aquisition Cost',
@@ -12092,9 +12092,9 @@
                 order: 0,
                 tension: 0.4,
                 yAxisID: 'y2',
-                legend: {
-                  display: true,
-                }
+                // legend: {
+                //   display: true,
+                // }
               },
               
             ]
@@ -12105,10 +12105,10 @@
             indexAxis: "x",
             plugins: {
               title: {
-                display: false,
+                // display: false,
               },
               legend: {
-                display: false,
+                // display: false,
               },
             },
             scales: {
