@@ -12126,7 +12126,6 @@
                 position: 'right',
                 suggestedMin: 0,
                 suggestedMax: 50,
-                title: 'test2',
                 grid: {
                   display: false
                 }
