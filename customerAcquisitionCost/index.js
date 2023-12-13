@@ -12079,6 +12079,9 @@
                 backgroundColor: this.chartColors.purple,
                 order: 1,
                 borderRadius: 6,
+                legend: {
+                  display: true,
+                }
               },
               {
                 label: 'Customer Aquisition Cost',
@@ -12088,7 +12091,10 @@
                 type: 'line',
                 order: 0,
                 tension: 0.4,
-                yAxisID: 'y2'
+                yAxisID: 'y2',
+                legend: {
+                  display: true,
+                }
               },
               
             ]
@@ -12107,12 +12113,19 @@
             },
             scales: {
               y: {
-                title: 'test1'
+                title: {
+                  display: true,
+                  text: 'Number of Customers Aquired'
+                }
               },
               y2: {
+                title: {
+                  display: true,
+                  text: 'Customer Aquisition Cost'
+                },
                 position: 'right',
                 suggestedMin: 0,
-                suggestedMax: 100,
+                suggestedMax: 50,
                 title: 'test2',
                 grid: {
                   display: false
