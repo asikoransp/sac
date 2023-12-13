@@ -12106,11 +12106,14 @@
               },
             },
             scales: {
-              y: {},
+              y: {
+                title: 'test1'
+              },
               y2: {
                 position: 'right',
                 suggestedMin: 0,
                 suggestedMax: 100,
+                title: 'test2',
                 grid: {
                   display: false
                 }
