@@ -12050,6 +12050,7 @@
       values = [],
       change = [],
       currentYear = new Date().getFullYear();
+      console.log('dataSet', dataSet);
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
         // if(el.dimensions_0.id.indexOf(currentYear) != -1){
@@ -12059,6 +12060,8 @@
           change.push(el.measures_1.raw)
       //   }               
        });
+       console.log('values',values);
+       console.log('change',change);
       // labels = [...new Set(labels)];
       // if(labels.length == 2){
       //   labels = [labels[0]+'/'+labels[1]]
