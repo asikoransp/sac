@@ -12037,8 +12037,8 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      this.chart.data.datasets[1].data = data.values1;
-      this.chart.data.datasets[2].data = data.change;
+      // this.chart.data.datasets[1].data = data.values1;
+      this.chart.data.datasets[1].data = data.change;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12065,24 +12065,24 @@
       // }
 
       // Calculate change
-      if (values.length >= values1.length) {
-        for (let index = 0; index < values.length; ++index) {
-          let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : -1 : -1);
-          let test = values1[index] ? values[index] : 1;
-          change.push((incrase / test) * 100);
-        }
-      } else {
-        for (let index = 0; index < values1.length; ++index) {
-            let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 1 : 1);
-            let test = values[index] ? values[index] : 1;
-          change.push((incrase / test) * 100);
-        }
-      }
+      // if (values.length >= values1.length) {
+      //   for (let index = 0; index < values.length; ++index) {
+      //     let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : -1 : -1);
+      //     let test = values1[index] ? values[index] : 1;
+      //     change.push((incrase / test) * 100);
+      //   }
+      // } else {
+      //   for (let index = 0; index < values1.length; ++index) {
+      //       let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 1 : 1);
+      //       let test = values[index] ? values[index] : 1;
+      //     change.push((incrase / test) * 100);
+      //   }
+      // }
 
       return {
         labels,
         values,
-        values1,
+        // values1,
         change,
         currentYear
       };
