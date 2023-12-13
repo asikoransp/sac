@@ -12037,7 +12037,6 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      // this.chart.data.datasets[1].data = data.values1;
       this.chart.data.datasets[1].data = data.change;
       this.chart.data.labels = data.labels;
       this.chart.update();
@@ -12048,58 +12047,26 @@
          .sort((a, b) =>  a.dimensions_0.id.localeCompare(b.dimensions_0.id));
       let labels = [],
       values = [],
-      change = [],
-      currentYear = new Date().getFullYear();
-      console.log('dataSet', dataSet);
+      change = [];
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
-        // if(el.dimensions_0.id.indexOf(currentYear) != -1){
-        //   values1.push(el.measures_0.raw);
-        // } else {
           values.push(el.measures_0.raw);
-          change.push(el.measures_1.raw)
-      //   }               
+          change.push(el.measures_1.raw)              
        });
-       console.log('values',values);
-       console.log('change',change);
-      // labels = [...new Set(labels)];
-      // if(labels.length == 2){
-      //   labels = [labels[0]+'/'+labels[1]]
-      // }
-
-      // Calculate change
-      // if (values.length >= values1.length) {
-      //   for (let index = 0; index < values.length; ++index) {
-      //     let incrase = (values1.length >= index ? values1[index] ? values1[index] - values[index] : -1 : -1);
-      //     let test = values1[index] ? values[index] : 1;
-      //     change.push((incrase / test) * 100);
-      //   }
-      // } else {
-      //   for (let index = 0; index < values1.length; ++index) {
-      //       let incrase = (values.length >= index ? values[index] ? values1[index] - values[index] : 1 : 1);
-      //       let test = values[index] ? values[index] : 1;
-      //     change.push((incrase / test) * 100);
-      //   }
-      // }
-
       return {
         labels,
         values,
-        // values1,
-        change,
-        currentYear
+        change
       };
     }
 
     renderChart() {
       if (this.chart) return;
-
       if (this.dataSet && this.dataSet.data) {
         const data = this.getData();
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
-
         this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
@@ -12113,14 +12080,6 @@
                 order: 1,
                 borderRadius: 6,
               },
-              // {
-              //   label: data.currentYear,
-              //   data: data.values1,
-              //   borderColor: this.chartColors.pink,
-              //   backgroundColor: this.chartColors.pink,
-              //   order: 1,
-              //   borderRadius: 6
-              // },
               {
                 label: 'Customer Aquisition Cost',
                 data: data.change,
