@@ -11996,6 +11996,7 @@
 
       .widget-wrapper h2 {
         font-size: 1.5rem;
+        margin-left: 2rem;
       }
 
       .chart-wrapper {
