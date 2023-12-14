@@ -12093,6 +12093,8 @@
     getData() {
       const dataSet = this.dataSet.data;
 
+      console.log(dataSet);
+
       const labels = dataSet.map(
         (el) => parseInt(el.dimensions_0.label * 100).toString() + "%"
       );
