@@ -12000,6 +12000,11 @@
 
     <div class="widget-wrapper">
       <h2 id="chart-title">Average Rebate Rate</h2>
+      <div style="display: flex;">
+        <button onclick="reaggregate(1)">1%</button>
+        <button onclick="reaggregate(5)">5%</button>
+        <button onclick="reaggregate(10)">10%</button>
+      </div>
       <div class="chart-wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
       </div>
@@ -12070,6 +12075,10 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
+    }
+
+    reaggregate(percentage) {
+      console.log(percentage)
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
