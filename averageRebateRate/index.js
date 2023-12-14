@@ -12098,17 +12098,19 @@
 
     addEventListeners() {
       const buttons = this.template.querySelectorAll(".aggregate-event");
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
-          this.aggregation = event.target.dataset.percentage
-          this.updateChartData()
+          console.log(event.target.dataset.percentage * 1);
+          this.aggregation = event.target.dataset.percentage * 1;
+          this.updateChartData();
         });
-      })
+      });
     }
 
     getData() {
       const data = this.dataSet.data;
       const aggregation = this.aggregation;
+      console.log(aggregation);
       const intervals = [];
 
       for (let i = 0; i < 100; i += aggregation) {
@@ -12195,7 +12197,7 @@
         },
       });
 
-      this.addEventListeners()
+      this.addEventListeners();
     }
 
     adjustStyles() {
