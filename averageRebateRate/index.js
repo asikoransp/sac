@@ -11987,6 +11987,15 @@
         background: #fff;
       }
 
+      .aggregate-event {
+        border: none;
+        background: #4f4f4f;
+        color: #c2c2c2;
+        border-radius: 0.4rem;
+        padding: 0.5rem;
+        margin: 0.5rem;
+      }
+
       .widget-wrapper h2 {
         margin: 0 0 1rem 0;
         font-size: 1.5rem;
@@ -11999,11 +12008,13 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2 id="chart-title">Average Rebate Rate</h2>
-      <div style="display: flex;">
-        <button class="aggregate-event" data-percentage="1">1%</button>
-        <button class="aggregate-event" data-percentage="5">5%</button>
-        <button class="aggregate-event" data-percentage="10">10%</button>
+      <div style="display: flex; align-items: center;">
+        <h2 id="chart-title">Average Rebate Rate</h2>
+        <div style="display: flex; align-items: center; margin-left: 2rem;">
+          <button class="aggregate-event" data-percentage="1">1%</button>
+          <button class="aggregate-event" data-percentage="5">5%</button>
+          <button class="aggregate-event" data-percentage="10">10%</button>
+        </div>
       </div>
       <div class="chart-wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
@@ -12110,7 +12121,6 @@
     getData() {
       const data = this.dataSet.data;
       const aggregation = this.aggregation;
-      console.log(aggregation);
       const intervals = [];
 
       for (let i = 0; i < 100; i += aggregation) {
@@ -12130,9 +12140,15 @@
         }
       });
 
-      const values = intervals.map((interval) => interval.sum);
-      const labels = intervals.map(
-        (interval) => `${interval.start}-${interval.end}%`
+      const filteredIntervals = intervals.filter(
+        (interval) => interval.sum > 0
+      );
+
+      const values = filteredIntervals.map((interval) => interval.sum);
+      const labels = filteredIntervals.map((interval) =>
+        this.aggregation === 1
+          ? `${interval.end}%`
+          : `${interval.start}-${interval.end}%`
       );
 
       return {
