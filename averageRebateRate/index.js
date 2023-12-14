@@ -11988,14 +11988,13 @@
       }
 
       .aggregate-event {
-        border: 1px solid #000;
+        border: 2px solid #2c2c2c;
         border-radius: 0.4rem;
         padding: 0.5rem;
         margin: 0.5rem;
       }
 
       .widget-wrapper h2 {
-        
         font-size: 1.5rem;
       }
 
@@ -12006,7 +12005,7 @@
     </style>
 
     <div class="widget-wrapper">
-      <div style="display: flex; align-items: center; margin: 0 0 1rem 0;">
+      <div style="display: flex; align-items: center;">
         <h2 id="chart-title">Average Rebate Rate</h2>
         <div style="display: flex; align-items: center; margin-left: 2rem;">
           <button class="aggregate-event" data-percentage="1">1%</button>
