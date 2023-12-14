@@ -12094,7 +12094,7 @@
       const dataSet = this.dataSet.data;
 
       const labels = dataSet.map(
-        (el) => (el.dimensions_0.label * 100).toString() + "%"
+        (el) => parseInt(el.dimensions_0.label * 100).toString() + "%"
       );
       const values = dataSet.map((el) => el.measures_0.raw);
 
