@@ -12002,8 +12002,8 @@
       <h2 id="chart-title">Average Rebate Rate</h2>
       <div style="display: flex;">
         <button class="aggregate-event" data-percentage="1">1%</button>
-        <button class="aggregate-event" data-percentage="1">5%</button>
-        <button class="aggregate-event" data-percentage="1">10%</button>
+        <button class="aggregate-event" data-percentage="5">5%</button>
+        <button class="aggregate-event" data-percentage="10">10%</button>
       </div>
       <div class="chart-wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
