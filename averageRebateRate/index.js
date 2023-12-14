@@ -12000,13 +12000,13 @@
 
       .chart-wrapper {
         display: block !important;
-        height: 360px !important;
+        height: 370px !important;
       }
     </style>
 
     <div class="widget-wrapper">
       <div style="display: flex; align-items: center; margin: 0 0 1rem 0;">
-        <h2 id="chart-title">Average Rebate Rate</h2>
+        <h2 id="chart-title" style: margin: 0;>Average Rebate Rate</h2>
         <div style="display: flex; align-items: center; margin-left: 2rem;">
           <button class="aggregate-event" data-percentage="1">1%</button>
           <button class="aggregate-event" data-percentage="5">5%</button>
