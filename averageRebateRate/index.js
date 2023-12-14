@@ -12091,14 +12091,31 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data;
+      const data = this.dataSet.data;
+      const aggregation = 5;
+      const intervals = [];
 
-      console.log(dataSet);
+      for (let i = 0; i < 100; i += aggregation) {
+        intervals.push({ start: i, end: i + aggregation - 1, sum: 0 });
+      }
 
-      const labels = dataSet.map(
-        (el) => parseInt(el.dimensions_0.label * 100).toString() + "%"
+      data.forEach((obj) => {
+        const rawValue = obj.measures_0.raw;
+        const rawDim = parseInt(obj.dimensions_0.id * 100);
+
+        const interval = intervals.find((interval) => {
+          return rawDim >= interval.start && rawDim <= interval.end;
+        });
+
+        if (interval) {
+          interval.sum += rawValue;
+        }
+      });
+
+      const values = intervals.map((interval) => interval.sum);
+      const labels = intervals.map(
+        (interval) => `${interval.start}-${interval.end}%`
       );
-      const values = dataSet.map((el) => el.measures_0.raw);
 
       return {
         labels,
