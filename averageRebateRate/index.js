@@ -12000,7 +12000,7 @@
 
       .chart-wrapper {
         display: block !important;
-        height: 370px !important;
+        height: 360px !important;
       }
     </style>
 
