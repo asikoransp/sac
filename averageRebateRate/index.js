@@ -12001,9 +12001,9 @@
     <div class="widget-wrapper">
       <h2 id="chart-title">Average Rebate Rate</h2>
       <div style="display: flex;">
-        <button onclick="reaggregate(1)">1%</button>
-        <button onclick="reaggregate(5)">5%</button>
-        <button onclick="reaggregate(10)">10%</button>
+        <button class="aggregate-event" data-percentage="1">1%</button>
+        <button class="aggregate-event" data-percentage="1">5%</button>
+        <button class="aggregate-event" data-percentage="1">10%</button>
       </div>
       <div class="chart-wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
@@ -12019,6 +12019,7 @@
     template = undefined;
     chart = undefined;
     currentColor = undefined;
+    aggregation = 5;
     colors = {
       lightMode: {
         background: "rgba(230, 230, 230, 1)",
@@ -12077,10 +12078,6 @@
       this.adjustStyles();
     }
 
-    reaggregate(percentage) {
-      console.log(percentage)
-    }
-
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
 
@@ -12099,9 +12096,19 @@
       this.chart.update();
     }
 
+    addEventListeners() {
+      const buttons = this.template.querySelectorAll(".aggregate-event");
+      buttons.forEach(button => {
+        button.addEventListener("click", (event) => {
+          this.aggregation = event.target.dataset.percentage
+          this.updateChartData()
+        });
+      })
+    }
+
     getData() {
       const data = this.dataSet.data;
-      const aggregation = 5;
+      const aggregation = this.aggregation;
       const intervals = [];
 
       for (let i = 0; i < 100; i += aggregation) {
@@ -12187,6 +12194,8 @@
           },
         },
       });
+
+      this.addEventListeners()
     }
 
     adjustStyles() {
