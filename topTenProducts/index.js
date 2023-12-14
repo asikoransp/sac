@@ -11999,7 +11999,9 @@
     </style>
 
     <div class="widget-wrapper">
-      <h2 id="chart-title">Top 10 Products by Revenue</h2>
+      <div style="display: flex; align-items: center; margin: 0 0 1rem 0;">
+        <h2 id="chart-title">Top 10 Products by Revenue</h2>
+      </div>
       <div class="chart-wrapper">
         <canvas id="top-ten-products-chart"></canvas>
       </div>
