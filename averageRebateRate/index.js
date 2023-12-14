@@ -11991,10 +11991,11 @@
         border: 2px solid #2c2c2c;
         border-radius: 0.4rem;
         padding: 0.5rem;
-        margin: 0.5rem;
+        margin: 0 0.5rem;
       }
 
       .widget-wrapper h2 {
+        margin: 0 0 1rem 0;
         font-size: 1.5rem;
       }
 
