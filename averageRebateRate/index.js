@@ -12140,8 +12140,9 @@
           });
           this.template.querySelector(
             `[data-percentage='${this.aggregation}']`
-          ).style.backgroundColor =
-            this.currentColor.chart.primary.this.updateChartData();
+          ).style.backgroundColor = this.currentColor.chart.primary;
+
+          this.updateChartData();
         });
       });
     }
