@@ -12015,14 +12015,6 @@
         margin: 0 0.5rem;
       }
     
-      .widget__filter-btn:hover {
-        background-color: rgb(104, 104, 104);
-      }
-    
-      .widget__filter-btn:active {
-        background-color: rgb(63, 63, 63);
-      }
-    
       .chart__wrapper {
         display: block !important;
         height: 370px !important;
@@ -12134,14 +12126,7 @@
       buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
           this.aggregation = event.target.dataset.percentage * 1;
-
-          this.template.querySelectorAll("[data-percentage]").forEach((el) => {
-            el.style.backgroundColor = "rgb(122, 122, 122)";
-          });
-          this.template.querySelector(
-            `[data-percentage='${this.aggregation}']`
-          ).style.backgroundColor = this.currentColor.chart.primary;
-
+          this.setFilterAsActive();
           this.updateChartData();
         });
       });
@@ -12242,6 +12227,7 @@
         },
       });
 
+      this.setFilterAsActive();
       this.addEventListeners();
     }
 
@@ -12250,6 +12236,16 @@
         this.currentColor.background;
       this.template.querySelector(".widget__title").style.color =
         this.currentColor.text;
+    }
+
+    setFilterAsActive() {
+      this.template.querySelectorAll("[data-percentage]").forEach((el) => {
+        el.style.backgroundColor = "rgb(122, 122, 122)";
+      });
+
+      this.template.querySelector(
+        `[data-percentage='${this.aggregation}']`
+      ).style.backgroundColor = this.currentColor.chart.primary;
     }
   }
 
