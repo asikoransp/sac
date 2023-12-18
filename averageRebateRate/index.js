@@ -12134,7 +12134,14 @@
       buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
           this.aggregation = event.target.dataset.percentage * 1;
-          this.updateChartData();
+
+          this.template.querySelector("[data-percentage]").forEach((el) => {
+            el.style.backgroundColor = "rgb(122, 122, 122)";
+          });
+          this.template.querySelector(
+            `[data-percentage='${this.aggregation}']`
+          ).style.backgroundColor =
+            this.currentColor.chart.primary.this.updateChartData();
         });
       });
     }
