@@ -12005,10 +12005,22 @@
       }
     
       .widget__filter-btn {
-        border: 2px solid #2c2c2c;
+        border: none;
+        color: #fff;
+        width: 4rem;
+        font-size: 1rem;
+        background-color: rgb(122, 122, 122);
         border-radius: 0.4rem;
-        padding: 0.5rem;
+        padding: 0.4rem 0;
         margin: 0 0.5rem;
+      }
+    
+      .widget__filter-btn:hover {
+        background-color: rgb(104, 104, 104);
+      }
+    
+      .widget__filter-btn:active {
+        background-color: rgb(63, 63, 63);
       }
     
       .chart__wrapper {
