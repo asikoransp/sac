@@ -12001,7 +12001,7 @@
       .widget__filters {
         display: flex;
         align-items: center;
-        margin-left: 2rem;
+        margin-left: 1rem;
       }
     
       .widget__filter-btn {

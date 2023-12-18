@@ -39,8 +39,6 @@
       <input id="dark-mode-chart-color" type="color">
     </div>
 
-    </br>
-
     <div class="styling-property">
       <legend>Chart title</legend>
       <input id="chart-title" type="text">
