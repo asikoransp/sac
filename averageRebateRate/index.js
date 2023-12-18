@@ -11980,41 +11980,53 @@
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
     <style>
-      .widget-wrapper {
-        padding: 1rem;
+      .widget__wrapper {
+        padding: 0 1rem 1rem 1rem;
         margin: 1rem;
-        border-radius: 15px;
+        border-radius: 1rem;
         background: #fff;
       }
-
-      .aggregate-event {
+    
+      .widget__title {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+      }
+    
+      .widget__header {
+        display: flex;
+        align-items: center;
+        height: 4rem;
+      }
+    
+      .widget__filters {
+        display: flex;
+        align-items: center;
+        margin-left: 2rem;
+      }
+    
+      .widget__filter-btn {
         border: 2px solid #2c2c2c;
         border-radius: 0.4rem;
         padding: 0.5rem;
         margin: 0 0.5rem;
       }
-
-      .widget-wrapper h2 {
-        font-size: 1.5rem;
-        margin-left: 2rem;
-      }
-
-      .chart-wrapper {
+    
+      .chart__wrapper {
         display: block !important;
         height: 370px !important;
       }
     </style>
 
-    <div class="widget-wrapper">
-      <div style="display: flex; align-items: center; margin: 0 0 1rem 0;">
-        <h2 id="chart-title" style: margin: 0;>Average Rebate Rate</h2>
-        <div style="display: flex; align-items: center; margin-left: 2rem;">
-          <button class="aggregate-event" data-percentage="1">1%</button>
-          <button class="aggregate-event" data-percentage="5">5%</button>
-          <button class="aggregate-event" data-percentage="10">10%</button>
+    <div class="widget__wrapper">
+      <div class="widget__header">
+        <h2 class="widget__title">Average Rebate Rate</h2>
+        <div class="widget__filters">
+          <button class="widget__filter-btn" data-percentage="1">1%</button>
+          <button class="widget__filter-btn" data-percentage="5">5%</button>
+          <button class="widget__filter-btn" data-percentage="10">10%</button>
         </div>
       </div>
-      <div class="chart-wrapper">
+      <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
       </div>
     </div>
@@ -12072,7 +12084,7 @@
             changedProperties.darkModeChartColor;
 
         if (changedProperties.chartTitle)
-          this.template.getElementById("chart-title").innerText =
+          this.template.querySelector(".widget__title").innerText =
             changedProperties.chartTitle;
       }
 
@@ -12106,7 +12118,7 @@
     }
 
     addEventListeners() {
-      const buttons = this.template.querySelectorAll(".aggregate-event");
+      const buttons = this.template.querySelectorAll(".widget__filter-btn");
       buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
           console.log(event.target.dataset.percentage * 1);
@@ -12215,11 +12227,10 @@
     }
 
     adjustStyles() {
-      this.template.querySelector(".widget-wrapper").style.background =
+      this.template.querySelector(".widget__wrapper").style.background =
         this.currentColor.background;
-      this.template
-        .querySelector(".widget-wrapper")
-        .querySelector("h2").style.color = this.currentColor.text;
+      this.template.querySelector(".widget__title").style.color =
+        this.currentColor.text;
     }
   }
 

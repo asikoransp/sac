@@ -1,22 +1,62 @@
 (function () {
   let template = document.createElement("template");
   template.innerHTML = `
-    <legend style="margin-bottom: 0.5rem; color: #979797; font-size: 0.9rem;">Chart chart color</legend>
+    <style>
+      .styling-panel__legend--color-mode {
+        margin-bottom: 0.5rem;
+        color: #979797;
+        font-size: 0.9rem;
+      }
 
-    <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="color: #979797; font-size: 0.9rem; width: 5rem;">Light mode</legend>
-      <input class="styling-panel-property" id="light-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+      .styling-panel__legend--title {
+        margin-bottom: 0.2rem;
+        color: #979797;
+        font-size: 0.9rem;
+      }
+
+      .styling-panel__color-mode {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5rem;
+      }
+
+      .styling-panel__color-mode legend {
+        color: #979797;
+        font-size: 0.9rem;
+        width: 5rem;
+      }
+
+      .styling-panel__color-mode input {
+        border: none;
+        background: none;
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+
+      .styling-panel__color-mode input { 
+        width: 95%;
+        padding: 0.3rem 0.5rem;
+        border: 1px solid #c2c2c2;
+        color: #2c2c2c
+      }
+    </style>
+
+    <legend class="styling-panel__legend--color-mode">Chart chart color</legend>
+
+    <div class="styling-panel__color-mode">
+      <legend>Light mode</legend>
+      <input class="styling-panel__color-picker" id="light-mode-chart-color" type="color">
     </div>
 
-    <div style="display: flex; align-items: center; margin-left: 0.5rem;">
-      <legend style="color: #979797; font-size: 0.9rem; width: 5rem;">Dark mode</legend>
-      <input class="styling-panel-property" id="dark-mode-chart-color" type="color" style="border: none; background: none; width: 1.7rem; height: 1.7rem;">
+    <div class="styling-panel__color-mode">
+      <legend>Dark mode</legend>
+      <input class="styling-panel__color-picker" id="dark-mode-chart-color" type="color">
     </div>
 
     </br>
 
-    <legend style="margin-bottom: 0.2rem; color: #979797; font-size: 0.9rem;">Chart title</legend>
-    <input class="styling-panel-property" id="chart-title" type="text" style="width: 95%; padding: 0.3rem 0.5rem; border: 1px solid #c2c2c2; color: #2c2c2c">
+    <legend class="styling-panel__legend--title">Chart title</legend>
+    <input id="chart-title" type="text">
 	`;
 
   class BoxSps extends HTMLElement {
@@ -25,7 +65,7 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._shadowRoot
-        .querySelectorAll(".styling-panel-property")
+        .querySelectorAll(".styling-panel__color-picker")
         .forEach((property) => {
           property.addEventListener("change", this._submit.bind(this));
         });
