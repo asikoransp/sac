@@ -38,7 +38,7 @@
     "chartTitle": {
       "type": "string",
       "description": "Chart title",
-      "default": "Top 10 Products by Revenue"
+      "default": "Average Order Value"
     }
   },
   "methods": {
