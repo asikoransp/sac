@@ -12125,12 +12125,11 @@
           datasets: [
             {
               label: "Value",
-              data: data.values,
               backgroundColor: this.currentColor.chart.primary,
-              borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
-              borderRadius: 5,
-              borderSkipped: false,
+              data: data.values,
+              fill: true,
+              tension: 0.4,
             },
           ],
         },

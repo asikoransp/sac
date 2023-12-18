@@ -18,7 +18,7 @@
     },
     {
       "kind": "styling",
-      "tag": "average-order-value",
+      "tag": "average-order-value-sps",
       "url": "https://asikoransp.github.io/sac/averageOrderValue/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
