@@ -12133,7 +12133,6 @@
       const buttons = this.template.querySelectorAll(".widget__filter-btn");
       buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
-          console.log(event.target.dataset.percentage * 1);
           this.aggregation = event.target.dataset.percentage * 1;
           this.updateChartData();
         });
