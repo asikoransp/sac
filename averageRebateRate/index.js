@@ -12135,7 +12135,7 @@
         button.addEventListener("click", (event) => {
           this.aggregation = event.target.dataset.percentage * 1;
 
-          this.template.querySelector("[data-percentage]").forEach((el) => {
+          this.template.querySelectorAll("[data-percentage]").forEach((el) => {
             el.style.backgroundColor = "rgb(122, 122, 122)";
           });
           this.template.querySelector(
