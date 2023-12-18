@@ -12119,7 +12119,7 @@
         .getContext("2d");
 
       this.chart = new Chart(chartElement, {
-        type: "bar",
+        type: "line",
         data: {
           labels: data.labels,
           datasets: [
