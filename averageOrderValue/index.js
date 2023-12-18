@@ -12099,13 +12099,10 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      const dataSet = this.dataSet.data;
+      console.log(dataSet);
 
-      const labels = dataSet.map((el) =>
-        el.dimensions_0.label.split("_").join(" ")
-      );
+      const labels = dataSet.map((el) => el.dimensions_0.label);
       const values = dataSet.map((el) => el.measures_0.raw);
 
       return {
@@ -12129,11 +12126,11 @@
             {
               label: "Value",
               data: data.values,
+              backgroundColor: this.currentColor.chart.primary,
+              borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
-              borderColor: this.currentColor.chart.primary,
-              type: "line",
-              tension: 0.4,
-              fill: true,
+              borderRadius: 5,
+              borderSkipped: false,
             },
           ],
         },
