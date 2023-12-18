@@ -12020,11 +12020,6 @@
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Average Rebate Rate</h2>
-        <div class="widget__filters">
-          <button class="widget__filter-btn" data-percentage="1">1%</button>
-          <button class="widget__filter-btn" data-percentage="5">5%</button>
-          <button class="widget__filter-btn" data-percentage="10">10%</button>
-        </div>
       </div>
       <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
