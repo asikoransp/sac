@@ -12106,7 +12106,8 @@
 
     updateChartData() {
       const data = this.getData();
-      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.datasets[0].data = data.existingCustomers;
+      this.chart.data.datasets[1].data = data.newCustomers;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12116,11 +12117,13 @@
       console.log(dataSet);
 
       const labels = dataSet.map((el) => el.dimensions_0.label);
-      const values = dataSet.map((el) => el.measures_0.raw);
+      const newCustomers = dataSet.map((el) => el.measures_0.raw);
+      const existingCustomers = dataSet.map((el) => el.measures_1.raw);
 
       return {
         labels,
-        values,
+        newCustomers,
+        existingCustomers,
       };
     }
 
@@ -12138,7 +12141,7 @@
           datasets: [
             {
               label: "Value",
-              data: data.values,
+              data: data.existingCustomers,
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
@@ -12147,10 +12150,10 @@
             },
             {
               label: "Value",
-              data: data.values,
-              backgroundColor: this.currentColor.chart.primary,
+              data: data.newCustomers,
+              backgroundColor: this.currentColor.chart.secondary,
               borderWidth: 0,
-              borderColor: this.currentColor.chart.primary,
+              borderColor: this.currentColor.chart.secondary,
               borderRadius: 5,
               borderSkipped: false,
             },

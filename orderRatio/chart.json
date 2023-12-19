@@ -104,11 +104,6 @@
           "id": "measures",
           "description": "Measures",
           "type": "mainStructureMember"
-        },
-        {
-          "id": "measures2",
-          "description": "Measures2",
-          "type": "mainStructureMember"
         }
       ]
     }
