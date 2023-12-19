@@ -11979,8 +11979,6 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <script src="https://asikoransp.github.io/sac/topTenProducts/test.js" ></script>
-
     <style>
       .widget__wrapper {
         padding: 0 1rem 1rem 1rem;
