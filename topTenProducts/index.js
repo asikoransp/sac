@@ -1,3 +1,7 @@
+const test = require("./test");
+
+console.log(test("Hello World!"));
+
 (function () {
   !(function (t, e) {
     "object" == typeof exports && "undefined" != typeof module
