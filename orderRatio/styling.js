@@ -27,16 +27,35 @@
         color: #979797;
         font-size: 0.9rem;
       }
+
+      .mode-group {
+        display: flex;
+        gap: 4rem;
+      }
     </style>
 
-    <div class="styling-property">
-      <legend>Light mode</legend>
-      <input id="light-mode-chart-color" type="color">
-    </div>
+    <div class="mode-group">
+      <div class="styling-property">
+        <legend>Light mode primary</legend>
+        <input id="light-mode-chart-primary-color" type="color">
+      </div>
 
-    <div class="styling-property">
-      <legend>Dark mode</legend>
-      <input id="dark-mode-chart-color" type="color">
+      <div class="styling-property">
+        <legend>Light mode secondary</legend>
+        <input id="light-mode-chart-secondary-color" type="color">
+      </div>
+    </div>
+    
+    <div class="mode-group">
+      <div class="styling-property">
+        <legend>Dark mode primary</legend>
+        <input id="dark-mode-chart-primary-color" type="color">
+      </div>
+
+      <div class="styling-property">
+        <legend>Dark mode secondary</legend>
+        <input id="dark-mode-chart-secondary-color" type="color">
+      </div>
     </div>
 
     <div class="styling-property">
@@ -84,11 +103,17 @@
         new CustomEvent("propertiesChanged", {
           detail: {
             properties: {
-              lightModeChartColor: this.convertHexToRGBA(
-                this.lightModeChartColor
+              lightModeChartPrimaryColor: this.convertHexToRGBA(
+                this.lightModeChartPrimaryColor
               ),
-              darkModeChartColor: this.convertHexToRGBA(
-                this.darkModeChartColor
+              darkModeChartPrimaryColor: this.convertHexToRGBA(
+                this.darkModeChartPrimaryColor
+              ),
+              lightModeChartSecondaryColor: this.convertHexToRGBA(
+                this.lightModeChartSecondaryColor
+              ),
+              darkModeChartSecondaryColor: this.convertHexToRGBA(
+                this.darkModeChartSecondaryColor
               ),
               chartTitle: this.chartTitle,
             },
@@ -97,22 +122,45 @@
       );
     }
 
-    set lightModeChartColor(newLightModeChartColor) {
-      this._shadowRoot.getElementById("light-mode-chart-color").value =
-        this.convertRGBAToHex(newLightModeChartColor);
+    set lightModeChartPrimaryColor(newLightModeChartPrimaryColor) {
+      this._shadowRoot.getElementById("light-mode-chart-primary-color").value =
+        this.convertRGBAToHex(newLightModeChartPrimaryColor);
     }
 
-    get lightModeChartColor() {
-      return this._shadowRoot.getElementById("light-mode-chart-color").value;
+    get lightModeChartPrimaryColor() {
+      return this._shadowRoot.getElementById("light-mode-chart-primary-color")
+        .value;
     }
 
-    set darkModeChartColor(newDarkModeChartColor) {
-      this._shadowRoot.getElementById("dark-mode-chart-color").value =
-        this.convertRGBAToHex(newDarkModeChartColor);
+    set darkModeChartPrimaryColor(newDarkModeChartPrimaryColor) {
+      this._shadowRoot.getElementById("dark-mode-chart-primary-color").value =
+        this.convertRGBAToHex(newDarkModeChartPrimaryColor);
     }
 
-    get darkModeChartColor() {
-      return this._shadowRoot.getElementById("dark-mode-chart-color").value;
+    get darkModeChartPrimaryColor() {
+      return this._shadowRoot.getElementById("dark-mode-chart-primary-color")
+        .value;
+    }
+
+    set lightModeChartSecondaryColor(newLightModeChartSecondaryColor) {
+      this._shadowRoot.getElementById(
+        "light-mode-chart-secondary-color"
+      ).value = this.convertRGBAToHex(newLightModeChartSecondaryColor);
+    }
+
+    get lightModeChartSecondaryColor() {
+      return this._shadowRoot.getElementById("light-mode-chart-secondary-color")
+        .value;
+    }
+
+    set darkModeChartSecondaryColor(newDarkModeChartSecondaryColor) {
+      this._shadowRoot.getElementById("dark-mode-chart-secondary-color").value =
+        this.convertRGBAToHex(newDarkModeChartSecondaryColor);
+    }
+
+    get darkModeChartSecondaryColor() {
+      return this._shadowRoot.getElementById("dark-mode-chart-secondary-color")
+        .value;
     }
 
     set chartTitle(newChartTitle) {
