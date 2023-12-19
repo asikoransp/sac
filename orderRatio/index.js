@@ -12112,13 +12112,10 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      const dataSet = this.dataSet.data;
+      console.log(dataSet);
 
-      const labels = dataSet.map((el) =>
-        el.dimensions_0.label.split("_").join(" ")
-      );
+      const labels = dataSet.map((el) => el.dimensions_0.label);
       const values = dataSet.map((el) => el.measures_0.raw);
 
       return {
@@ -12165,6 +12162,7 @@
           indexAxis: "x",
           scales: {
             x: {
+              stacked: true,
               grid: {
                 color: this.currentColor.grid,
               },
@@ -12173,6 +12171,7 @@
               },
             },
             y: {
+              stacked: true,
               grid: {
                 color: this.currentColor.grid,
               },
