@@ -1,11 +1,11 @@
 {
-  "name": "returnRate",
+  "name": "returnrate",
   "description": "Return Rate",
-  "newInstancePrefix": "returnRate",
+  "newInstancePrefix": "returnrate",
   "eula": "",
   "vendor": "Adrian Sikora",
   "license": "",
-  "id": "returnRate",
+  "id": "returnrate",
   "version": "1.0.0",
   "icon": "",
   "webcomponents": [

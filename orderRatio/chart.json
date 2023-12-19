@@ -12,14 +12,14 @@
     {
       "kind": "main",
       "tag": "order-ratio",
-      "url": "https://asikoransp.github.io/sac/orderratio/index.js",
+      "url": "https://asikoransp.github.io/sac/orderRatio/index.js",
       "integrity": "",
       "ignoreIntegrity": true
     },
     {
       "kind": "styling",
       "tag": "order-ratio-sps",
-      "url": "https://asikoransp.github.io/sac/orderratio/styling.js",
+      "url": "https://asikoransp.github.io/sac/orderRatio/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
