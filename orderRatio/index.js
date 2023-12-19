@@ -12069,13 +12069,21 @@
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       if (changedProperties) {
-        if (changedProperties.lightModeChartColor)
+        if (changedProperties.lightModeChartPrimaryColor)
           this.colors.lightMode.chart.primary =
-            changedProperties.lightModeChartColor;
+            changedProperties.lightModeChartPrimaryColor;
 
-        if (changedProperties.darkModeChartColor)
+        if (changedProperties.darkModeChartPrimaryColor)
           this.colors.darkMode.chart.primary =
-            changedProperties.darkModeChartColor;
+            changedProperties.darkModeChartPrimaryColor;
+
+        if (changedProperties.lightModeChartSecondaryColor)
+          this.colors.lightMode.chart.secondary =
+            changedProperties.lightModeChartSecondaryColor;
+
+        if (changedProperties.darkModeChartSecondaryColor)
+          this.colors.darkMode.chart.secondary =
+            changedProperties.darkModeChartSecondaryColor;
 
         if (changedProperties.chartTitle)
           this.template.querySelector(".widget__title").innerText =
