@@ -11998,6 +11998,19 @@
         height: 4rem;
       }
 
+      .widget__filters {
+        display: flex;
+        align-items: center;
+        margin-left: 2rem;
+      }
+
+      .widget__filter-btn {
+        border: 2px solid #2c2c2c;
+        border-radius: 0.4rem;
+        padding: 0.5rem;
+        margin: 0 0.5rem;
+      }
+
       .chart__wrapper {
         display: block !important;
         height: 370px !important;
@@ -12006,10 +12019,10 @@
 
     <div class="widget__wrapper">
       <div class="widget__header">
-        <h2 class="widget__title">Return Rate</h2>
+        <h2 class="widget__title">Order Ratio - New vs. CRM Customers</h2>
       </div>
       <div class="chart__wrapper">
-        <canvas id="average-order-value-chart"></canvas>
+        <canvas id="average-rebate-rate-chart"></canvas>
       </div>
     </div>
   `;
@@ -12099,10 +12112,14 @@
     }
 
     getData() {
-      const dataSet = this.dataSet.data;
+      const dataSet = this.dataSet.data
+        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
+        .slice(0, 10);
 
-      const labels = dataSet.map((el) => el.dimensions_0.label);
-      const values = dataSet.map((el) => el.measures_0.raw * 100);
+      const labels = dataSet.map((el) =>
+        el.dimensions_0.label.split("_").join(" ")
+      );
+      const values = dataSet.map((el) => el.measures_0.raw);
 
       return {
         labels,
@@ -12118,16 +12135,27 @@
         .getContext("2d");
 
       this.chart = new Chart(chartElement, {
-        type: "line",
+        type: "bar",
         data: {
           labels: data.labels,
           datasets: [
             {
               label: "Value",
-              backgroundColor: this.currentColor.chart.primary,
-              borderColor: this.currentColor.chart.primary,
               data: data.values,
-              tension: 0.4,
+              backgroundColor: this.currentColor.chart.primary,
+              borderWidth: 0,
+              borderColor: this.currentColor.chart.primary,
+              borderRadius: 5,
+              borderSkipped: false,
+            },
+            {
+              label: "Value",
+              data: data.values,
+              backgroundColor: this.currentColor.chart.primary,
+              borderWidth: 0,
+              borderColor: this.currentColor.chart.primary,
+              borderRadius: 5,
+              borderSkipped: false,
             },
           ],
         },
@@ -12173,5 +12201,5 @@
     }
   }
 
-  customElements.define("return-rate", PerformanceHelp);
+  customElements.define("order-ratio", PerformanceHelp);
 })();
