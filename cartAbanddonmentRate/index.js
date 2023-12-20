@@ -12087,7 +12087,7 @@
                 label: 'Customer Aquisition Cost',
                 data: [150, 100],
                 borderColor: this.chartColors.blue,
-                backgroundColor: this.chartColors.blue,
+                backgroundColor: ['red','blue'],
                 type: 'pie',
                 order: 0,
                 tension: 0.4
