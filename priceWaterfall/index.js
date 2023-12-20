@@ -12125,13 +12125,25 @@
       console.log(dataSet);
 
       const labels = dataSet.map((el) => el.dimensions_0.label);
-      // const newCustomers = dataSet.map((el) => el.measures_0.raw);
-      const existingCustomers = dataSet.map((el) => el.measures_1.raw);
+      const profit = dataSet.map((el) => el.measures_0.raw);
+      const employee_cost = dataSet.map((el) => el.measures_1.raw);
+      const material_cost = dataSet.map((el) => el.measures_2.raw);
+      const tax_cost = dataSet.map((el) => el.measures_3.raw);
+      const production_cost = dataSet.map((el) => el.measures_4.raw);
+      const company_cost = dataSet.map((el) => el.measures_5.raw);
+      const price = dataSet.map((el) => el.measures_6.raw);
 
       return {
         labels,
-        // newCustomers,
-        existingCustomers,
+        profit,
+        costs: [
+          employee_cost,
+          material_cost,
+          tax_cost,
+          production_cost,
+          company_cost,
+        ],
+        price,
       };
     }
 
@@ -12142,6 +12154,29 @@
         .querySelector("canvas")
         .getContext("2d");
 
+      function calculateSumArray(numbers) {
+        const sumArray = [];
+        let sum = 0;
+
+        for (let i = 0; i < numbers.length; i++) {
+          sum += numbers[i];
+          sumArray.push(sum);
+        }
+
+        return sumArray;
+      }
+
+      const maxPerEach = calculateSumArray(data.costs);
+
+      console.log(maxPerEach);
+      const res = [];
+
+      for (let i = 1; i < maxPerEach.length; i++) {
+        res.push([maxPerEach[i] - maxPerEach[i - 1], maxPerEach[i]]);
+      }
+
+      console.log(res);
+
       this.chart = new Chart(chartElement, {
         type: "bar",
         data: {
@@ -12149,20 +12184,20 @@
           datasets: [
             {
               label: "Value",
-              data: data.existingCustomers,
+              data: [data.profit, 0, 0, 0, 0, 0, data.price],
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
               borderRadius: 5,
             },
-            // {
-            //   label: "Value",
-            //   data: data.newCustomers,
-            //   backgroundColor: this.currentColor.chart.secondary,
-            //   borderWidth: 0,
-            //   borderColor: this.currentColor.chart.secondary,
-            //   borderRadius: 5,
-            // },
+            {
+              label: "Value",
+              data: [0, ...res, 0],
+              backgroundColor: this.currentColor.chart.secondary,
+              borderWidth: 0,
+              borderColor: this.currentColor.chart.secondary,
+              borderRadius: 5,
+            },
           ],
         },
         options: {
