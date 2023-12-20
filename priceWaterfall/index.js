@@ -12147,13 +12147,19 @@
 
     renderChart() {
       const { profit, costs, price } = this.getData();
-      const {
+      let {
         employee_cost,
         material_cost,
         tax_cost,
         production_cost,
         company_cost,
       } = costs;
+
+      employee_cost = employee_cost[0];
+      material_cost = material_cost[0];
+      tax_cost = tax_cost[0];
+      production_cost = production_cost[0];
+      company_cost = company_cost[0];
 
       const chartElement = this.template
         .querySelector("canvas")
