@@ -12,14 +12,14 @@
     {
       "kind": "main",
       "tag": "price-waterfall",
-      "url": "https://asikoransp.github.io/sac/pricewaterfall/index.js",
+      "url": "https://asikoransp.github.io/sac/priceWaterfall/index.js",
       "integrity": "",
       "ignoreIntegrity": true
     },
     {
       "kind": "styling",
       "tag": "price-waterfall-sps",
-      "url": "https://asikoransp.github.io/sac/pricewaterfall/styling.js",
+      "url": "https://asikoransp.github.io/sac/priceWaterfall/styling.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
