@@ -12090,8 +12090,7 @@
                 backgroundColor: this.chartColors.blue,
                 type: 'pie',
                 order: 0,
-                tension: 0.4,
-                yAxisID: 'y2',
+                tension: 0.4
                 // legend: {
                 //   display: true,
                 // }
