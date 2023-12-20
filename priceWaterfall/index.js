@@ -12113,16 +12113,16 @@
     }
 
     updateChartData() {
-      const data = this.getData();
-      this.chart.data.datasets[0].data = data.existingCustomers;
-      // this.chart.data.datasets[1].data = data.newCustomers;
+      const data = this.aggregateData();
+      this.chart.data.datasets[0].data = data.waterfall;
+      this.chart.data.datasets[0].backgroundColor = data.colors;
+      this.chart.data.datasets[0].borderColor = data.colors;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
 
     getData() {
       const dataSet = this.dataSet.data;
-      console.log(dataSet);
 
       const profit = dataSet.map((el) => el.measures_0.raw);
       const employee_cost = dataSet.map((el) => el.measures_1.raw);
@@ -12145,7 +12145,7 @@
       };
     }
 
-    renderChart() {
+    aggregateData() {
       const data = this.getData();
 
       const profit = data.profit[0];
@@ -12157,10 +12157,6 @@
       const production_cost = data.costs.production_cost[0];
       const company_cost = data.costs.company_cost[0];
 
-      const chartElement = this.template
-        .querySelector("canvas")
-        .getContext("2d");
-
       const labels = [
         "Profit",
         "Company Cost",
@@ -12170,14 +12166,6 @@
         "Tax",
         "Total Price",
       ];
-
-      console.log(
-        employee_cost,
-        material_cost,
-        tax_cost,
-        production_cost,
-        company_cost
-      );
 
       const waterfall = [
         profit,
@@ -12211,8 +12199,6 @@
         price,
       ];
 
-      console.log(waterfall);
-
       const colors = [
         this.currentColor.chart.primary,
         this.currentColor.chart.secondary,
@@ -12223,17 +12209,31 @@
         this.currentColor.chart.primary,
       ];
 
+      return {
+        labels,
+        waterfall,
+        colors,
+      };
+    }
+
+    renderChart() {
+      const data = this.aggregateData();
+
+      const chartElement = this.template
+        .querySelector("canvas")
+        .getContext("2d");
+
       this.chart = new Chart(chartElement, {
         type: "bar",
         data: {
-          labels: labels,
+          labels: data.labels,
           datasets: [
             {
               label: "Value",
-              data: waterfall,
-              backgroundColor: colors,
+              data: data.waterfall,
+              backgroundColor: data.colors,
               borderWidth: 0,
-              borderColor: colors,
+              borderColor: data.colors,
               borderRadius: 5,
             },
           ],
