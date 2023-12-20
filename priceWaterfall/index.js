@@ -12169,6 +12169,14 @@
         "Total Price",
       ];
 
+      console.log(
+        employee_cost,
+        material_cost,
+        tax_cost,
+        production_cost,
+        company_cost
+      );
+
       const waterfall = [
         0,
         [profit, company_cost],
@@ -12188,6 +12196,8 @@
         ],
         0,
       ];
+
+      console.log(waterfall);
 
       this.chart = new Chart(chartElement, {
         type: "bar",
