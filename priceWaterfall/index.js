@@ -12122,7 +12122,7 @@
 
     getData() {
       const dataSet = this.dataSet.data;
-      console.log(data);
+      console.log(dataSet);
 
       const labels = dataSet.map((el) => el.dimensions_0.label);
       // const newCustomers = dataSet.map((el) => el.measures_0.raw);
