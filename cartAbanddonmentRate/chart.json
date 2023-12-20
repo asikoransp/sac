@@ -1,0 +1,39 @@
+{
+  "name": "cartabanddonmentrate",
+  "description": "Customer Acquisition Cost",
+  "newInstancePrefix": "cartabanddonmentrate",
+  "eula": "",
+  "vendor": "Daniel Budzynski",
+  "license": "",
+  "id": "cartabanddonmentrate",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "cart-abanddonment-rate",
+      "url": "https://asikoransp.github.io/sac/cartAbanddonmentRate/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {},
+  "methods": {},
+  "events": {},
+  "dataBindings": {
+    "dataSet": {
+      "feeds": [
+        {
+          "id": "dimensions",
+          "description": "Dimensions",
+          "type": "dimension"
+        },
+        {
+          "id": "measures",
+          "description": "Measures",
+          "type": "mainStructureMember"
+        }
+      ]
+    }
+  }
+}
