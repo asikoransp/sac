@@ -12181,12 +12181,19 @@
 
       const waterfall = [
         0,
-        [profit, company_cost],
-        [profit + company_cost, production_cost],
-        [profit + company_cost + production_cost, material_cost],
+        [profit, profit + company_cost],
+        [profit + company_cost, profit + company_cost + production_cost],
+        [
+          profit + company_cost + production_cost,
+          profit + company_cost + production_cost + material_cost,
+        ],
         [
           profit + company_cost + production_cost + material_cost,
-          employee_cost,
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost,
         ],
         [
           profit +
@@ -12194,7 +12201,12 @@
             production_cost +
             material_cost +
             employee_cost,
-          tax_cost,
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost +
+            tax_cost,
         ],
         0,
       ];
