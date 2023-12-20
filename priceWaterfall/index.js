@@ -12124,17 +12124,15 @@
       const dataSet = this.dataSet.data;
       console.log(dataSet);
 
-      const labels = dataSet.map((el) => el.dimensions_0.label);
       const profit = dataSet.map((el) => el.measures_0.raw);
       const employee_cost = dataSet.map((el) => el.measures_1.raw);
-      const material_cost = dataSet.map((el) => el.measures_2.raw);
-      const tax_cost = dataSet.map((el) => el.measures_3.raw);
-      const production_cost = dataSet.map((el) => el.measures_4.raw);
-      const company_cost = dataSet.map((el) => el.measures_5.raw);
-      const price = dataSet.map((el) => el.measures_6.raw);
+      const tax_cost = dataSet.map((el) => el.measures_2.raw);
+      const production_cost = dataSet.map((el) => el.measures_3.raw);
+      const company_cost = dataSet.map((el) => el.measures_4.raw);
+      const price = dataSet.map((el) => el.measures_5.raw);
+      const material_cost = dataSet.map((el) => el.measures_6.raw);
 
       return {
-        labels,
         profit,
         costs: {
           employee_cost,
