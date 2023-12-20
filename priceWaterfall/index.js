@@ -12136,55 +12136,69 @@
       return {
         labels,
         profit,
-        costs: [
+        costs: {
           employee_cost,
           material_cost,
           tax_cost,
           production_cost,
           company_cost,
-        ],
+        },
         price,
       };
     }
 
     renderChart() {
-      const data = this.getData();
+      const { profit, costs, price } = this.getData();
+      const {
+        employee_cost,
+        material_cost,
+        tax_cost,
+        production_cost,
+        company_cost,
+      } = costs;
 
       const chartElement = this.template
         .querySelector("canvas")
         .getContext("2d");
 
-      function calculateSumArray(numbers) {
-        const sumArray = [];
-        let sum = 0;
+      const labels = [
+        "Profit",
+        "Company Cost",
+        "Production Cost",
+        "Material Cost",
+        "Employee Cost",
+        "Tax",
+        "Total Price",
+      ];
 
-        for (let i = 0; i < numbers.length; i++) {
-          sum = sum + numbers[i] * 1;
-          sumArray.push(sum);
-        }
-
-        return sumArray;
-      }
-
-      const maxPerEach = calculateSumArray(data.costs);
-
-      console.log(maxPerEach);
-      const res = [];
-
-      for (let i = 1; i < maxPerEach.length; i++) {
-        res.push([maxPerEach[i] - maxPerEach[i - 1], maxPerEach[i]]);
-      }
-
-      console.log(res);
+      const waterfall = [
+        0,
+        [profit, company_cost],
+        [profit + company_cost, production_cost],
+        [profit + company_cost + production_cost, material_cost],
+        [
+          profit + company_cost + production_cost + material_cost,
+          employee_cost,
+        ],
+        [
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost,
+          tax_cost,
+        ],
+        0,
+      ];
 
       this.chart = new Chart(chartElement, {
         type: "bar",
         data: {
-          labels: data.labels,
+          labels: labels,
           datasets: [
             {
               label: "Value",
-              data: [data.profit, 0, 0, 0, 0, 0, data.price],
+              data: [profit, 0, 0, 0, 0, 0, price],
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
@@ -12192,7 +12206,7 @@
             },
             {
               label: "Value",
-              data: [0, ...res, 0],
+              data: waterfall,
               backgroundColor: this.currentColor.chart.secondary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.secondary,
