@@ -12146,13 +12146,16 @@
     }
 
     renderChart() {
-      const { profit, costs, price } = this.getData();
+      const data = this.getData();
 
-      const employee_cost = Number(costs.employee_cost[0]);
-      const material_cost = Number(costs.material_cost[0]);
-      const tax_cost = Number(costs.tax_cost[0]);
-      const production_cost = Number(costs.production_cost[0]);
-      const company_cost = Number(costs.company_cost[0]);
+      const profit = data.profit[0];
+      const price = data.price[0];
+
+      const employee_cost = data.costs.employee_cost[0];
+      const material_cost = data.costs.material_cost[0];
+      const tax_cost = data.costs.tax_cost[0];
+      const production_cost = data.costs.production_cost[0];
+      const company_cost = data.costs.company_cost[0];
 
       const chartElement = this.template
         .querySelector("canvas")
