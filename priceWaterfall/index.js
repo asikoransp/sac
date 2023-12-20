@@ -12180,7 +12180,7 @@
       );
 
       const waterfall = [
-        0,
+        profit,
         [profit, profit + company_cost],
         [profit + company_cost, profit + company_cost + production_cost],
         [
@@ -12208,10 +12208,20 @@
             employee_cost +
             tax_cost,
         ],
-        0,
+        price,
       ];
 
       console.log(waterfall);
+
+      const colors = [
+        this.currentColor.chart.primary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.primary,
+      ];
 
       this.chart = new Chart(chartElement, {
         type: "bar",
@@ -12220,18 +12230,10 @@
           datasets: [
             {
               label: "Value",
-              data: [profit, 0, 0, 0, 0, 0, price],
-              backgroundColor: this.currentColor.chart.primary,
-              borderWidth: 0,
-              borderColor: this.currentColor.chart.primary,
-              borderRadius: 5,
-            },
-            {
-              label: "Value",
               data: waterfall,
-              backgroundColor: this.currentColor.chart.secondary,
+              backgroundColor: colors,
               borderWidth: 0,
-              borderColor: this.currentColor.chart.secondary,
+              borderColor: colors,
               borderRadius: 5,
             },
           ],
