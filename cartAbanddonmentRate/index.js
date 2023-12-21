@@ -12131,7 +12131,7 @@
       }
     }
     textCenter(val) {
-      this.chart.pluginService.register({
+      Chart.pluginService.register({
         beforeDraw: function(chart) {
           var width = chart.chart.width,
               height = chart.chart.height,
