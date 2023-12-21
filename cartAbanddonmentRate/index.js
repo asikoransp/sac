@@ -11999,7 +11999,7 @@
       }
 
     </style>
-    <script src="https://asikoransp.github.io/sac/cartAbanddonmentRate/chartjs-plugin-doughnutlabel.min.js"></script>
+
     <div class="widget-wrapper">
       <h2>Company Sales Revenue</h2>
       <div class="chart-wrapper">
