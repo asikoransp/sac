@@ -12072,7 +12072,7 @@
         this.chart = new Chart(chartElement, {
           type: "pie",
           data: {
-            labels: ['Realized', 'Abandoned'],
+            labels: ['Realized', 'Abandoned', 'Cart Abandonement Rate'],
             datasets: [
               {
                 label: 'Data',
