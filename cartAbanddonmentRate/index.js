@@ -12051,8 +12051,8 @@
       console.log("dataSet: ",dataSet);
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
-          values.push(el.measures_0.raw);
-          change.push(el.measures_1.raw)              
+          values = [...el.measures_0.raw, ...el.measures_1.raw];
+          // change.push(el.measures_1.raw)              
        });
       return {
         labels,
@@ -12075,7 +12075,7 @@
             datasets: [
               {
                 label: 'Dataset 1',
-                data: [150, 100],
+                data: this.data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 type: 'pie',
