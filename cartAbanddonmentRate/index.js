@@ -12078,7 +12078,7 @@
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(`${input1}`, xCoor, yCoor);
+            ctx.fillText(`dupa`, xCoor, yCoor);
             ctx.restore();
           },
       }
