@@ -12015,21 +12015,7 @@
                     blue: "rgba(0, 82, 255, 0.6)"
                   };
                   
-                  myPlugin = {
-                    id: 'myPlugin',
-                    beforeDraw: (chart) => {
-                      const ctx = chart.ctx;
-                      const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-                      const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
-                      ctx.save();
-                      ctx.font = 'bolder 24px';
-                      ctx.fillStyle = 'red';
-                      ctx.textAlign = 'center';
-                      ctx.textBaseline = 'middle';
-                      ctx.fillText(`${input1}`, xCoor, yCoor);
-                      ctx.restore();
-                    },
-                }
+
     constructor() {
       super();
       this.init();
@@ -12079,8 +12065,22 @@
     renderChart() {
       if (this.chart) return;
       if (this.dataSet && this.dataSet.data) {
-        const data = this.getData();
-
+        const data = this.getData(),
+        myPlugin = {
+          id: 'myPlugin',
+          beforeDraw: (chart) => {
+            const ctx = chart.ctx;
+            const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+            const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+            ctx.save();
+            ctx.font = 'bolder 24px';
+            ctx.fillStyle = 'red';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(`${input1}`, xCoor, yCoor);
+            ctx.restore();
+          },
+      }
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
@@ -12106,7 +12106,7 @@
               legend: {
                 position: 'top',
               },
-              this.myPlugin
+              myPlugin
             },
           },
         });
