@@ -12085,7 +12085,7 @@
               //   // }
               // },
               {
-                
+                label: 'Dataset 1',
                 data: [150, 100],
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
