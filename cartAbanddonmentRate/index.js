@@ -12084,7 +12084,7 @@
               {
                 label: 'Cart Abandonement Rate',
                 data: data.change,
-                borderColor: this.chartColors.purple,
+                // borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
                 type: 'pie',
               },
