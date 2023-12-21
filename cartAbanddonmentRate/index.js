@@ -11999,7 +11999,6 @@
       }
 
     </style>
-    <script type="text/javascript" src="https://asikoransp.github.io/sac/cartAbanddonmentRate/chartjs-plugin-doughnutlabel.min.js"></script>
     <div class="widget-wrapper">
       <h2>Company Sales Revenue</h2>
       <div class="chart-wrapper">
@@ -12079,21 +12078,11 @@
                 data: data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
-                // type: 'pie',
               },
-              // {
-              //   label: 'Cart Abandonement Rate',
-              //   data: data.change,
-              //   // borderColor: this.chartColors.purple,
-              //   backgroundColor: this.chartColors.purple,
-              //   // type: 'pie',
-              // },
             ]
           },
           options: {
             responsive: true,
-            // maintainAspectRatio: false,
-            // indexAxis: "x",
             plugins: {
               title: {
                 display: true,
@@ -12101,56 +12090,14 @@
               legend: {
                 position: 'top',
               },
-              doughnutlabel: {
-                labels: [
-                  {
-                    text: "getTotal",
-                    font: {
-                      size: '60',
-                      family: 'Arial, Helvetica, sans-serif',
-                      style: 'italic',
-                      weight: 'bold'
-                    },
-                    color: '#bc2c1a'
-                  }
-                ]
-              }
             },
-            // scales: {
-            //   y: {
-            //     title: {
-            //       display: false
-            //     }
-            //   }
-            // }
           },
         });
-        // this.textCenter("tst");
 
 
       }
     }
-    // textCenter(val) {
-    //   Chart.pluginService.register({
-    //     beforeDraw: function(chart) {
-    //       var width = chart.chart.width,
-    //           height = chart.chart.height,
-    //           ctx = chart.chart.ctx;
-    
-    //       ctx.restore();
-    //       var fontSize = (height / 114).toFixed(2);
-    //       ctx.font = fontSize + "em sans-serif";
-    //       ctx.textBaseline = "middle";
-    
-    //       var text = val+"%",
-    //           textX = Math.round((width - ctx.measureText(text).width) / 2),
-    //           textY = height / 2;
-    
-    //       ctx.fillText(text, textX, textY);
-    //       ctx.save();
-    //     }
-    //   });
-    // }
+
   }
 
   customElements.define("cart-abanddonment-rate", PerformanceHelp);
