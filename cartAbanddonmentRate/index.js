@@ -12071,7 +12071,7 @@
         this.chart = new Chart(chartElement, {
           type: "bar",
           data: {
-            labels: ['Realized', 'Abandoned'],
+            
             datasets: [
               // {
               //   label: 'Acquired Customers',
@@ -12085,7 +12085,7 @@
               //   // }
               // },
               {
-                label: 'Customer Aquisition Cost',
+                labels: ['Realized', 'Abandoned'],
                 data: [150, 100],
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
