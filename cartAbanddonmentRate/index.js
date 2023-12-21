@@ -12036,8 +12036,8 @@
       if (!this.dataSet || !this.dataSet.data) return;
 
       const data = this.getData();
-      this.chart.data.datasets[0].data = data.values;//data.values;
-      // this.chart.data.datasets[1].data = data.change;
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.datasets[1].data = data.change;
       // this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12053,7 +12053,7 @@
         labels.push(el.dimensions_0.label.split("_").join(" "));
           values.push(el.measures_0.raw);
           values.push(el.measures_1.raw);
-          // change.push(el.measures_1.raw)              
+          change.push(el.measures_2.raw)              
        });
       return {
         labels,
@@ -12075,10 +12075,17 @@
             labels: ['Realized', 'Abandoned'],
             datasets: [
               {
-                label: 'Dataset 1',
+                label: 'Data',
                 data: data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
+                type: 'pie',
+              },
+              {
+                label: 'Cart Abandonement Rate',
+                data: data.change,
+                borderColor: this.chartColors.purple,
+                backgroundColor: this.chartColors.purple,
                 type: 'pie',
               },
             ]
