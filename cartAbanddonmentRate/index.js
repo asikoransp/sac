@@ -12085,9 +12085,10 @@
               // },
               {
                 label: 'Customer Aquisition Cost',
+                labels: ['Realized', 'Abandoned'],
                 data: [150, 100],
-                borderColor: this.chartColors.blue,
-                backgroundColor: ['red','blue'],
+                borderColor: [this.chartColors.pink,this.chartColors.blue],
+                backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 type: 'pie',
                 order: 0,
                 tension: 0.4
