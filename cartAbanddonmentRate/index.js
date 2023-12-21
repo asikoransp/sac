@@ -12081,13 +12081,13 @@
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 // type: 'pie',
               },
-              {
-                label: 'Cart Abandonement Rate',
-                data: data.change,
-                // borderColor: this.chartColors.purple,
-                backgroundColor: this.chartColors.purple,
-                // type: 'pie',
-              },
+              // {
+              //   label: 'Cart Abandonement Rate',
+              //   data: data.change,
+              //   // borderColor: this.chartColors.purple,
+              //   backgroundColor: this.chartColors.purple,
+              //   // type: 'pie',
+              // },
             ]
           },
           options: {
