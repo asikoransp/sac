@@ -12070,7 +12070,7 @@
           .querySelector("canvas")
           .getContext("2d");
         this.chart = new Chart(chartElement, {
-          type: "bar",
+          type: "pie",
           data: {
             labels: ['Realized', 'Abandoned'],
             datasets: [
@@ -12079,14 +12079,14 @@
                 data: data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
-                type: 'pie',
+                // type: 'pie',
               },
               {
                 label: 'Cart Abandonement Rate',
                 data: data.change,
                 // borderColor: this.chartColors.purple,
                 backgroundColor: this.chartColors.purple,
-                type: 'pie',
+                // type: 'pie',
               },
             ]
           },
