@@ -12069,6 +12069,7 @@
         myPlugin = {
           id: 'myPlugin',
           beforeDraw: (chart) => {
+            console.log("hello from the myPlugin");
             const ctx = chart.ctx;
             const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
             const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
