@@ -12113,30 +12113,111 @@
     }
 
     updateChartData() {
-      const data = this.getData();
-      this.chart.data.datasets[0].data = data.existingCustomers;
-      // this.chart.data.datasets[1].data = data.newCustomers;
+      const data = this.aggregateData();
+      this.chart.data.datasets[0].data = data.waterfall;
+      this.chart.data.datasets[0].backgroundColor = data.colors;
+      this.chart.data.datasets[0].borderColor = data.colors;
       this.chart.data.labels = data.labels;
       this.chart.update();
     }
 
     getData() {
       const dataSet = this.dataSet.data;
-      console.log(dataSet);
 
-      const labels = dataSet.map((el) => el.dimensions_0.label);
-      // const newCustomers = dataSet.map((el) => el.measures_0.raw);
-      const existingCustomers = dataSet.map((el) => el.measures_1.raw);
+      const profit = dataSet.map((el) => el.measures_0.raw);
+      const employee_cost = dataSet.map((el) => el.measures_1.raw);
+      const tax_cost = dataSet.map((el) => el.measures_2.raw);
+      const production_cost = dataSet.map((el) => el.measures_3.raw);
+      const company_cost = dataSet.map((el) => el.measures_4.raw);
+      const price = dataSet.map((el) => el.measures_5.raw);
+      const material_cost = dataSet.map((el) => el.measures_6.raw);
+
+      return {
+        profit,
+        costs: {
+          employee_cost,
+          material_cost,
+          tax_cost,
+          production_cost,
+          company_cost,
+        },
+        price,
+      };
+    }
+
+    aggregateData() {
+      const data = this.getData();
+
+      const profit = data.profit[0];
+      const price = data.price[0];
+
+      const employee_cost = data.costs.employee_cost[0];
+      const material_cost = data.costs.material_cost[0];
+      const tax_cost = data.costs.tax_cost[0];
+      const production_cost = data.costs.production_cost[0];
+      const company_cost = data.costs.company_cost[0];
+
+      const labels = [
+        "Profit",
+        "Company Cost",
+        "Production Cost",
+        "Material Cost",
+        "Employee Cost",
+        "Tax",
+        "Total Price",
+      ];
+
+      const waterfall = [
+        profit,
+        [profit, profit + company_cost],
+        [profit + company_cost, profit + company_cost + production_cost],
+        [
+          profit + company_cost + production_cost,
+          profit + company_cost + production_cost + material_cost,
+        ],
+        [
+          profit + company_cost + production_cost + material_cost,
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost,
+        ],
+        [
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost,
+          profit +
+            company_cost +
+            production_cost +
+            material_cost +
+            employee_cost +
+            tax_cost,
+        ],
+        price,
+      ];
+
+      const colors = [
+        this.currentColor.chart.primary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.secondary,
+        this.currentColor.chart.primary,
+      ];
 
       return {
         labels,
-        // newCustomers,
-        existingCustomers,
+        waterfall,
+        colors,
       };
     }
 
     renderChart() {
-      const data = this.getData();
+      const data = this.aggregateData();
 
       const chartElement = this.template
         .querySelector("canvas")
@@ -12149,20 +12230,12 @@
           datasets: [
             {
               label: "Value",
-              data: data.existingCustomers,
-              backgroundColor: this.currentColor.chart.primary,
+              data: data.waterfall,
+              backgroundColor: data.colors,
               borderWidth: 0,
-              borderColor: this.currentColor.chart.primary,
+              borderColor: data.colors,
               borderRadius: 5,
             },
-            // {
-            //   label: "Value",
-            //   data: data.newCustomers,
-            //   backgroundColor: this.currentColor.chart.secondary,
-            //   borderWidth: 0,
-            //   borderColor: this.currentColor.chart.secondary,
-            //   borderRadius: 5,
-            // },
           ],
         },
         options: {
