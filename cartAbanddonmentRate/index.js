@@ -12070,7 +12070,7 @@
           .querySelector("canvas")
           .getContext("2d");
         this.chart = new Chart(chartElement, {
-          type: "pie",
+          type: "doughnut",
           data: {
             labels: ['Realized', 'Abandoned'],
             datasets: [
@@ -12082,7 +12082,6 @@
                 // type: 'pie',
               },
               {
-                labels: ['Cart Abandonement Rate'],
                 label: 'Cart Abandonement Rate',
                 data: data.change,
                 // borderColor: this.chartColors.purple,
@@ -12102,6 +12101,20 @@
               legend: {
                 position: 'top',
               },
+              doughnutlabel: {
+                labels: [
+                  {
+                    text: "getTotal",
+                    font: {
+                      size: '60',
+                      family: 'Arial, Helvetica, sans-serif',
+                      style: 'italic',
+                      weight: 'bold'
+                    },
+                    color: '#bc2c1a'
+                  }
+                ]
+              }
             },
             // scales: {
             //   y: {
