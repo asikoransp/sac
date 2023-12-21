@@ -12036,9 +12036,9 @@
       if (!this.dataSet || !this.dataSet.data) return;
 
       const data = this.getData();
-      this.chart.data.datasets[0].data = data.values;
-      this.chart.data.datasets[1].data = data.change;
-      this.chart.data.labels = data.labels;
+      this.chart.data.datasets[0].data = [150, 100];//data.values;
+      // this.chart.data.datasets[1].data = data.change;
+      // this.chart.data.labels = data.labels;
       this.chart.update();
     }
 
@@ -12048,6 +12048,7 @@
       let labels = [],
       values = [],
       change = [];
+      console.log("dataSet: ",dataSet);
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
           values.push(el.measures_0.raw);
@@ -12090,8 +12091,8 @@
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 type: 'pie',
-                order: 0,
-                tension: 0.4
+                // order: 0,
+                // tension: 0.4
                 // legend: {
                 //   display: true,
                 // }
