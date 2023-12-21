@@ -12076,7 +12076,7 @@
             datasets: [
               {
                 label: 'Dataset 1',
-                data: this.data.values,
+                data: data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 type: 'pie',
