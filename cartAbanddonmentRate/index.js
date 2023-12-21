@@ -12051,7 +12051,8 @@
       console.log("dataSet: ",dataSet);
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
-          values = [...el.measures_0.raw, ...el.measures_1.raw];
+          values.push(el.measures_0.raw);
+          values.push(el.measures_1.raw);
           // change.push(el.measures_1.raw)              
        });
       return {
