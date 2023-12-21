@@ -12073,28 +12073,12 @@
           data: {
             labels: ['Realized', 'Abandoned'],
             datasets: [
-              // {
-              //   label: 'Acquired Customers',
-              //   data: data.values,
-              //   borderColor: this.chartColors.purple,
-              //   backgroundColor: this.chartColors.purple,
-              //   order: 1,
-              //   borderRadius: 6,
-              //   // legend: {
-              //   //   display: true,
-              //   // }
-              // },
               {
                 label: 'Dataset 1',
                 data: [150, 100],
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
                 type: 'pie',
-                // order: 0,
-                // tension: 0.4
-                // legend: {
-                //   display: true,
-                // }
               },
             ]
           },
@@ -12104,10 +12088,10 @@
             indexAxis: "x",
             plugins: {
               title: {
-                // display: false,
+                display: true,
               },
               legend: {
-                // display: false,
+                position: 'top',
               },
             },
             scales: {
