@@ -12036,7 +12036,7 @@
       if (!this.dataSet || !this.dataSet.data) return;
 
       const data = this.getData();
-      this.chart.data.datasets[0].data = [150, 100];//data.values;
+      this.chart.data.datasets[0].data = data.values;//data.values;
       // this.chart.data.datasets[1].data = data.change;
       // this.chart.data.labels = data.labels;
       this.chart.update();
