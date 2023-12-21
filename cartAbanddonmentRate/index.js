@@ -12092,8 +12092,8 @@
           },
           options: {
             responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: "x",
+            // maintainAspectRatio: false,
+            // indexAxis: "x",
             plugins: {
               title: {
                 display: true,
@@ -12102,13 +12102,13 @@
                 position: 'top',
               },
             },
-            scales: {
-              y: {
-                title: {
-                  display: false
-                }
-              }
-            }
+            // scales: {
+            //   y: {
+            //     title: {
+            //       display: false
+            //     }
+            //   }
+            // }
           },
         });
       }
