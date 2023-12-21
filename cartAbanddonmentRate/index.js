@@ -12072,7 +12072,7 @@
         this.chart = new Chart(chartElement, {
           type: "pie",
           data: {
-            labels: ['Realized', 'Abandoned', 'Cart Abandonement Rate'],
+            labels: ['Realized', 'Abandoned'],
             datasets: [
               {
                 label: 'Data',
@@ -12082,6 +12082,7 @@
                 // type: 'pie',
               },
               {
+                labels: ['Cart Abandonement Rate'],
                 label: 'Cart Abandonement Rate',
                 data: data.change,
                 // borderColor: this.chartColors.purple,
