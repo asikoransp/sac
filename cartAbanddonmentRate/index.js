@@ -12075,8 +12075,8 @@
             const ctx = chart.ctx;
             const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
             const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
-            const value = chart.config.data.datasets[1].data;
-            console.log('value', value);
+            // const value = chart.config.data.datasets[1].data;
+            console.log('chart', chart);
             ctx.save();
             ctx.font = 'bolder 50px';
             ctx.fillStyle = 'red';
