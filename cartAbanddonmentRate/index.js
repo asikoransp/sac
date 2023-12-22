@@ -12110,14 +12110,7 @@
             ]
           },
           options: {
-            layout: {
-              padding: {
-                  left: 50,
-                  right: 50,
-                  top: 50,
-                  bottom: 50
-              },
-            },
+            cutout: [100, 95, 90], layout: { padding: 1 },
             responsive: true,
             plugins: {
               title: {
