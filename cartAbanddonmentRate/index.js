@@ -12109,10 +12109,12 @@
               },
               legend: {
                 position: 'top',
-              },
-              myPlugin
+              }
             },
           },
+          plugins: {
+            myPlugin
+          }
         });
 
 
