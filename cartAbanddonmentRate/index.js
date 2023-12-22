@@ -12120,7 +12120,7 @@
               }
             },
           },
-          plugins: [doughnutCenterLabel]
+          // plugins: [doughnutCenterLabel]
         });
 
 
