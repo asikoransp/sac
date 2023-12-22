@@ -12110,8 +12110,8 @@
             ]
           },
           options: {
-            cutout: [100, 95, 90], layout: { padding: 20 },
-            responsive: true,
+            // cutout: [100, 95, 90], layout: { padding: 20 },
+            // responsive: true,
             plugins: {
               title: {
                 display: true,
