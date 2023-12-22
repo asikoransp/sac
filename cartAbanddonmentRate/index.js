@@ -12079,7 +12079,7 @@
             console.log('plugin chart', chart);
             console.log('plugin data', data);
             ctx.save();
-            ctx.font = 'bolder 25px';
+            ctx.font = 'bolder 20px';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -12112,7 +12112,7 @@
           options: {
             // cutout: [100, 95, 90], layout: { padding: 20 },
             responsive: true,            
-            maintainAspectRatio: false,
+            // maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,
