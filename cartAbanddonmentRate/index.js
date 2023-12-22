@@ -11999,7 +11999,6 @@
       }
 
     </style>
-
     <div class="widget-wrapper">
       <h2>Company Sales Revenue</h2>
       <div class="chart-wrapper">
@@ -12015,6 +12014,7 @@
                     pink: "rgba(255, 70, 118, 0.5)",
                     blue: "rgba(0, 82, 255, 0.6)"
                   };
+                  
 
     constructor() {
       super();
@@ -12037,8 +12037,8 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      this.chart.data.datasets[1].data = data.change;
-      this.chart.data.labels = data.labels;
+      // this.chart.data.datasets[1].data = data.change;
+      // this.chart.data.labels = data.labels;
       this.chart.update();
     }
 
@@ -12048,10 +12048,12 @@
       let labels = [],
       values = [],
       change = [];
+      console.log("dataSet: ",dataSet);
       dataSet.forEach((el) => {
         labels.push(el.dimensions_0.label.split("_").join(" "));
           values.push(el.measures_0.raw);
-          change.push(el.measures_1.raw)              
+          values.push(el.measures_1.raw);
+          change.push(el.measures_2.raw)              
        });
       return {
         labels,
@@ -12063,77 +12065,57 @@
     renderChart() {
       if (this.chart) return;
       if (this.dataSet && this.dataSet.data) {
-        const data = this.getData();
+        const data = this.getData(),
+        myPlugin = {
+          id: 'myPlugin',
+          beforeDraw: (chart) => {
+            console.log("hello from the myPlugin");
+            const ctx = chart.ctx;
+            const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+            const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+            ctx.save();
+            ctx.font = 'bolder 24px';
+            ctx.fillStyle = 'red';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(`dupa`, xCoor, yCoor);
+            ctx.restore();
+          },
+      }
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
         this.chart = new Chart(chartElement, {
-          type: "bar",
+          type: "doughnut",
           data: {
-            labels: data.labels,
+            labels: ['Realized', 'Abandoned'],
             datasets: [
-              // {
-              //   label: 'Acquired Customers',
-              //   data: data.values,
-              //   borderColor: this.chartColors.purple,
-              //   backgroundColor: this.chartColors.purple,
-              //   order: 1,
-              //   borderRadius: 6,
-              //   // legend: {
-              //   //   display: true,
-              //   // }
-              // },
               {
-                label: 'Customer Aquisition Cost',
-                data: [150, 100],
-                borderColor: this.chartColors.blue,
-                backgroundColor: this.chartColors.blue,
-                type: 'pie',
-                order: 0,
-                tension: 0.4
-                // legend: {
-                //   display: true,
-                // }
+                label: 'Data',
+                data: data.values,
+                borderColor: [this.chartColors.pink,this.chartColors.blue],
+                backgroundColor: [this.chartColors.pink,this.chartColors.blue],
               },
-              
             ]
           },
           options: {
             responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: "x",
             plugins: {
               title: {
-                // display: false,
+                display: true,
               },
               legend: {
-                // display: false,
+                position: 'top',
               },
+              myPlugin
             },
-            scales: {
-              y: {
-                title: {
-                  display: true,
-                  text: 'Number of Customers Aquired'
-                }
-              },
-              y2: {
-                title: {
-                  display: true,
-                  text: 'Customer Aquisition Cost'
-                },
-                position: 'right',
-                suggestedMin: 0,
-                suggestedMax: 50,
-                grid: {
-                  display: false
-                }
-              }
-            }
           },
         });
+
+
       }
     }
+
   }
 
   customElements.define("cart-abanddonment-rate", PerformanceHelp);
