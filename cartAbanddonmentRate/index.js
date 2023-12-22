@@ -12111,7 +12111,8 @@
           },
           options: {
             // cutout: [100, 95, 90], layout: { padding: 20 },
-            // responsive: true,
+            responsive: true,            
+            maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,
