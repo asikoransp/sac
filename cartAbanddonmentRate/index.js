@@ -12110,7 +12110,7 @@
             ]
           },
           options: {
-            layout: { padding: 20 },
+            layout: { paddingRight: 20, paddingBottom: 25 },
             responsive: true,            
             // maintainAspectRatio: false,
             plugins: {
