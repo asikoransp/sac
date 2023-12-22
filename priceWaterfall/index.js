@@ -12167,7 +12167,7 @@
         "Total Price",
       ];
 
-      const waterfall = this.calculateCosts(
+      const chartData = this.aggregateChartData(
         profit,
         company_cost,
         production_cost,
@@ -12177,52 +12177,10 @@
         price
       );
 
-      // const waterfall = [
-      //   profit,
-      //   [profit, profit + company_cost],
-      //   [profit + company_cost, profit + company_cost + production_cost],
-      //   [
-      //     profit + company_cost + production_cost,
-      //     profit + company_cost + production_cost + material_cost,
-      //   ],
-      //   [
-      //     profit + company_cost + production_cost + material_cost,
-      //     profit +
-      //       company_cost +
-      //       production_cost +
-      //       material_cost +
-      //       employee_cost,
-      //   ],
-      //   [
-      //     profit +
-      //       company_cost +
-      //       production_cost +
-      //       material_cost +
-      //       employee_cost,
-      //     profit +
-      //       company_cost +
-      //       production_cost +
-      //       material_cost +
-      //       employee_cost +
-      //       tax_cost,
-      //   ],
-      //   price,
-      // ];
-
-      const colors = [
-        this.currentColor.chart.primary,
-        this.currentColor.chart.secondary,
-        this.currentColor.chart.secondary,
-        this.currentColor.chart.secondary,
-        this.currentColor.chart.secondary,
-        this.currentColor.chart.secondary,
-        this.currentColor.chart.primary,
-      ];
-
       return {
         labels,
-        waterfall,
-        colors,
+        waterfall: chartData.costs,
+        colors: chartData.colors,
       };
     }
 
@@ -12282,7 +12240,7 @@
       });
     }
 
-    calculateCosts(
+    aggregateChartData(
       profit,
       company_cost,
       production_cost,
@@ -12293,6 +12251,7 @@
     ) {
       let total = profit;
       let costs = [profit];
+      let colors = [];
 
       const additionalCosts = [
         company_cost,
@@ -12305,11 +12264,17 @@
       additionalCosts.forEach((cost) => {
         costs.push([total, total + cost]);
         total += cost;
+        colors.push(this.currentColor.chart.secondary);
       });
 
       costs.push(price);
+      colors.push(this.currentColor.chart.primary);
+      colors.unshift(this.currentColor.chart.primary);
 
-      return costs;
+      return {
+        costs,
+        colors,
+      };
     }
 
     adjustStyles() {
