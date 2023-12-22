@@ -12072,11 +12072,12 @@
           id: 'doughnutCenterLabel',
           beforeDraw: (chart) => {
             console.log("hello from the doughnutCenterLabel");
-            const ctx = chart.ctx;
+            const {ctx, data} = chart;
             const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
             const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
             // const value = chart.config.data.datasets[1].data;
-            console.log('chart', chart);
+            console.log('plugin chart', chart);
+            console.log('plugin data', data);
             ctx.save();
             ctx.font = 'bolder 50px';
             ctx.fillStyle = 'red';
