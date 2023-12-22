@@ -12037,7 +12037,7 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      // this.chart.data.datasets[1].data = data.change;
+      this.chart.data.datasets[1].data = data.change;
       // this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12083,7 +12083,7 @@
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(`dupa`, xCoor, yCoor);
+            ctx.fillText(`dupa: ${data.datasets[1].data[0]}`, xCoor, yCoor);
             ctx.restore();
           },
       }
@@ -12101,6 +12101,11 @@
                 data: data.values,
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
+              },
+              {
+                label: 'CAR',
+                data: data.change,
+                hidden: true,
               },
             ]
           },
