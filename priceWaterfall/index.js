@@ -12167,37 +12167,47 @@
         "Total Price",
       ];
 
-      const waterfall = [
+      const waterfall = this.calculateCosts(
         profit,
-        [profit, profit + company_cost],
-        [profit + company_cost, profit + company_cost + production_cost],
-        [
-          profit + company_cost + production_cost,
-          profit + company_cost + production_cost + material_cost,
-        ],
-        [
-          profit + company_cost + production_cost + material_cost,
-          profit +
-            company_cost +
-            production_cost +
-            material_cost +
-            employee_cost,
-        ],
-        [
-          profit +
-            company_cost +
-            production_cost +
-            material_cost +
-            employee_cost,
-          profit +
-            company_cost +
-            production_cost +
-            material_cost +
-            employee_cost +
-            tax_cost,
-        ],
-        price,
-      ];
+        company_cost,
+        production_cost,
+        material_cost,
+        employee_cost,
+        tax_cost,
+        price
+      );
+
+      // const waterfall = [
+      //   profit,
+      //   [profit, profit + company_cost],
+      //   [profit + company_cost, profit + company_cost + production_cost],
+      //   [
+      //     profit + company_cost + production_cost,
+      //     profit + company_cost + production_cost + material_cost,
+      //   ],
+      //   [
+      //     profit + company_cost + production_cost + material_cost,
+      //     profit +
+      //       company_cost +
+      //       production_cost +
+      //       material_cost +
+      //       employee_cost,
+      //   ],
+      //   [
+      //     profit +
+      //       company_cost +
+      //       production_cost +
+      //       material_cost +
+      //       employee_cost,
+      //     profit +
+      //       company_cost +
+      //       production_cost +
+      //       material_cost +
+      //       employee_cost +
+      //       tax_cost,
+      //   ],
+      //   price,
+      // ];
 
       const colors = [
         this.currentColor.chart.primary,
@@ -12270,6 +12280,36 @@
           },
         },
       });
+    }
+
+    calculateCosts(
+      profit,
+      company_cost,
+      production_cost,
+      material_cost,
+      employee_cost,
+      tax_cost,
+      price
+    ) {
+      let total = profit;
+      let costs = [profit];
+
+      const additionalCosts = [
+        company_cost,
+        production_cost,
+        material_cost,
+        employee_cost,
+        tax_cost,
+      ];
+
+      additionalCosts.forEach((cost) => {
+        costs.push([total, total + cost]);
+        total += cost;
+      });
+
+      costs.push(price);
+
+      return costs;
     }
 
     adjustStyles() {
