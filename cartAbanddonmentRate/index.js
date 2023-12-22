@@ -12068,15 +12068,17 @@
         
         console.log("before myPlugin");
         const data = this.getData(),        
-        myPlugin = {
-          id: 'myPlugin',
+        doughnutCenterLabel = {
+          id: 'doughnutCenterLabel',
           beforeDraw: (chart) => {
-            console.log("hello from the myPlugin");
+            console.log("hello from the doughnutCenterLabel");
             const ctx = chart.ctx;
             const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
             const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+            const value = chart.config.data.datasets[1].data;
+            console.log('value', value);
             ctx.save();
-            ctx.font = 'bolder 24px';
+            ctx.font = 'bolder 50px';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -12112,14 +12114,7 @@
               }
             },
           },
-          plugins: [myPlugin,
-            {
-              beforeInit: function(chart, options) {
-                  console.log('yolo');
-              }
-          }
-          ]
-          
+          plugins: [doughnutCenterLabel]
         });
 
 
