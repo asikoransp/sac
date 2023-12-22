@@ -12065,7 +12065,9 @@
     renderChart() {
       if (this.chart) return;
       if (this.dataSet && this.dataSet.data) {
-        const data = this.getData(),
+        
+        console.log("before myPlugin");
+        const data = this.getData(),        
         myPlugin = {
           id: 'myPlugin',
           beforeDraw: (chart) => {
@@ -12082,6 +12084,7 @@
             ctx.restore();
           },
       }
+      console.log("after myPlugin");
         const chartElement = this.template
           .querySelector("canvas")
           .getContext("2d");
