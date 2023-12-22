@@ -12079,7 +12079,7 @@
             console.log('plugin chart', chart);
             console.log('plugin data', data);
             ctx.save();
-            // ctx.font = 'bolder 250px';
+            ctx.font = 'bolder 30px';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
