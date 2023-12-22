@@ -12079,11 +12079,11 @@
             console.log('plugin chart', chart);
             console.log('plugin data', data);
             ctx.save();
-            ctx.font = 'bolder 50px';
+            ctx.font = 'bold 50px';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(`dupa: ${data.datasets[1].data[0]}`, xCoor, yCoor);
+            ctx.fillText(`CAR: ${data.datasets[1].data[0]}`, xCoor, yCoor);
             ctx.restore();
           },
       }
