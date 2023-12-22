@@ -12112,9 +12112,14 @@
               }
             },
           },
-          plugins: {
-            myPlugin
+          plugins: [myPlugin,
+            {
+              beforeInit: function(chart, options) {
+                  console.log('yolo');
+              }
           }
+          ]
+          
         });
 
 
