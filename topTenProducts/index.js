@@ -11990,11 +11990,6 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <script type="module" src="https://asikoransp.github.io/sac/common.js">
-      import { testLogXD } from '../common.js';
-      testLogXD();
-    </script>
-
     <style>
       .widget__wrapper {
         padding: 0 1rem 1rem 1rem;
@@ -12108,8 +12103,6 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
-
-      testLogXD();
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
