@@ -12209,22 +12209,16 @@
           !document.webkitFullscreenElement &&
           !document.msFullscreenElement
         ) {
-          chartWrapper.setAttribute(
-            "style",
-            "height: 370px !important;"
-          );
+          chartWrapper.setAttribute("style", "height: 370px !important;");
           widgetWrapper.setAttribute(
             "style",
-            "position: initial;"
+            "position: initial; width: 100%;"
           );
         } else {
-          chartWrapper.setAttribute(
-            "style",
-            "height: 800px !important;"
-          );
+          chartWrapper.setAttribute("style", "height: 800px !important;");
           widgetWrapper.setAttribute(
             "style",
-            "position: absolute; top: 50%; transform: translateY(-50%);"
+            "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
           );
         }
       });
