@@ -12013,7 +12013,7 @@
 
       .chart__wrapper {
         display: block !important;
-        height: 600px !important;
+        height: 370px !important;
       }
     </style>
 
@@ -12206,17 +12206,17 @@
           !document.msFullscreenElement
         ) {
           this.template.querySelector(".chart__wrapper").style.height =
-            "370rem !important";
+            "370px !important";
           console.log("370");
         } else {
           this.template.querySelector(".chart__wrapper").style.height =
-            "auto !important";
+            "800px !important";
           console.log("auto");
         }
       });
 
       button.addEventListener("click", (event) => {
-        const widget = document.querySelector("average-order-value");
+        const widget = document.querySelector("top-ten-products");
         widget.requestFullscreen();
       });
     }
