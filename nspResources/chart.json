@@ -1,11 +1,11 @@
 {
-  "name": "nsp-resources",
-  "description": "nsp-resources",
-  "newInstancePrefix": "nsp-resources",
+  "name": "nspresources",
+  "description": "NSP Resources",
+  "newInstancePrefix": "nspresources",
   "eula": "",
   "vendor": "Adrian Sikora",
   "license": "",
-  "id": "nsp-resources",
+  "id": "nspresources",
   "version": "1.0.0",
   "icon": "",
   "webcomponents": [
