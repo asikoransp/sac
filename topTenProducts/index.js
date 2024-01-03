@@ -12019,11 +12019,21 @@
       <div class="widget__header">
         <h2 class="widget__title">Average Rebate Rate</h2>
         <button class="full-screen__btn" id="full-screen-mode-btn">
-          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg style="display: block;" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 9V5.6C4 5.03995 4 4.75992 4.10899 4.54601C4.20487 4.35785 4.35785 4.20487 4.54601 4.109C4.75992 4 5.03995 4 5.6 4L9 4M4 15V18.4C4 18.9601 4 19.2401 4.10899 19.454C4.20487 19.6422 4.35785 19.7951 4.54601 19.891C4.75992 20 5.03995 20 5.6 20L9 20M15 4H18.4C18.9601 4 19.2401 4 19.454 4.10899C19.6422 4.20487 19.7951 4.35785 19.891 4.54601C20 4.75992 20 5.03995 20 5.6V9M20 15V18.4C20 18.9601 20 19.2401 19.891 19.454C19.7951 19.6422 19.6422 19.7951 19.454 19.891C19.2401 20 18.9601 20 18.4 20H15" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M387.887,1203.04 L381.326,1203.04 L392.014,1192.4 L390.614,1191.01 L379.938,1201.64 L379.969,1195.16 C379.969,1194.61 379.526,1194.17 378.979,1194.17 C378.433,1194.17 377.989,1194.61 377.989,1195.16 L377.989,1204.03 C377.989,1204.32 378.111,1204.56 378.302,1204.72 C378.481,1204.9 378.73,1205.01 379.008,1205.01 L387.887,1205.01 C388.434,1205.01 388.876,1204.57 388.876,1204.03 C388.876,1203.48 388.434,1203.04 387.887,1203.04 L387.887,1203.04 Z M372.992,1208.99 L364.113,1208.99 C363.566,1208.99 363.124,1209.43 363.124,1209.97 C363.124,1210.52 363.566,1210.96 364.113,1210.96 L370.674,1210.96 L359.986,1221.6 L361.386,1222.99 L372.063,1212.36 L372.031,1218.84 C372.031,1219.39 372.474,1219.83 373.021,1219.83 C373.567,1219.83 374.011,1219.39 374.011,1218.84 L374.011,1209.97 C374.011,1209.68 373.889,1209.44 373.697,1209.28 C373.519,1209.1 373.27,1208.99 372.992,1208.99 L372.992,1208.99 Z" id="collapse" sketch:type="MSShapeGroup">
+          <svg style="display: none;" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="invisible_box" data-name="invisible box">
+                <rect width="48" height="48" fill="none"/>
+              </g>
+              <g id="icons_Q2" data-name="icons Q2">
+                <g>
+                  <path d="M8,26a2,2,0,0,0-2,2.3A2.1,2.1,0,0,0,8.1,30h7.1L4.7,40.5a2,2,0,0,0-.2,2.8A1.8,1.8,0,0,0,6,44a2,2,0,0,0,1.4-.6L18,32.8v7.1A2.1,2.1,0,0,0,19.7,42,2,2,0,0,0,22,40V28a2,2,0,0,0-2-2Z"/>
+                  <path d="M43.7,4.8a2,2,0,0,0-3.1-.2L30,15.2V8.1A2.1,2.1,0,0,0,28.3,6,2,2,0,0,0,26,8V20a2,2,0,0,0,2,2H39.9A2.1,2.1,0,0,0,42,20.3,2,2,0,0,0,40,18H32.8L43.4,7.5A2.3,2.3,0,0,0,43.7,4.8Z"/>
+                </g>
+              </g>
+            </g>  
           </svg>
           </button>
       </div>
@@ -12211,6 +12221,8 @@
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
         const widgetWrapper =
           widget.shadowRoot.querySelector(".widget__wrapper");
+        const fullScreenModeBtn =
+          widget.shadowRoot.querySelectorAll(".full-screen__btn");
 
         if (
           !document.fullscreenElement &&
@@ -12223,11 +12235,27 @@
             "style",
             "position: initial; width: auto;"
           );
+          fullScreenModeBtn[0].setAttribute(
+            "style",
+            "display: block;"
+          );
+          fullScreenModeBtn[1].setAttribute(
+            "style",
+            "display: none;"
+          );
         } else {
           chartWrapper.setAttribute("style", "height: 800px !important;");
           widgetWrapper.setAttribute(
             "style",
             "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
+          );
+          fullScreenModeBtn[1].setAttribute(
+            "style",
+            "display: block;"
+          );
+          fullScreenModeBtn[0].setAttribute(
+            "style",
+            "display: none;"
           );
         }
 
