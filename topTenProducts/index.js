@@ -1,3 +1,5 @@
+const { testLogXD } = require("../common");
+
 (function () {
   !(function (t, e) {
     "object" == typeof exports && "undefined" != typeof module
@@ -11990,6 +11992,8 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
+    <script type="module" src="https://asikoransp.github.io/sac/common.js"></script>
+
     <style>
       .widget__wrapper {
         padding: 0 1rem 1rem 1rem;
@@ -12104,9 +12108,7 @@
 
       this.adjustStyles();
 
-      $.getScript("https://asikoransp.github.io/sac/common.js", (res) => {
-        console.log(res);
-      });
+      testLogXD();
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {

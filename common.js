@@ -1,3 +1,3 @@
-const testLogXD = () => {
+export const testLogXD = () => {
   console.log("siemka");
 };
