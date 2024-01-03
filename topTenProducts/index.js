@@ -12208,10 +12208,10 @@
             .querySelector("top-ten-products")
             .shadowRoot.querySelector(".chart__wrapper")
             .setAttribute("style", "height: 370px !important;");
-          document
-            .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".widget__wrapper")
-            .setAttribute("style", "width: 90%;");
+          // document
+          //   .querySelector("top-ten-products")
+          //   .shadowRoot.querySelector(".widget__wrapper")
+          //   .setAttribute("style", "width: 100%;");
           document
             .querySelector("top-ten-products")
             .setAttribute("style", "display: block;");
@@ -12220,10 +12220,10 @@
             .querySelector("top-ten-products")
             .shadowRoot.querySelector(".chart__wrapper")
             .setAttribute("style", "height: 800px !important;");
-          document
-            .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".widget__wrapper")
-            .setAttribute("style", "width: 100%;");
+          // document
+          //   .querySelector("top-ten-products")
+          //   .shadowRoot.querySelector(".widget__wrapper")
+          //   .setAttribute("style", "width: 90%;");
           document
             .querySelector("top-ten-products")
             .setAttribute(
