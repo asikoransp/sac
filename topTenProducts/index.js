@@ -12013,7 +12013,7 @@
 
       .chart__wrapper {
         display: block !important;
-        // height: 370px !important;
+        height: 600px !important;
       }
     </style>
 
