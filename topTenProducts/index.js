@@ -12216,18 +12216,19 @@
         "full-screen-mode-btn"
       );
 
+      const isFullScreen =
+        document.fullscreenElement &&
+        document.mozFullScreenElement &&
+        document.webkitFullscreenElement &&
+        document.msFullscreenElement;
+
       document.addEventListener("fullscreenchange", () => {
         const widget = document.querySelector("top-ten-products");
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
         const widgetWrapper =
           widget.shadowRoot.querySelector(".widget__wrapper");
 
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
+        if (!isFullScreen) {
           chartWrapper.setAttribute("style", "height: 370px !important;");
           widgetWrapper.setAttribute(
             "style",
@@ -12246,12 +12247,7 @@
 
       fullScreenModeBtn.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
+        if (!isFullScreen) {
           widget.requestFullscreen();
         } else {
           document.exitFullscreen();
