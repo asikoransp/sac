@@ -12124,10 +12124,6 @@
     getData() {
       const dataSet = this.dataSet.data;
 
-      console.log(this.dataSet);
-
-      console.log(dataSet);
-
       const profit = dataSet.map((el) => el.measures_0.raw);
       const employee_cost = dataSet.map((el) => el.measures_1.raw);
       const tax_cost = dataSet.map((el) => el.measures_2.raw);
@@ -12135,16 +12131,6 @@
       const company_cost = dataSet.map((el) => el.measures_4.raw);
       const price = dataSet.map((el) => el.measures_5.raw);
       const material_cost = dataSet.map((el) => el.measures_6.raw);
-
-      console.log(
-        profit,
-        employee_cost,
-        tax_cost,
-        production_cost,
-        company_cost,
-        price,
-        material_cost
-      );
 
       return {
         profit,
@@ -12285,7 +12271,7 @@
       colors.push(this.currentColor.chart.primary);
       colors.unshift(this.currentColor.chart.primary);
 
-      costs.reverse()
+      costs.reverse();
 
       return {
         costs,

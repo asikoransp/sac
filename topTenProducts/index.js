@@ -12020,6 +12020,7 @@
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Average Rebate Rate</h2>
+        <button id="fullScreenMode"><-></button>
       </div>
       <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
@@ -12182,6 +12183,8 @@
           },
         },
       });
+
+      this.addEventListeners();
     }
 
     adjustStyles() {
@@ -12189,6 +12192,30 @@
         this.currentColor.background;
       this.template.querySelector(".widget__title").style.color =
         this.currentColor.text;
+    }
+
+    addEventListeners() {
+      const button = this.template.querySelector("#fullScreenMode");
+
+      document.addEventListener("fullscreenchange", (event) => {
+        if (
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          this.template.querySelector(".chart__wrapper").style.height =
+            "370rem !important";
+        } else {
+          this.template.querySelector(".chart__wrapper").style.height =
+            "auto !important";
+        }
+      });
+
+      button.addEventListener("click", (event) => {
+        const widget = document.querySelector("average-order-value");
+        widget.requestFullscreen();
+      });
     }
   }
 
