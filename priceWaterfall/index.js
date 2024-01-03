@@ -260,17 +260,17 @@
       this.fullScreenModeHandler();
     }
 
-    aggregateChartData(profit, costs, price) {
+    aggregateChartData(profit, initCosts, price) {
       let total = profit;
       let costs = [profit];
       let colors = [];
 
       const additionalCosts = [
-        costs.company_cost,
-        costs.production_cost,
-        costs.material_cost,
-        costs.employee_cost,
-        costs.tax_cost,
+        initCosts.company_cost,
+        initCosts.production_cost,
+        initCosts.material_cost,
+        initCosts.employee_cost,
+        initCosts.tax_cost,
       ];
 
       additionalCosts.forEach((cost) => {
