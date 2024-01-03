@@ -12221,8 +12221,9 @@
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
         const widgetWrapper =
           widget.shadowRoot.querySelector(".widget__wrapper");
-        const fullScreenModeBtn =
-          widget.shadowRoot.querySelectorAll(".full-screen__btn");
+        const fullScreenModeBtn = widget.shadowRoot
+          .querySelector("full-screen__btn")
+          .querySelectorAll("svg");
 
         if (
           !document.fullscreenElement &&
@@ -12235,28 +12236,16 @@
             "style",
             "position: initial; width: auto;"
           );
-          fullScreenModeBtn[0].setAttribute(
-            "style",
-            "display: block;"
-          );
-          fullScreenModeBtn[1].setAttribute(
-            "style",
-            "display: none;"
-          );
+          fullScreenModeBtn[0].setAttribute("style", "display: block;");
+          fullScreenModeBtn[1].setAttribute("style", "display: none;");
         } else {
           chartWrapper.setAttribute("style", "height: 800px !important;");
           widgetWrapper.setAttribute(
             "style",
             "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
           );
-          fullScreenModeBtn[1].setAttribute(
-            "style",
-            "display: block;"
-          );
-          fullScreenModeBtn[0].setAttribute(
-            "style",
-            "display: none;"
-          );
+          fullScreenModeBtn[1].setAttribute("style", "display: block;");
+          fullScreenModeBtn[0].setAttribute("style", "display: none;");
         }
 
         this.adjustStyles();
