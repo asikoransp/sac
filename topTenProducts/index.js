@@ -12207,19 +12207,17 @@
         ) {
           document
             .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".chart__wrapper").style.height =
-            "370px !important";
-          console.log("370");
+            .shadowRoot.querySelector(".chart__wrapper")
+            .setAttribute("style", "height: 370px !important;");
         } else {
           document
             .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".chart__wrapper").style.height =
-            "800px !important";
-          console.log("auto");
+            .shadowRoot.querySelector(".chart__wrapper")
+            .setAttribute("style", "height: 1000px !important;");
         }
       });
 
-      button.addEventListener("click", (event) => {
+      button.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
         widget.requestFullscreen();
       });
