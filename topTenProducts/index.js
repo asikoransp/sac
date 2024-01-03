@@ -12198,38 +12198,36 @@
       const button = this.template.querySelector("#fullScreenMode");
 
       document.addEventListener("fullscreenchange", (event) => {
+        const widget = document.querySelector("top-ten-products");
+        const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
+        // const widgetWrapper =
+        //   widget.shadowRoot.querySelector(".widget__wrapper");
+
         if (
           !document.fullscreenElement &&
           !document.mozFullScreenElement &&
           !document.webkitFullscreenElement &&
           !document.msFullscreenElement
         ) {
-          document
-            .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".chart__wrapper")
-            .setAttribute("style", "height: 370px !important;");
-          // document
-          //   .querySelector("top-ten-products")
-          //   .shadowRoot.querySelector(".widget__wrapper")
-          //   .setAttribute("style", "width: 100%;");
-          document
-            .querySelector("top-ten-products")
-            .setAttribute("style", "display: block;");
+          chartWrapper.setAttribute(
+            "style",
+            "transition: all 1s ease-out; height: 370px !important;"
+          );
+          // widgetWrapper.setAttribute("style", "width: 100%;");
+          widget.setAttribute(
+            "style",
+            "transition: all 1s ease-out; display: block;"
+          );
         } else {
-          document
-            .querySelector("top-ten-products")
-            .shadowRoot.querySelector(".chart__wrapper")
-            .setAttribute("style", "height: 800px !important;");
-          // document
-          //   .querySelector("top-ten-products")
-          //   .shadowRoot.querySelector(".widget__wrapper")
-          //   .setAttribute("style", "width: 90%;");
-          document
-            .querySelector("top-ten-products")
-            .setAttribute(
-              "style",
-              "display: flex; align-items: center; justify-content: center;"
-            );
+          chartWrapper.setAttribute(
+            "style",
+            "transition: all 1s ease-out; height: 800px !important;"
+          );
+          // widgetWrapper.setAttribute("style", "width: 90%;");
+          widget.setAttribute(
+            "style",
+            "transition: all 1s ease-out; display: flex; align-items: center; justify-content: center;"
+          );
         }
       });
 
