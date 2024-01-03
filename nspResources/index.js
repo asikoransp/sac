@@ -11996,5 +11996,5 @@
     }
   }
 
-  customElements.define("resources", PerformanceHelp);
+  customElements.define("nsp-resources", PerformanceHelp);
 })();

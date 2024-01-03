@@ -1,0 +1,24 @@
+{
+  "name": "nsp-resources",
+  "description": "nsp-resources",
+  "newInstancePrefix": "nsp-resources",
+  "eula": "",
+  "vendor": "Adrian Sikora",
+  "license": "",
+  "id": "nsp-resources",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "nsp-resources",
+      "url": "https://asikoransp.github.io/sac/nspResources/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {},
+  "methods": {},
+  "events": {},
+  "dataBindings": {}
+}
