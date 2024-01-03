@@ -1,5 +1,3 @@
-const { testLogXD } = require("../common");
-
 (function () {
   !(function (t, e) {
     "object" == typeof exports && "undefined" != typeof module
@@ -11992,7 +11990,10 @@ const { testLogXD } = require("../common");
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <script type="module" src="https://asikoransp.github.io/sac/common.js"></script>
+    <script type="module" src="https://asikoransp.github.io/sac/common.js">
+      import { testLogXD } from '../common.js';
+      testLogXD();
+    </script>
 
     <style>
       .widget__wrapper {
