@@ -12223,21 +12223,21 @@
           widget.shadowRoot.querySelector(".widget__wrapper");
 
         if (
-          document.fullscreenElement &&
-          document.mozFullScreenElement &&
-          document.webkitFullscreenElement &&
-          document.msFullscreenElement
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
         ) {
-          chartWrapper.setAttribute("style", "height: 800px !important;");
-          widgetWrapper.setAttribute(
-            "style",
-            "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
-          );
-        } else {
           chartWrapper.setAttribute("style", "height: 370px !important;");
           widgetWrapper.setAttribute(
             "style",
             "position: initial; width: auto;"
+          );
+        } else {
+          chartWrapper.setAttribute("style", "height: 800px !important;");
+          widgetWrapper.setAttribute(
+            "style",
+            "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
           );
         }
 
@@ -12247,14 +12247,14 @@
       fullScreenModeBtn.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
         if (
-          document.fullscreenElement &&
-          document.mozFullScreenElement &&
-          document.webkitFullscreenElement &&
-          document.msFullscreenElement
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
         ) {
-          document.exitFullscreen();
-        } else {
           widget.requestFullscreen();
+        } else {
+          document.exitFullscreen();
         }
       });
     }
