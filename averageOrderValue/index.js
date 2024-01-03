@@ -11998,6 +11998,16 @@
         height: 4rem;
       }
 
+      .full-screen__btn {
+        all: unset;
+        margin: 0.5rem 1rem 0 0;
+        transition: transform .5s;
+      }
+
+      .full-screen__btn:hover {
+        transform: scale(1.2);
+      }
+
       .chart__wrapper {
         display: block !important;
         height: 370px !important;

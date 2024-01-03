@@ -11998,17 +11998,14 @@
         height: 4rem;
       }
 
-      .widget__filters {
-        display: flex;
-        align-items: center;
-        margin-left: 2rem;
+      .full-screen__btn {
+        all: unset;
+        margin: 0.5rem 1rem 0 0;
+        transition: transform .5s;
       }
 
-      .widget__filter-btn {
-        border: 2px solid #2c2c2c;
-        border-radius: 0.4rem;
-        padding: 0.5rem;
-        margin: 0 0.5rem;
+      .full-screen__btn:hover {
+        transform: scale(1.2);
       }
 
       .chart__wrapper {

@@ -12009,19 +12009,6 @@
         transform: scale(1.2);
       }
 
-      .widget__filters {
-        display: flex;
-        align-items: center;
-        margin-left: 2rem;
-      }
-
-      .widget__filter-btn {
-        border: 2px solid #2c2c2c;
-        border-radius: 0.4rem;
-        padding: 0.5rem;
-        margin: 0 0.5rem;
-      }
-
       .chart__wrapper {
         display: block !important;
         height: 370px !important;
