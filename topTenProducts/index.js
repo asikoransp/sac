@@ -12215,8 +12215,8 @@
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
         const widgetWrapper =
           widget.shadowRoot.querySelector(".widget__wrapper");
-        const expandBtn = widget.shadowRoot.querySelector(".expand-btn");
-        const collapseBtn = widget.shadowRoot.querySelector(".collapse-btn");
+        const expandBtn = widget.shadowRoot.getElementById("expand-btn");
+        const collapseBtn = widget.shadowRoot.getElementById("collapse-btn");
 
         if (
           !document.fullscreenElement &&
