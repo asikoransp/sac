@@ -12200,8 +12200,8 @@
       document.addEventListener("fullscreenchange", (event) => {
         const widget = document.querySelector("top-ten-products");
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
-        // const widgetWrapper =
-        //   widget.shadowRoot.querySelector(".widget__wrapper");
+        const widgetWrapper =
+          widget.shadowRoot.querySelector(".widget__wrapper");
 
         if (
           !document.fullscreenElement &&
@@ -12213,21 +12213,19 @@
             "style",
             "height: 370px !important;"
           );
-          widgetWrapper.setAttribute("style", "width: 100%;");
-          // widget.setAttribute(
-          //   "style",
-          //   "display: block;"
-          // );
+          widgetWrapper.setAttribute(
+            "style",
+            "position: initial;"
+          );
         } else {
           chartWrapper.setAttribute(
             "style",
             "height: 800px !important;"
           );
-          widgetWrapper.setAttribute("style", "width: 90%;");
-          // widget.setAttribute(
-          //   "style",
-          //   "display: flex; align-items: center; justify-content: center;"
-          // );
+          widgetWrapper.setAttribute(
+            "style",
+            "position: absolute; top: 50%; transform: translateY(-50%);"
+          );
         }
       });
 
