@@ -12037,7 +12037,7 @@
 
       const data = this.getData();
       this.chart.data.datasets[0].data = data.values;
-      // this.chart.data.datasets[1].data = data.change;
+      this.chart.data.datasets[1].data = data.change;
       // this.chart.data.labels = data.labels;
       this.chart.update();
     }
@@ -12068,19 +12068,22 @@
         
         console.log("before myPlugin");
         const data = this.getData(),        
-        myPlugin = {
-          id: 'myPlugin',
+        doughnutCenterLabel = {
+          id: 'doughnutCenterLabel',
           beforeDraw: (chart) => {
-            console.log("hello from the myPlugin");
-            const ctx = chart.ctx;
+            console.log("hello from the doughnutCenterLabel");
+            const {ctx, data} = chart;
             const xCoor = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
             const yCoor = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+            // const value = chart.config.data.datasets[1].data;
+            console.log('plugin chart', chart);
+            console.log('plugin data', data);
             ctx.save();
-            ctx.font = 'bolder 24px';
+            ctx.font = 'bolder 20px';
             ctx.fillStyle = 'red';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(`dupa`, xCoor, yCoor);
+            ctx.fillText(`CAR: ${data.datasets[1].data[0]}`, xCoor, yCoor);
             ctx.restore();
           },
       }
@@ -12099,20 +12102,30 @@
                 borderColor: [this.chartColors.pink,this.chartColors.blue],
                 backgroundColor: [this.chartColors.pink,this.chartColors.blue],
               },
+              {
+                label: 'CAR',
+                data: data.change,
+                hidden: true,
+              },
             ]
           },
           options: {
-            responsive: true,
+            layout: { padding: {
+              right: 10,
+              bottom: 30
+          } },
+            responsive: true,            
+            // maintainAspectRatio: false,
             plugins: {
               title: {
                 display: true,
               },
               legend: {
                 position: 'top',
-              },
-              myPlugin
+              }
             },
           },
+          plugins: [doughnutCenterLabel]
         });
 
 
