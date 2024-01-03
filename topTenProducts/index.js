@@ -12001,7 +12001,12 @@
 
       .full-screen__btn {
         all: unset;
-        margin-right: 1rem;
+        margin: 0.5rem 1rem 0 0;
+        transition: transform .5s;
+      }
+
+      .full-screen__btn:hover {
+        transform: scale(1.5);
       }
 
       .widget__filters {
@@ -12201,6 +12206,8 @@
       this.template.querySelector(".widget__wrapper").style.background =
         this.currentColor.background;
       this.template.querySelector(".widget__title").style.color =
+        this.currentColor.text;
+      this.template.querySelector(".full-screen__btn").style.color =
         this.currentColor.text;
     }
 
