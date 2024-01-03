@@ -12013,7 +12013,7 @@
 
       .chart__wrapper {
         display: block !important;
-        height: 370px !important;
+        // height: 370px !important;
       }
     </style>
 
@@ -12198,6 +12198,7 @@
       const button = this.template.querySelector("#fullScreenMode");
 
       document.addEventListener("fullscreenchange", (event) => {
+        console.log("event");
         if (
           !document.fullscreenElement &&
           !document.mozFullScreenElement &&
@@ -12206,9 +12207,11 @@
         ) {
           this.template.querySelector(".chart__wrapper").style.height =
             "370rem !important";
+          console.log("370");
         } else {
           this.template.querySelector(".chart__wrapper").style.height =
             "auto !important";
+          console.log("auto");
         }
       });
 
