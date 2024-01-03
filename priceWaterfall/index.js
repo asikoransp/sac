@@ -158,13 +158,13 @@
     getData() {
       const dataSet = this.dataSet.data;
 
-      const profit = dataSet.map((el) => el.measures_0.raw);
-      const employee_cost = dataSet.map((el) => el.measures_1.raw);
-      const tax_cost = dataSet.map((el) => el.measures_2.raw);
-      const production_cost = dataSet.map((el) => el.measures_3.raw);
-      const company_cost = dataSet.map((el) => el.measures_4.raw);
-      const price = dataSet.map((el) => el.measures_5.raw);
-      const material_cost = dataSet.map((el) => el.measures_6.raw);
+      const profit = dataSet.map((el) => el.measures_0.raw)[0];
+      const employee_cost = dataSet.map((el) => el.measures_1.raw)[0];
+      const tax_cost = dataSet.map((el) => el.measures_2.raw)[0];
+      const production_cost = dataSet.map((el) => el.measures_3.raw)[0];
+      const company_cost = dataSet.map((el) => el.measures_4.raw)[0];
+      const price = dataSet.map((el) => el.measures_5.raw)[0];
+      const material_cost = dataSet.map((el) => el.measures_6.raw)[0];
 
       return {
         profit,
@@ -182,15 +182,6 @@
     aggregateData() {
       const data = this.getData();
 
-      const profit = data.profit[0];
-      const price = data.price[0];
-
-      const employee_cost = data.costs.employee_cost[0];
-      const material_cost = data.costs.material_cost[0];
-      const tax_cost = data.costs.tax_cost[0];
-      const production_cost = data.costs.production_cost[0];
-      const company_cost = data.costs.company_cost[0];
-
       const labels = [
         "Total Price",
         "Tax",
@@ -201,15 +192,8 @@
         "Profit",
       ];
 
-      const chartData = this.aggregateChartData(
-        profit,
-        company_cost,
-        production_cost,
-        material_cost,
-        employee_cost,
-        tax_cost,
-        price
-      );
+      const { profit, costs, price } = data;
+      const chartData = this.aggregateChartData(profit, costs, price);
 
       return {
         labels,
@@ -276,25 +260,17 @@
       this.fullScreenModeHandler();
     }
 
-    aggregateChartData(
-      profit,
-      company_cost,
-      production_cost,
-      material_cost,
-      employee_cost,
-      tax_cost,
-      price
-    ) {
+    aggregateChartData(profit, costs, price) {
       let total = profit;
       let costs = [profit];
       let colors = [];
 
       const additionalCosts = [
-        company_cost,
-        production_cost,
-        material_cost,
-        employee_cost,
-        tax_cost,
+        costs.company_cost,
+        costs.production_cost,
+        costs.material_cost,
+        costs.employee_cost,
+        costs.tax_cost,
       ];
 
       additionalCosts.forEach((cost) => {
@@ -303,10 +279,10 @@
         colors.push(this.currentColor.chart.secondary);
       });
 
-      costs.push(price);
       colors.push(this.currentColor.chart.primary);
       colors.unshift(this.currentColor.chart.primary);
 
+      costs.push(price);
       costs.reverse();
 
       return {
