@@ -12205,11 +12205,15 @@
           !document.webkitFullscreenElement &&
           !document.msFullscreenElement
         ) {
-          this.template.querySelector(".chart__wrapper").style.height =
+          document
+            .querySelector("top-ten-products")
+            .shadowRoot.querySelector(".chart__wrapper").style.height =
             "370px !important";
           console.log("370");
         } else {
-          this.template.querySelector(".chart__wrapper").style.height =
+          document
+            .querySelector("top-ten-products")
+            .shadowRoot.querySelector(".chart__wrapper").style.height =
             "800px !important";
           console.log("auto");
         }
