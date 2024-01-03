@@ -12211,22 +12211,22 @@
         ) {
           chartWrapper.setAttribute(
             "style",
-            "transition: all 1s ease-out; height: 370px !important;"
+            "transition-delay: 1s; transition: all 1s ease-out; height: 370px !important;"
           );
           // widgetWrapper.setAttribute("style", "width: 100%;");
           widget.setAttribute(
             "style",
-            "transition: all 1s ease-out; display: block;"
+            "transition-delay: 1s; transition: all 1s ease-out; display: block;"
           );
         } else {
           chartWrapper.setAttribute(
             "style",
-            "transition: all 1s ease-out; height: 800px !important;"
+            "transition-delay: 1s; transition: all 1s ease-out; height: 800px !important;"
           );
           // widgetWrapper.setAttribute("style", "width: 90%;");
           widget.setAttribute(
             "style",
-            "transition: all 1s ease-out; display: flex; align-items: center; justify-content: center;"
+            "transition-delay: 1s; transition: all 1s ease-out; display: flex; align-items: center; justify-content: center;"
           );
         }
       });
