@@ -12020,7 +12020,7 @@
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Average Rebate Rate</h2>
-        <button id="fullScreenMode"><-></button>
+        <button id="full-screen-mode-btn"><-></button>
       </div>
       <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
@@ -12184,7 +12184,7 @@
         },
       });
 
-      this.addEventListeners();
+      this.fullScreenModeHandler();
     }
 
     adjustStyles() {
@@ -12194,10 +12194,12 @@
         this.currentColor.text;
     }
 
-    addEventListeners() {
-      const button = this.template.querySelector("#fullScreenMode");
+    fullScreenModeHandler() {
+      const fullScreenModeBtn = this.template.getElementById(
+        "full-screen-mode-btn"
+      );
 
-      document.addEventListener("fullscreenchange", (event) => {
+      document.addEventListener("fullscreenchange", () => {
         const widget = document.querySelector("top-ten-products");
         const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
         const widgetWrapper =
@@ -12212,7 +12214,7 @@
           chartWrapper.setAttribute("style", "height: 370px !important;");
           widgetWrapper.setAttribute(
             "style",
-            "position: initial; width: 100%;"
+            "position: initial; width: auto;"
           );
         } else {
           chartWrapper.setAttribute("style", "height: 800px !important;");
@@ -12221,9 +12223,11 @@
             "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
           );
         }
+
+        this.adjustStyles();
       });
 
-      button.addEventListener("click", () => {
+      fullScreenModeBtn.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
         widget.requestFullscreen();
       });
