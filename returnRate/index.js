@@ -12007,6 +12007,11 @@
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Return Rate</h2>
+        <button class="full-screen__btn" id="full-screen-mode-btn">
+          <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 9V5.6C4 5.03995 4 4.75992 4.10899 4.54601C4.20487 4.35785 4.35785 4.20487 4.54601 4.109C4.75992 4 5.03995 4 5.6 4L9 4M4 15V18.4C4 18.9601 4 19.2401 4.10899 19.454C4.20487 19.6422 4.35785 19.7951 4.54601 19.891C4.75992 20 5.03995 20 5.6 20L9 20M15 4H18.4C18.9601 4 19.2401 4 19.454 4.10899C19.6422 4.20487 19.7951 4.35785 19.891 4.54601C20 4.75992 20 5.03995 20 5.6V9M20 15V18.4C20 18.9601 20 19.2401 19.891 19.454C19.7951 19.6422 19.6422 19.7951 19.454 19.891C19.2401 20 18.9601 20 18.4 20H15" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
       <div class="chart__wrapper">
         <canvas id="average-order-value-chart"></canvas>
@@ -12163,6 +12168,8 @@
           },
         },
       });
+
+      this.fullScreenModeHandler();
     }
 
     adjustStyles() {
@@ -12170,6 +12177,56 @@
         this.currentColor.background;
       this.template.querySelector(".widget__title").style.color =
         this.currentColor.text;
+      this.template.querySelector(".full-screen__btn").style.color =
+        this.currentColor.text;
+    }
+
+    fullScreenModeHandler() {
+      const fullScreenModeBtn = this.template.getElementById(
+        "full-screen-mode-btn"
+      );
+
+      document.addEventListener("fullscreenchange", () => {
+        const widget = document.querySelector("return-rate");
+        const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
+        const widgetWrapper =
+          widget.shadowRoot.querySelector(".widget__wrapper");
+
+        if (
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          chartWrapper.setAttribute("style", "height: 370px !important;");
+          widgetWrapper.setAttribute(
+            "style",
+            "position: initial; width: auto;"
+          );
+        } else {
+          chartWrapper.setAttribute("style", "height: 800px !important;");
+          widgetWrapper.setAttribute(
+            "style",
+            "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
+          );
+        }
+
+        this.adjustStyles();
+      });
+
+      fullScreenModeBtn.addEventListener("click", () => {
+        const widget = document.querySelector("return-rate");
+        if (
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          widget.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      });
     }
   }
 
