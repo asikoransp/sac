@@ -12124,6 +12124,8 @@
     getData() {
       const dataSet = this.dataSet.data;
 
+      console.log(this.dataSet);
+
       console.log(dataSet);
 
       const profit = dataSet.map((el) => el.measures_0.raw);
