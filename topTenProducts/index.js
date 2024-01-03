@@ -12006,7 +12006,7 @@
       }
 
       .full-screen__btn:hover {
-        transform: scale(1.5);
+        transform: scale(1.2);
       }
 
       .widget__filters {
@@ -12246,7 +12246,16 @@
 
       fullScreenModeBtn.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
-        widget.requestFullscreen();
+        if (
+          !document.fullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          widget.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
       });
     }
   }
