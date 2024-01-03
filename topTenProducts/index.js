@@ -12103,6 +12103,10 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
+
+      $.getScript("https://asikoransp.github.io/sac/common.js", (res) => {
+        console.log(res);
+      });
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
