@@ -12198,7 +12198,6 @@
       const button = this.template.querySelector("#fullScreenMode");
 
       document.addEventListener("fullscreenchange", (event) => {
-        console.log("event");
         if (
           !document.fullscreenElement &&
           !document.mozFullScreenElement &&
@@ -12211,6 +12210,10 @@
             .setAttribute("style", "height: 370px !important;");
           document
             .querySelector("top-ten-products")
+            .shadowRoot.querySelector(".widget__wrapper")
+            .setAttribute("style", "width: 90%;");
+          document
+            .querySelector("top-ten-products")
             .setAttribute("style", "display: block;");
         } else {
           document
@@ -12219,7 +12222,14 @@
             .setAttribute("style", "height: 800px !important;");
           document
             .querySelector("top-ten-products")
-            .setAttribute("style", "display: flex; align-items: center;");
+            .shadowRoot.querySelector(".widget__wrapper")
+            .setAttribute("style", "width: 100%;");
+          document
+            .querySelector("top-ten-products")
+            .setAttribute(
+              "style",
+              "display: flex; align-items: center; justify-content: center;"
+            );
         }
       });
 
