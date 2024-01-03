@@ -12147,7 +12147,7 @@
           labels: data.labels,
           datasets: [
             {
-              label: "Value",
+              label: "CRM Customers",
               data: data.existingCustomers,
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
@@ -12155,7 +12155,7 @@
               borderRadius: 5,
             },
             {
-              label: "Value",
+              label: "New Customers",
               data: data.newCustomers,
               backgroundColor: this.currentColor.chart.secondary,
               borderWidth: 0,
@@ -12193,7 +12193,8 @@
               display: false,
             },
             legend: {
-              display: false,
+              display: true,
+              position: "bottom",
             },
           },
         },
