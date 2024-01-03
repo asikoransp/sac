@@ -12209,11 +12209,17 @@
             .querySelector("top-ten-products")
             .shadowRoot.querySelector(".chart__wrapper")
             .setAttribute("style", "height: 370px !important;");
+          document
+            .querySelector("top-ten-products")
+            .setAttribute("style", "display: block;");
         } else {
           document
             .querySelector("top-ten-products")
             .shadowRoot.querySelector(".chart__wrapper")
-            .setAttribute("style", "height: 1000px !important;");
+            .setAttribute("style", "height: 800px !important;");
+          document
+            .querySelector("top-ten-products")
+            .setAttribute("style", "display: flex; align-items: center;");
         }
       });
 
