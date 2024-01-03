@@ -12013,6 +12013,8 @@
       .full-screen__btn {
         all: unset;
         margin: 0.5rem 1rem 0 0;
+        width: 1.5rem;
+        height: 1.5rem;
         transition: transform .5s;
       }
 
