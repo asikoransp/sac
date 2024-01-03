@@ -12172,13 +12172,13 @@
       const company_cost = data.costs.company_cost[0];
 
       const labels = [
-        "Profit",
-        "Company Cost",
-        "Production Cost",
-        "Material Cost",
-        "Employee Cost",
-        "Tax",
         "Total Price",
+        "Tax",
+        "Employee Cost",
+        "Material Cost",
+        "Production Cost",
+        "Company Cost",
+        "Profit",
       ];
 
       const chartData = this.aggregateChartData(
@@ -12284,6 +12284,8 @@
       costs.push(price);
       colors.push(this.currentColor.chart.primary);
       colors.unshift(this.currentColor.chart.primary);
+
+      costs.reverse()
 
       return {
         costs,
