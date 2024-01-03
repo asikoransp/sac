@@ -1,3 +1,3 @@
-const test = () => {
+const testLogXD = () => {
   console.log("siemka");
 };
