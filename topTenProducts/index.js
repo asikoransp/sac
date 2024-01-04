@@ -63,13 +63,6 @@
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(tmpl.content.cloneNode(true));
       this.template = shadowRoot;
-
-      const styles = document.querySelector('style[data-custom="true"]');
-      const shadowStyleEl = document.createElement("style");
-      if (styles) {
-        shadowStyleEl.innerText = styles.innerText;
-        this.template.appendChild(shadowStyleEl);
-      }
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
@@ -96,6 +89,11 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
+
+      const styles = document.querySelector('style[data-custom="true"]');
+      const shadowStyleEl = document.createElement("style");
+      shadowStyleEl.innerText = styles.innerText;
+      this.template.appendChild(shadowStyleEl);
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
