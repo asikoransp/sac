@@ -247,7 +247,7 @@
       );
 
       document.addEventListener("fullscreenchange", () => {
-        const widget = document.querySelector("top-ten-products");
+        const widget = document.querySelector("orders-per-active-customer");
         const widgetDOM = widget.shadowRoot;
         const chartWrapper = widgetDOM.querySelector(".chart__wrapper");
         const widgetWrapper = widgetDOM.querySelector(".widget__wrapper");
@@ -261,7 +261,7 @@
       });
 
       fullScreenModeBtn.addEventListener("click", () => {
-        const widget = document.querySelector("top-ten-products");
+        const widget = document.querySelector("orders-per-active-customer");
         if (this.isNotFullScreenMode()) {
           widget.requestFullscreen();
         } else {
