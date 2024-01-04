@@ -143,7 +143,7 @@
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
               borderRadius: 5,
-              borderSkipped: false,
+              order: 1,
             },
             {
               label: "Target",
@@ -154,7 +154,7 @@
               borderWidth: 0,
               borderColor: this.currentColor.chart.secondary,
               borderRadius: 5,
-              borderSkipped: false,
+              order: 0,
             },
           ],
         },
