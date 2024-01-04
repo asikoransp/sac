@@ -159,7 +159,6 @@
               tension: 0.4,
               backgroundColor: this.currentColor.chart.secondary,
               borderColor: this.currentColor.chart.secondary,
-              fill: true,
             },
           ],
         },

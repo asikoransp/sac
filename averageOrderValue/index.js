@@ -137,6 +137,7 @@
               backgroundColor: this.currentColor.chart.primary,
               borderColor: this.currentColor.chart.primary,
               data: data.values,
+              fill: true,
               tension: 0.4,
             },
           ],
