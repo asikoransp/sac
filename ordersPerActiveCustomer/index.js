@@ -148,8 +148,6 @@
     getData() {
       const dataSet = this.dataSet.data;
 
-      console.log(dataSet);
-
       const labels = dataSet.map((el) => el.dimensions_0.label);
       const values = dataSet.map((el) => el.measures_0.raw);
 
@@ -161,8 +159,6 @@
 
     renderChart() {
       const data = this.getData();
-
-      console.log(data);
 
       const chartElement = this.template
         .querySelector("canvas")
