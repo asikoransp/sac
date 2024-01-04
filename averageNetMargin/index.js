@@ -145,6 +145,8 @@
         return el.measures_1.raw;
       });
 
+      console.log(avgTarget, targets.length);
+
       return {
         labels,
         values,
@@ -236,6 +238,9 @@
         this.currentColor.chart.primary,
         this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
       ];
+
+      console.log([data.average.target / 45, (45 - data.average.target) / 45]);
+      console.log(data.average.target);
 
       this.pieChart = new Chart(pieChartElement, {
         type: "doughnut",
