@@ -1,0 +1,111 @@
+{
+  "name": "ordersperactivecustomer",
+  "description": "Orders per active Customer",
+  "newInstancePrefix": "ordersperactivecustomer",
+  "eula": "",
+  "vendor": "Adrian Sikora",
+  "license": "",
+  "id": "ordersperactivecustomer",
+  "version": "1.0.0",
+  "icon": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "orders-per-active-customer",
+      "url": "https://asikoransp.github.io/sac/ordersPerActiveCustomer/index.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    },
+    {
+      "kind": "styling",
+      "tag": "orders-per-active-customer-sps",
+      "url": "https://asikoransp.github.io/sac/ordersPerActiveCustomer/styling.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+  ],
+  "properties": {
+    "lightModeChartColor": {
+      "type": "string",
+      "description": "Light mode chart color",
+      "default": "#4631ee"
+    },
+    "darkModeChartColor": {
+      "type": "string",
+      "description": "Dark mode chart color",
+      "default": "#d2d2d2"
+    },
+    "chartTitle": {
+      "type": "string",
+      "description": "Chart title",
+      "default": "Orders per active Customer"
+    }
+  },
+  "methods": {
+    "setLightModeChartColor": {
+      "description": "Set light mode chart color",
+      "parameters": [
+        {
+          "name": "newLightModeChartColor",
+          "type": "string",
+          "description": "New light mode chart color"
+        }
+      ],
+      "body": "this.lightModeChartColor = newLightModeChartColor;"
+    },
+    "getLightModeChartColor": {
+      "returnType": "string",
+      "description": "Returns light mode chart color",
+      "body": "return this.lightModeChartColor;"
+    },
+    "getDarkModeChartColor": {
+      "returnType": "string",
+      "description": "Returns dark mode chart color",
+      "body": "return this.darkModeChartColor;"
+    },
+    "setDarkModeChartColor": {
+      "description": "Set dark mode chart color",
+      "parameters": [
+        {
+          "name": "newDarkModeChartColor",
+          "type": "string",
+          "description": "New dark mode chart color"
+        }
+      ],
+      "body": "this.darkModeChartColor = newDarkModeChartColor;"
+    },
+    "getChartTitle": {
+      "returnType": "string",
+      "description": "Returns chart title",
+      "body": "return this.chartTitle;"
+    },
+    "setChartTitle": {
+      "description": "Set chart title",
+      "parameters": [
+        {
+          "name": "newChartTitle",
+          "type": "string",
+          "description": "New chart title"
+        }
+      ],
+      "body": "this.chartTitle = newChartTitle;"
+    }
+  },
+  "events": {},
+  "dataBindings": {
+    "dataSet": {
+      "feeds": [
+        {
+          "id": "dimensions",
+          "description": "Dimensions",
+          "type": "dimension"
+        },
+        {
+          "id": "measures",
+          "description": "Measures",
+          "type": "mainStructureMember"
+        }
+      ]
+    }
+  }
+}
