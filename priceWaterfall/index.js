@@ -1,10 +1,10 @@
 (function () {
   const svgButtons = `
     <button class="full-screen__btn" id="full-screen-mode-btn">
-      <svg id="expand-btn" style="display: block;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <svg id="expand-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
       </svg>
-      <svg id="collapse-btn" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <svg id="collapse-btn" class="none-display" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
       </svg>
     </button>
@@ -18,6 +18,15 @@
         margin: 1rem;
         border-radius: 1rem;
         background: #fff;
+      }
+
+      .widget__wrapper--full-screen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:
+        translate(-50%, -50%);
+        width: 90%;
       }
 
       .widget__title {
@@ -47,6 +56,14 @@
       .chart__wrapper {
         display: block !important;
         height: 370px !important;
+      }
+
+      .chart__wrapper--full-screen {
+        height: 800px !important;
+      }
+
+      .none-display {
+        display: none;
       }
     </style>
 
@@ -306,52 +323,36 @@
       );
 
       document.addEventListener("fullscreenchange", () => {
-        const widget = document.querySelector("price-waterfall");
-        const chartWrapper = widget.shadowRoot.querySelector(".chart__wrapper");
-        const widgetWrapper =
-          widget.shadowRoot.querySelector(".widget__wrapper");
-        const expandBtn = widget.shadowRoot.getElementById("expand-btn");
-        const collapseBtn = widget.shadowRoot.getElementById("collapse-btn");
+        const widget = document.querySelector("top-ten-products");
+        const widgetDOM = widget.shadowRoot;
+        const chartWrapper = widgetDOM.querySelector(".chart__wrapper");
+        const widgetWrapper = widgetDOM.querySelector(".widget__wrapper");
+        const expandBtn = widgetDOM.getElementById("expand-btn");
+        const collapseBtn = widgetDOM.getElementById("collapse-btn");
 
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
-          chartWrapper.setAttribute("style", "height: 370px !important;");
-          widgetWrapper.setAttribute(
-            "style",
-            "position: initial; width: auto;"
-          );
-          expandBtn.setAttribute("style", "display: block;");
-          collapseBtn.setAttribute("style", "display: none;");
-        } else {
-          chartWrapper.setAttribute("style", "height: 800px !important;");
-          widgetWrapper.setAttribute(
-            "style",
-            "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
-          );
-          collapseBtn.setAttribute("style", "display: block;");
-          expandBtn.setAttribute("style", "display: none;");
-        }
-
-        this.adjustStyles();
+        chartWrapper.classList.toggle("chart__wrapper--full-screen");
+        widgetWrapper.classList.toggle("widget__wrapper--full-screen");
+        expandBtn.classList.toggle("none-display");
+        collapseBtn.classList.toggle("none-display");
       });
 
       fullScreenModeBtn.addEventListener("click", () => {
-        const widget = document.querySelector("price-waterfall");
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
+        const widget = document.querySelector("top-ten-products");
+        if (this.isNotFullScreenMode()) {
           widget.requestFullscreen();
         } else {
           document.exitFullscreen();
         }
       });
+    }
+
+    isNotFullScreenMode() {
+      return (
+        !document.fullscreenElement &&
+        !document.mozFullScreenElement &&
+        !document.webkitFullscreenElement &&
+        !document.msFullscreenElement
+      );
     }
   }
 
