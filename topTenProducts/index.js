@@ -65,9 +65,10 @@
       this.template = shadowRoot;
 
       const styles = document.querySelector('style[data-custom="true"]');
-      const shadowStyleEl = document.createElement("style");
-      shadowStyleEl.innerText = styles.innerText;
-      this.template.appendChild(shadowStyleEl);
+      this.template.insertAdjacentHTML(
+        "afterbegin",
+        `<style>${styles.innerText}</style>`
+      );
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
