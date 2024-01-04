@@ -259,17 +259,22 @@
         const expandBtn = widget.shadowRoot.getElementById("expand-btn");
         const collapseBtn = widget.shadowRoot.getElementById("collapse-btn");
 
-        if (this.isNotFullScreenMode()) {
-          chartWrapper.classList["remove"]("chart__wrapper--full-screen");
-          widgetWrapper.classList["remove"]("widget__wrapper--full-screen");
-          expandBtn.classList["remove"]("none-display");
-          collapseBtn.classList["add"]("none-display");
-        } else {
-          chartWrapper.classList["add"]("chart__wrapper--full-screen");
-          widgetWrapper.classList["add"]("widget__wrapper--full-screen");
-          expandBtn.classList["add"]("none-display");
-          collapseBtn.classList["remove"]("none-display");
-        }
+        chartWrapper.classList.toggle("chart__wrapper--full-screen");
+        widgetWrapper.classList.toggle("widget__wrapper--full-screen");
+        expandBtn.classList.toggle("none-display");
+        collapseBtn.classList.toggle("none-display");
+
+        // if (this.isNotFullScreenMode()) {
+        //   chartWrapper.classList["remove"]("chart__wrapper--full-screen");
+        //   widgetWrapper.classList["remove"]("widget__wrapper--full-screen");
+        //   expandBtn.classList["remove"]("none-display");
+        //   collapseBtn.classList["add"]("none-display");
+        // } else {
+        //   chartWrapper.classList["add"]("chart__wrapper--full-screen");
+        //   widgetWrapper.classList["add"]("widget__wrapper--full-screen");
+        //   expandBtn.classList["add"]("none-display");
+        //   collapseBtn.classList["remove"]("none-display");
+        // }
 
         this.adjustStyles();
       });
