@@ -210,12 +210,13 @@
     }
 
     addGlobalStyles() {
-      try {
-        const styles = document.querySelector('style[data-custom="true"]');
-        const shadowStyleEl = document.createElement("style");
-        shadowStyleEl.innerText = styles.innerText;
-        this.template.appendChild(shadowStyleEl);
-      } catch (e) {}
+      if (!this.template.querySelector("style"))
+        try {
+          const styles = document.querySelector('style[data-custom="true"]');
+          const shadowStyleEl = document.createElement("style");
+          shadowStyleEl.innerText = styles.innerText;
+          this.template.appendChild(shadowStyleEl);
+        } catch (e) {}
     }
 
     fullScreenModeHandler() {
