@@ -271,7 +271,7 @@
               display: false,
             },
             tooltip: {
-              display: false,
+              enabled: false,
             },
           },
         },
