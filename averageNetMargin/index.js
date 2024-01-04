@@ -109,20 +109,18 @@
     }
 
     getData() {
-      console.log(this.dataSet.data);
-
-      const dataSet = this.dataSet.data
-        .sort((a, b) => b.measures_0.raw - a.measures_0.raw)
-        .slice(0, 10);
+      const dataSet = this.dataSet.data;
 
       const labels = dataSet.map((el) =>
         el.dimensions_0.label.split("_").join(" ")
       );
       const values = dataSet.map((el) => el.measures_0.raw);
+      const targets = dataSet.map((el) => el.measures_1.raw);
 
       return {
         labels,
         values,
+        targets,
       };
     }
 
@@ -144,6 +142,15 @@
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
+              borderRadius: 5,
+              borderSkipped: false,
+            },
+            {
+              label: "Target",
+              data: data.targets,
+              backgroundColor: this.currentColor.chart.secondary,
+              borderWidth: 0,
+              borderColor: this.currentColor.chart.secondary,
               borderRadius: 5,
               borderSkipped: false,
             },
