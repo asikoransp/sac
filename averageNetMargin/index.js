@@ -133,13 +133,26 @@
       const labels = dataSet.map((el) =>
         el.dimensions_0.label.split("_").join(" ")
       );
-      const values = dataSet.map((el) => el.measures_0.raw);
-      const targets = dataSet.map((el) => el.measures_1.raw);
+
+      let avgTarget = 0;
+      let avgValue = 0;
+      const values = dataSet.map((el) => {
+        avgValue += el;
+        return el.measures_0.raw;
+      });
+      const targets = dataSet.map((el) => {
+        avgTarget += el;
+        return el.measures_1.raw;
+      });
 
       return {
         labels,
         values,
         targets,
+        average: {
+          value: avgValue / values.length,
+          target: avgTarget / targets.length,
+        },
       };
     }
 
@@ -224,14 +237,17 @@
           labels: data.labels,
           datasets: [
             {
-              label: "Value",
-              data: data.values,
+              label: ["Low", "Medium", "High"],
+              data: [15, 15, 15],
               backgroundColor: this.currentColor.chart.primary,
             },
             {
-              label: "Target",
-              data: data.targets,
-              backgroundColor: this.currentColor.chart.secondary,
+              label: ["Current target", "Left"],
+              data: [
+                [0, data.average.target],
+                [data.average.target, 45],
+              ],
+              backgroundColor: ["#ff0000", "#00ff00"],
             },
           ],
         },
