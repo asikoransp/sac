@@ -11984,6 +11984,7 @@
         margin: 1rem;
         border-radius: 1rem;
         background: #fff;
+        height: 27rem;
       }
 
       .widget__wrapper--full-screen {
