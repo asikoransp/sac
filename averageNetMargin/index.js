@@ -17,14 +17,12 @@
         <h2 class="widget__title">Average Net Margin</h2>
         ${svgButtons}
       </div>
-      <div class="chart__wrapper" >
-        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
-          <div>
-            <canvas id="average-net-margin-bar-chart"></canvas>
-          </div>
-          <div>
-            <canvas id="average-net-margin-pie-chart"></canvas>
-          </div>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
+        <div class="chart__wrapper" style="width: 50%">
+          <canvas id="average-net-margin-bar-chart"></canvas>
+        </div>
+        <div class="chart__wrapper" style="width: 50%">
+          <canvas id="average-net-margin-pie-chart"></canvas>
         </div>
       </div>
     </div>
@@ -142,11 +140,15 @@
     renderChart() {
       const data = this.getData();
 
-      const chartElement = this.template
+      const barChartElement = this.template
         .getElementById("average-net-margin-bar-chart")
         .getContext("2d");
 
-      this.chart = new Chart(chartElement, {
+      const pieChartElement = this.template
+        .getElementById("average-net-margin-bar-chart")
+        .getContext("2d");
+
+      this.chart = new Chart(barChartElement, {
         type: "bar",
         data: {
           labels: data.labels,
