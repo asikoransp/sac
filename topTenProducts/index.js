@@ -260,30 +260,15 @@
         const collapseBtn = widget.shadowRoot.getElementById("collapse-btn");
 
         if (this.isNotFullScreenMode()) {
-          // chartWrapper.setAttribute("style", "height: 370px !important;");
-          // widgetWrapper.setAttribute(
-          //   "style",
-          //   "position: initial; width: auto;"
-          // );
-          // expandBtn.setAttribute("style", "display: block;");
-          // collapseBtn.setAttribute("style", "display: none;");
-          chartWrapper.classList.remove("chart__wrapper--full-screen");
-          widgetWrapper.classList.remove("widget__wrapper--full-screen");
-          expandBtn.classList.remove("none-display");
-          collapseBtn.classList.add("none-display");
+          chartWrapper.classList["remove"]("chart__wrapper--full-screen");
+          widgetWrapper.classList["remove"]("widget__wrapper--full-screen");
+          expandBtn.classList["remove"]("none-display");
+          collapseBtn.classList["add"]("none-display");
         } else {
-          // chartWrapper.setAttribute("style", "height: 800px !important;");
-          // widgetWrapper.setAttribute(
-          //   "style",
-          //   "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%;"
-          // );
-          // collapseBtn.setAttribute("style", "display: block;");
-          // expandBtn.setAttribute("style", "display: none;");
-
-          chartWrapper.classList.add("chart__wrapper--full-screen");
-          widgetWrapper.classList.add("widget__wrapper--full-screen");
-          expandBtn.classList.add("none-display");
-          collapseBtn.classList.remove("none-display");
+          chartWrapper.classList["add"]("chart__wrapper--full-screen");
+          widgetWrapper.classList["add"]("widget__wrapper--full-screen");
+          expandBtn.classList["add"]("none-display");
+          collapseBtn.classList["remove"]("none-display");
         }
 
         this.adjustStyles();
