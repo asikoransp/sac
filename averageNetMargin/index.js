@@ -122,8 +122,10 @@
       this.barChart.data.labels = data.labels;
       this.barChart.update();
 
-      this.pieChart.data.datasets[0].data = data.values;
-      this.pieChart.data.labels = data.labels;
+      this.pieChart.data.datasets[1].data = [
+        data.average.target,
+        45 - data.average.target,
+      ];
       this.pieChart.update();
     }
 
