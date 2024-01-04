@@ -20,10 +20,10 @@
       <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 1rem;">
         <div class="chart__wrapper" style="width: 40%">
           <canvas id="average-net-margin-pie-chart"></canvas>
+          <span style="font-size: 1.3rem; font-weight: bold; margin-top: 3rem;">Target: 8%</span>
         </div>
         <div class="chart__wrapper" style="width: 40%">
           <canvas id="average-net-margin-bar-chart"></canvas>
-          <span style="font-size: 1rem; margin-top: 3rem;">Target: 8%</span>
         </div>
       </div>
     </div>
