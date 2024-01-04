@@ -193,8 +193,7 @@
         const shadowStyleEl = document.createElement("style");
         shadowStyleEl.innerText = styles.innerText;
         this.template.appendChild(shadowStyleEl);
-      } finally {
-      }
+      } catch (e) {}
     }
 
     fullScreenModeHandler() {
