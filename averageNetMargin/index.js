@@ -137,11 +137,11 @@
       let avgTarget = 0;
       let avgValue = 0;
       const values = dataSet.map((el) => {
-        avgValue += el;
+        avgValue += el.measures_0.raw;
         return el.measures_0.raw;
       });
       const targets = dataSet.map((el) => {
-        avgTarget += el;
+        avgTarget += el.measures_1.raw;
         return el.measures_1.raw;
       });
 
