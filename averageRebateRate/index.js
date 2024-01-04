@@ -236,7 +236,7 @@
           labels: data.labels,
           datasets: [
             {
-              label: "Value",
+              label: "Average rebate",
               data: data.values,
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,

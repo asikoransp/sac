@@ -174,7 +174,7 @@
           labels: data.labels,
           datasets: [
             {
-              label: "Value",
+              label: "Orders",
               backgroundColor: this.currentColor.chart.primary,
               borderColor: this.currentColor.chart.primary,
               data: data.values,
