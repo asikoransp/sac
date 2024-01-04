@@ -151,7 +151,7 @@
         .getContext("2d");
 
       const pieChartElement = this.template
-        .getElementById("average-net-margin-bar-chart")
+        .getElementById("average-net-margin-pie-chart")
         .getContext("2d");
 
       this.barChart = new Chart(barChartElement, {
