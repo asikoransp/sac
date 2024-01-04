@@ -242,12 +242,7 @@
         const expandBtn = widget.shadowRoot.getElementById("expand-btn");
         const collapseBtn = widget.shadowRoot.getElementById("collapse-btn");
 
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
+        if (this.isNotFullScreenMode()) {
           chartWrapper.setAttribute("style", "height: 370px !important;");
           widgetWrapper.setAttribute(
             "style",
@@ -270,17 +265,21 @@
 
       fullScreenModeBtn.addEventListener("click", () => {
         const widget = document.querySelector("top-ten-products");
-        if (
-          !document.fullscreenElement &&
-          !document.mozFullScreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
+        if (this.isNotFullScreenMode()) {
           widget.requestFullscreen();
         } else {
           document.exitFullscreen();
         }
       });
+    }
+
+    isNotFullScreenMode() {
+      return (
+        !document.fullscreenElement &&
+        !document.mozFullScreenElement &&
+        !document.webkitFullscreenElement &&
+        !document.msFullscreenElement
+      );
     }
   }
 
