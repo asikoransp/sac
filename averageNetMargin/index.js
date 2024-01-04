@@ -231,23 +231,24 @@
         },
       });
 
+      const colors = [
+        this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
+        this.currentColor.chart.primary,
+        this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
+      ];
+
       this.pieChart = new Chart(pieChartElement, {
         type: "doughnut",
         data: {
           labels: data.labels,
           datasets: [
             {
-              label: ["Low", "Medium", "High"],
               data: [15, 15, 15],
-              backgroundColor: this.currentColor.chart.primary,
+              backgroundColor: colors,
             },
             {
-              label: ["Current target", "Left"],
-              data: [
-                [0, data.average.target],
-                [data.average.target, 45],
-              ],
-              backgroundColor: ["#ff0000", "#00ff00"],
+              data: [data.average.target / 45, (45 - data.average.target) / 45],
+              backgroundColor: ["#00c220", "#c20000"],
             },
           ],
         },
@@ -259,9 +260,12 @@
           responsive: true,
           plugins: {
             legend: {
-              position: "top",
+              display: false,
             },
             title: {
+              display: false,
+            },
+            tooltip: {
               display: false,
             },
           },
