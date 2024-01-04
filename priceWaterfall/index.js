@@ -12,7 +12,7 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <div class="widget__wrapper">
+    <div class="widget__wrapper" style="display: none;">
       <div class="widget__header">
         <h2 class="widget__title">Price Waterfall</h2>
         ${svgButtons}
@@ -270,6 +270,8 @@
           const shadowStyleEl = document.createElement("style");
           shadowStyleEl.innerText = styles.innerText;
           this.template.appendChild(shadowStyleEl);
+          this.template.querySelector(".widget__wrapper").style.display =
+            "block";
         } catch (e) {}
     }
 
