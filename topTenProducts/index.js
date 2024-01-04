@@ -89,6 +89,15 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
+
+      try {
+        const styles = document.querySelector('style[data-custom="true"]');
+        const shadowStyleEl = document.createElement("style");
+        shadowStyleEl.innerText = styles.innerText;
+        this.template.appendChild(shadowStyleEl);
+      } catch (e) {
+        console.log("not init");
+      }
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
@@ -100,11 +109,6 @@
       }
 
       this.renderChart();
-
-      const styles = document.querySelector('style[data-custom="true"]');
-      const shadowStyleEl = document.createElement("style");
-      shadowStyleEl.innerText = styles.innerText;
-      this.template.appendChild(shadowStyleEl);
     }
 
     updateChartData() {
