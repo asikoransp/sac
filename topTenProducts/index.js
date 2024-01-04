@@ -267,8 +267,8 @@
           // );
           // expandBtn.setAttribute("style", "display: block;");
           // collapseBtn.setAttribute("style", "display: none;");
-          chartWrapper.classList.add("chart__wrapper--full-screen");
-          widgetWrapper.classList.add("widget__wrapper--full-screen");
+          chartWrapper.classList.remove("chart__wrapper--full-screen");
+          widgetWrapper.classList.remove("widget__wrapper--full-screen");
           expandBtn.classList.remove("none-display");
           collapseBtn.classList.add("none-display");
         } else {
@@ -280,8 +280,8 @@
           // collapseBtn.setAttribute("style", "display: block;");
           // expandBtn.setAttribute("style", "display: none;");
 
-          chartWrapper.classList.remove("chart__wrapper--full-screen");
-          widgetWrapper.classList.remove("widget__wrapper--full-screen");
+          chartWrapper.classList.add("chart__wrapper--full-screen");
+          widgetWrapper.classList.add("widget__wrapper--full-screen");
           expandBtn.classList.add("none-display");
           collapseBtn.classList.remove("none-display");
         }
