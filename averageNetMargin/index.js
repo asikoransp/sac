@@ -34,7 +34,8 @@
 
   class PerformanceHelp extends HTMLElement {
     template = undefined;
-    chart = undefined;
+    barChart = undefined;
+    pieChart = undefined;
     currentColor = undefined;
     colors = {
       lightMode: {
@@ -106,7 +107,7 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
 
-      if (this.chart) {
+      if (this.barChart && this.pieChart) {
         this.updateChartData();
         return;
       }
@@ -116,9 +117,14 @@
 
     updateChartData() {
       const data = this.getData();
-      this.chart.data.datasets[0].data = data.values;
-      this.chart.data.labels = data.labels;
-      this.chart.update();
+
+      this.barChart.data.datasets[0].data = data.values;
+      this.barChart.data.labels = data.labels;
+      this.barChart.update();
+
+      this.pieChart.data.datasets[0].data = data.values;
+      this.pieChart.data.labels = data.labels;
+      this.pieChart.update();
     }
 
     getData() {
@@ -148,7 +154,7 @@
         .getElementById("average-net-margin-bar-chart")
         .getContext("2d");
 
-      this.chart = new Chart(barChartElement, {
+      this.barChart = new Chart(barChartElement, {
         type: "bar",
         data: {
           labels: data.labels,
@@ -161,14 +167,14 @@
               borderColor: this.currentColor.chart.primary,
               borderRadius: 5,
             },
-            {
-              label: "Target",
-              data: data.targets,
-              type: "line",
-              tension: 0.4,
-              backgroundColor: this.currentColor.chart.secondary,
-              borderColor: this.currentColor.chart.secondary,
-            },
+            // {
+            //   label: "Target",
+            //   data: data.targets,
+            //   type: "line",
+            //   tension: 0.4,
+            //   backgroundColor: this.currentColor.chart.secondary,
+            //   borderColor: this.currentColor.chart.secondary,
+            // },
             {
               label: "Target",
               data: data.targets,
@@ -206,6 +212,40 @@
               display: false,
             },
             legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      this.pieChart = new Chart(pieChartElement, {
+        type: "doughnut",
+        data: {
+          labels: data.labels,
+          datasets: [
+            {
+              label: "Value",
+              data: data.values,
+              backgroundColor: this.currentColor.chart.primary,
+            },
+            {
+              label: "Target",
+              data: data.targets,
+              backgroundColor: this.currentColor.chart.secondary,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          rotation: -90,
+          circumference: 180,
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            title: {
               display: false,
             },
           },
