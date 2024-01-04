@@ -17,8 +17,8 @@
         <h2 class="widget__title">Average Net Margin</h2>
         ${svgButtons}
       </div>
-      <div class="chart__wrapper">
-        <canvas id="average-rebate-rate-chart"></canvas>
+      <div class="chart__wrapper" style="width: 50%;">
+        <canvas id="average-net-margin-chart"></canvas>
       </div>
     </div>
   `;
@@ -65,13 +65,21 @@
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       if (changedProperties) {
-        if (changedProperties.lightModeChartColor)
+        if (changedProperties.lightModeChartPrimaryColor)
           this.colors.lightMode.chart.primary =
-            changedProperties.lightModeChartColor;
+            changedProperties.lightModeChartPrimaryColor;
 
-        if (changedProperties.darkModeChartColor)
+        if (changedProperties.darkModeChartPrimaryColor)
           this.colors.darkMode.chart.primary =
-            changedProperties.darkModeChartColor;
+            changedProperties.darkModeChartPrimaryColor;
+
+        if (changedProperties.lightModeChartSecondaryColor)
+          this.colors.lightMode.chart.secondary =
+            changedProperties.lightModeChartSecondaryColor;
+
+        if (changedProperties.darkModeChartSecondaryColor)
+          this.colors.darkMode.chart.secondary =
+            changedProperties.darkModeChartSecondaryColor;
 
         if (changedProperties.chartTitle)
           this.template.querySelector(".widget__title").innerText =
@@ -143,7 +151,6 @@
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
               borderRadius: 5,
-              order: 1,
             },
             {
               label: "Target",
@@ -151,10 +158,8 @@
               type: "line",
               tension: 0.4,
               backgroundColor: this.currentColor.chart.secondary,
-              borderWidth: 0,
               borderColor: this.currentColor.chart.secondary,
-              borderRadius: 5,
-              order: 0,
+              fill: true,
             },
           ],
         },
