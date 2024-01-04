@@ -12,61 +12,6 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-    <style>
-      .widget__wrapper {
-        padding: 0 1rem 1rem 1rem;
-        margin: 1rem;
-        border-radius: 1rem;
-        background: #fff;
-      }
-
-      .widget__wrapper--full-screen {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform:
-        translate(-50%, -50%);
-        width: 90%;
-      }
-
-      .widget__title {
-        font-size: 1.5rem;
-        margin-left: 1rem;
-      }
-
-      .widget__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 4rem;
-      }
-
-      .full-screen__btn {
-        all: unset;
-        margin: 0.5rem 1rem 0 0;
-        width: 1.5rem;
-        height: 1.5rem;
-        transition: transform .5s;
-      }
-
-      .full-screen__btn:hover {
-        transform: scale(1.2);
-      }
-
-      .chart__wrapper {
-        display: block !important;
-        height: 370px !important;
-      }
-
-      .chart__wrapper--full-screen {
-        height: 800px !important;
-      }
-
-      .none-display {
-        display: none;
-      }
-    </style>
-
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Price Waterfall</h2>
@@ -150,6 +95,7 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
+      this.addGlobalStyles();
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
@@ -315,6 +261,16 @@
         this.currentColor.text;
       this.template.querySelector(".full-screen__btn").style.color =
         this.currentColor.text;
+    }
+
+    addGlobalStyles() {
+      try {
+        const styles = document.querySelector('style[data-custom="true"]');
+        const shadowStyleEl = document.createElement("style");
+        shadowStyleEl.innerText = styles.innerText;
+        this.template.appendChild(shadowStyleEl);
+      } finally {
+      }
     }
 
     fullScreenModeHandler() {

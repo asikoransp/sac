@@ -12,8 +12,6 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
-
-
     <div class="widget__wrapper">
       <div class="widget__header">
         <h2 class="widget__title">Average Rebate Rate</h2>
@@ -89,15 +87,7 @@
         : this.colors.lightMode;
 
       this.adjustStyles();
-
-      try {
-        const styles = document.querySelector('style[data-custom="true"]');
-        const shadowStyleEl = document.createElement("style");
-        shadowStyleEl.innerText = styles.innerText;
-        this.template.appendChild(shadowStyleEl);
-      } catch (e) {
-        console.log("not init");
-      }
+      this.addGlobalStyles();
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
@@ -200,6 +190,16 @@
         this.currentColor.text;
       this.template.querySelector(".full-screen__btn").style.color =
         this.currentColor.text;
+    }
+
+    addGlobalStyles() {
+      try {
+        const styles = document.querySelector('style[data-custom="true"]');
+        const shadowStyleEl = document.createElement("style");
+        shadowStyleEl.innerText = styles.innerText;
+        this.template.appendChild(shadowStyleEl);
+      } finally {
+      }
     }
 
     fullScreenModeHandler() {
