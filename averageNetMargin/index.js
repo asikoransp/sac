@@ -18,11 +18,11 @@
         ${svgButtons}
       </div>
       <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 1rem;">
-        <div class="chart__wrapper" style="width: 40%">
-          <canvas id="average-net-margin-pie-chart" style="margin: -1.5rem 0 1.5rem 0"></canvas>
-          <span style="font-size: 1.3rem; font-weight: bold">Target: 8%</span>
+        <div class="chart__wrapper" style="width: 40%; font-size: 1.3rem; font-weight: bold;">
+          <canvas id="average-net-margin-pie-chart" style="margin-top: -2rem;"></canvas>
+          <span style="transform: translateY(-5rem); position: absolute;">Target: 8%</span>
         </div>
-        <div class="chart__wrapper" style="width: 40%">
+        <div class="chart__wrapper" style="width: 40%;">
           <canvas id="average-net-margin-bar-chart"></canvas>
         </div>
       </div>
