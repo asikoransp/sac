@@ -148,6 +148,8 @@
             {
               label: "Target",
               data: data.targets,
+              type: "line",
+              tension: 0.4,
               backgroundColor: this.currentColor.chart.secondary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.secondary,
