@@ -122,7 +122,6 @@
 
     renderChart() {
       const data = this.getData();
-      console.log(data);
 
       const chartElement = this.template
         .querySelector("canvas")
