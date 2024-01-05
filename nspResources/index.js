@@ -11986,6 +11986,13 @@
         background: #fff;
       }
 
+      .widget__wrapper--flex {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+      }
+
       .widget__wrapper--full-screen {
         position: absolute;
         top: 50%;
@@ -12046,8 +12053,20 @@
         height: 370px !important;
       }
 
+      .chart__wrapper--flex {
+        width: 40%;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
       .chart__wrapper--full-screen {
         height: 800px !important;
+      }
+
+      .chart__label {
+        transform: translateY(-5rem);
+        position: absolute;
+        display: flex;
       }
 
       .none-display {
