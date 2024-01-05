@@ -139,12 +139,12 @@
     getData() {
       const dataSet = this.dataSet.data;
 
-      const labels = dataSet.map((el) =>
-        el.dimensions_0.label.split("_").join(" ")
-      );
-
       let avgTarget = 0;
       let avgValue = 0;
+
+      console.log(dataSet);
+
+      const labels = dataSet.map((el) => el.dimensions_0.label);
       const values = dataSet.map((el) => {
         avgValue += el.measures_0.raw;
         return el.measures_0.raw;
@@ -168,13 +168,61 @@
     renderChart() {
       const data = this.getData();
 
-      const barChartElement = this.template
-        .getElementById("average-net-margin-bar-chart")
-        .getContext("2d");
+      this.createPieChart(data);
+      this.createBarChart(data);
 
-      const pieChartElement = this.template
-        .getElementById("average-net-margin-pie-chart")
-        .getContext("2d");
+      this.updateTargetLabel(data);
+      this.fullScreenModeHandler();
+    }
+
+    createPieChart(data) {
+      const pieChartElement = getChart("average-net-margin-pie-chart");
+
+      this.pieChart = new Chart(pieChartElement, {
+        type: "doughnut",
+        data: {
+          labels: data.labels,
+          datasets: [
+            {
+              data: [15, 15, 15],
+              backgroundColor: [
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
+                this.currentColor.chart.primary,
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
+              ],
+            },
+            {
+              data: [data.average.target, 45 - data.average.target],
+              backgroundColor: [
+                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.8)"),
+                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.3)"),
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          rotation: -90,
+          circumference: 180,
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              display: false,
+            },
+            tooltip: {
+              enabled: false,
+            },
+          },
+        },
+      });
+    }
+
+    createBarChart(data) {
+      const barChartElement = getChart("average-net-margin-bar-chart");
 
       this.barChart = new Chart(barChartElement, {
         type: "bar",
@@ -240,51 +288,10 @@
           },
         },
       });
+    }
 
-      this.pieChart = new Chart(pieChartElement, {
-        type: "doughnut",
-        data: {
-          labels: data.labels,
-          datasets: [
-            {
-              data: [15, 15, 15],
-              backgroundColor: [
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
-                this.currentColor.chart.primary,
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
-              ],
-            },
-            {
-              data: [data.average.target, 45 - data.average.target],
-              backgroundColor: [
-                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.8)"),
-                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.3)"),
-              ],
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          rotation: -90,
-          circumference: 180,
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-          },
-        },
-      });
-
-      this.updateTargetLabel(data);
-      this.fullScreenModeHandler();
+    getChart(chartId) {
+      return this.template.getElementById(chartId).getContext("2d");
     }
 
     updateTargetLabel(data) {
