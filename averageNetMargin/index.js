@@ -124,6 +124,7 @@
       const data = this.getData();
 
       this.barChart.data.datasets[0].data = data.values;
+      this.barChart.data.datasets[1].data = data.targets;
       this.barChart.data.labels = data.labels;
       this.barChart.update();
 
