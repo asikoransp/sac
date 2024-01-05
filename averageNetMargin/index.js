@@ -176,7 +176,7 @@
     }
 
     createPieChart(data) {
-      const pieChartElement = getChart("average-net-margin-pie-chart");
+      const pieChartElement = this.getChart("average-net-margin-pie-chart");
 
       this.pieChart = new Chart(pieChartElement, {
         type: "doughnut",
@@ -222,7 +222,7 @@
     }
 
     createBarChart(data) {
-      const barChartElement = getChart("average-net-margin-bar-chart");
+      const barChartElement = this.getChart("average-net-margin-bar-chart");
 
       this.barChart = new Chart(barChartElement, {
         type: "bar",
