@@ -112,9 +112,6 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
 
-      this.template.getElementById("current-target").innerText =
-        data.average.target;
-
       if (this.barChart && this.pieChart) {
         this.updateChartData();
         return;
@@ -135,6 +132,8 @@
         45 - data.average.target,
       ];
       this.pieChart.update();
+
+      this.updateTargetLabel(data);
     }
 
     getData() {
@@ -283,7 +282,13 @@
         },
       });
 
+      this.updateTargetLabel(data);
       this.fullScreenModeHandler();
+    }
+
+    updateTargetLabel(data) {
+      this.template.getElementById("current-target").innerText =
+        data.average.target;
     }
 
     adjustStyles() {
