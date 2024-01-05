@@ -234,7 +234,8 @@
               display: false,
             },
             legend: {
-              display: false,
+              display: true,
+              position: "bottom",
             },
           },
         },
