@@ -12,21 +12,42 @@
 
   let tmpl = document.createElement("template");
   tmpl.innerHTML = `
+    <style>
+      .widget__wrapper--flex {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .chart__wrapper--flex {
+        width: 40%;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .chart__label {
+        transform: translateY(-5rem);
+        position: absolute;
+        display: flex;
+      }
+    </style>
+
     <div class="widget__wrapper" style="display: none;">
       <div class="widget__header">
         <h2 class="widget__title">Average Net Margin</h2>
         ${svgButtons}
       </div>
-      <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 1rem;">
-        <div class="chart__wrapper" style="width: 40%; font-size: 1.3rem; font-weight: bold;">
+      <div class="widget__wrapper--flex">
+        <div class="chart__wrapper chart__wrapper--flex">
           <canvas id="average-net-margin-pie-chart" style="margin-top: -2rem;"></canvas>
-          <span style="transform: translateY(-5rem); position: absolute; display: flex;">
+          <span class="chart__label">
             <span style="margin-right: 0.5rem;">Current target:</span>
             <span id="current-target"></span>
             <span>%</span>
           </span>
         </div>
-        <div class="chart__wrapper" style="width: 40%;">
+        <div class="chart__wrapper chart__wrapper--flex">
           <canvas id="average-net-margin-bar-chart"></canvas>
         </div>
       </div>
