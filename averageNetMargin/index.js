@@ -20,7 +20,11 @@
       <div style="display: flex; justify-content: space-evenly; align-items: center; gap: 1rem;">
         <div class="chart__wrapper" style="width: 40%; font-size: 1.3rem; font-weight: bold;">
           <canvas id="average-net-margin-pie-chart" style="margin-top: -2rem;"></canvas>
-          <span style="transform: translateY(-5rem); position: absolute;">Target: 8%</span>
+          <span id="current-target" style="transform: translateY(-5rem); position: absolute; display: flex;">
+            <span>Current target: </span>
+            <span id="current-target"></span>
+            <span id="current-target">%</span>
+          </span>
         </div>
         <div class="chart__wrapper" style="width: 40%;">
           <canvas id="average-net-margin-bar-chart"></canvas>
@@ -128,6 +132,9 @@
         45 - data.average.target,
       ];
       this.pieChart.update();
+
+      this.template.getElementById("current-target").innerText =
+        data.average.target;
     }
 
     getData() {
