@@ -234,12 +234,6 @@
         },
       });
 
-      const colors = [
-        this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
-        this.currentColor.chart.primary,
-        this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
-      ];
-
       this.pieChart = new Chart(pieChartElement, {
         type: "doughnut",
         data: {
@@ -247,13 +241,17 @@
           datasets: [
             {
               data: [15, 15, 15],
-              backgroundColor: colors,
+              backgroundColor: [
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
+                this.currentColor.chart.primary,
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
+              ],
             },
             {
               data: [data.average.target, 45 - data.average.target],
               backgroundColor: [
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.8)"),
-                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.2)"),
+                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.8)"),
+                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.3)"),
               ],
             },
           ],
