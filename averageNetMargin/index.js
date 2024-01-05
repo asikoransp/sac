@@ -143,8 +143,6 @@
       let avgTarget = 0;
       let avgValue = 0;
 
-      console.log(dataSet);
-
       const labels = dataSet.map((el) => el.dimensions_0.label);
       const values = dataSet.map((el) => {
         avgValue += el.measures_0.raw;
