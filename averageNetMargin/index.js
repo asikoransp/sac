@@ -253,7 +253,7 @@
               data: [data.average.target, 45 - data.average.target],
               backgroundColor: [
                 this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.8)"),
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.2)"),
+                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.2)"),
               ],
             },
           ],
