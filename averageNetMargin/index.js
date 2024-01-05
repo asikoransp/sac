@@ -252,8 +252,8 @@
             {
               data: [data.average.target, 45 - data.average.target],
               backgroundColor: [
-                "rgba(50, 255, 0, 0.6)",
-                "rgba(255, 0, 0, 0.6)",
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.8)"),
+                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.2)"),
               ],
             },
           ],
