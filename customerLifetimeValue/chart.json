@@ -25,14 +25,24 @@
     }
   ],
   "properties": {
-    "lightModeChartColor": {
+    "lightModeChartPrimaryColor": {
       "type": "string",
-      "description": "Light mode chart color",
+      "description": "Light mode chart primary color",
       "default": "#4631ee"
     },
-    "darkModeChartColor": {
+    "darkModeChartPrimaryColor": {
       "type": "string",
-      "description": "Dark mode chart color",
+      "description": "Dark mode chart primary color",
+      "default": "#d2d2d2"
+    },
+    "lightModeChartSecondaryColor": {
+      "type": "string",
+      "description": "Light mode chart secondary color",
+      "default": "#4631ee"
+    },
+    "darkModeChartSecondaryColor": {
+      "type": "string",
+      "description": "Dark mode chart secondary color",
       "default": "#d2d2d2"
     },
     "chartTitle": {
@@ -42,37 +52,69 @@
     }
   },
   "methods": {
-    "setLightModeChartColor": {
-      "description": "Set light mode chart color",
+    "getLightModeChartPrimaryColor": {
+      "returnType": "string",
+      "description": "Returns light mode chart primary color",
+      "body": "return this.lightModeChartPrimaryColor;"
+    },
+    "setLightModeChartPrimaryColor": {
+      "description": "Set light mode chart primary color",
       "parameters": [
         {
-          "name": "newLightModeChartColor",
+          "name": "newLightModeChartPrimaryColor",
           "type": "string",
-          "description": "New light mode chart color"
+          "description": "New light mode chart primarycolor"
         }
       ],
-      "body": "this.lightModeChartColor = newLightModeChartColor;"
+      "body": "this.lightModeChartPrimaryColor = newLightModeChartPrimaryColor;"
     },
-    "getLightModeChartColor": {
+    "getDarkModeChartPrimaryColor": {
       "returnType": "string",
-      "description": "Returns light mode chart color",
-      "body": "return this.lightModeChartColor;"
+      "description": "Returns dark mode chart primary color",
+      "body": "return this.darkModeChartPrimaryColor;"
     },
-    "getDarkModeChartColor": {
-      "returnType": "string",
-      "description": "Returns dark mode chart color",
-      "body": "return this.darkModeChartColor;"
-    },
-    "setDarkModeChartColor": {
-      "description": "Set dark mode chart color",
+    "setDarkModeChartPrimaryColor": {
+      "description": "Set dark mode chart primary color",
       "parameters": [
         {
-          "name": "newDarkModeChartColor",
+          "name": "newDarkModeChartPrimaryColor",
           "type": "string",
-          "description": "New dark mode chart color"
+          "description": "New dark mode chart primary color"
         }
       ],
-      "body": "this.darkModeChartColor = newDarkModeChartColor;"
+      "body": "this.darkModeChartPrimaryColor = newDarkModeChartPrimaryColor;"
+    },
+    "getLightModeChartSecondaryColor": {
+      "returnType": "string",
+      "description": "Returns light mode chart secondary color",
+      "body": "return this.lightModeChartSecondaryColor;"
+    },
+    "setLightModeChartScondaryColor": {
+      "description": "Set light mode chart secondary color",
+      "parameters": [
+        {
+          "name": "newLightModeChartSecondaryColor",
+          "type": "string",
+          "description": "New light mode chart secondary color"
+        }
+      ],
+      "body": "this.lightModeChartSecondaryColor = newLightModeChartSecondaryColor;"
+    },
+    "getDarkModeChartSecondaryColor": {
+      "returnType": "string",
+      "description": "Returns dark mode chart secondary color",
+      "body": "return this.darkModeChartSecondaryColor;"
+    },
+    "setDarkModeChartSecondaryColor": {
+      "description": "Set dark mode chart secondary color",
+      "parameters": [
+        {
+          "name": "newDarkModeChartSecondaryColor",
+          "type": "string",
+          "description": "New dark mode chart secondary color"
+        }
+      ],
+      "body": "this.darkModeChartSecondaryColor = newDarkModeChartSecondaryColor;"
     },
     "getChartTitle": {
       "returnType": "string",
