@@ -12051,6 +12051,7 @@
       .chart__wrapper {
         display: block !important;
         height: 370px !important;
+        width: 896px !important;
       }
 
       .chart__wrapper--flex {
