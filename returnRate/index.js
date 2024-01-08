@@ -88,6 +88,7 @@
 
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
+      console.log(this.chart);
 
       if (this.chart) {
         this.updateChartData();
