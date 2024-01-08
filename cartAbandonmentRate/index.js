@@ -156,9 +156,7 @@
           // const value = chart.config.data.datasets[1].data;
 
           ctx.save();
-          ctx.font = "bolder 40px";
-          ctx.fontSize = "40px";
-          ctx.fontWeight = "bold";
+          ctx.size = "40";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
           ctx.fillText(`${Math.round(data.datasets[1].data[0])}`, xCoor, yCoor);
