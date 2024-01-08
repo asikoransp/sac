@@ -258,10 +258,11 @@
         const widgetWrapper = widgetDOM.querySelector(".widget__wrapper");
         const expandBtn = widgetDOM.getElementById("expand-btn");
         const collapseBtn = widgetDOM.getElementById("collapse-btn");
+        const chartLabel = widgetDOM.querySelector(".chart__label--car");
 
         chartWrapper.classList.toggle("chart__wrapper--full-screen");
         widgetWrapper.classList.toggle("widget__wrapper--full-screen");
-        widgetWrapper.classList.toggle("chart__label--car--full-screen");
+        chartLabel.classList.toggle("chart__label--car--full-screen");
         expandBtn.classList.toggle("none-display");
         collapseBtn.classList.toggle("none-display");
       });
