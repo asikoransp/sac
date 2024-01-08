@@ -97,7 +97,7 @@
       this.adjustStyles();
       this.addGlobalStyles();
 
-      console.log(before);
+      console.log("before");
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
