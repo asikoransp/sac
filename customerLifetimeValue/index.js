@@ -13,9 +13,9 @@
         <h2 class="widget__title">Customer Lifetime Value</h2>
         ${fullScreenButton}
       </div>
-      <div class="chart__wrapper chart__wrapper--flex">
-        <canvas id="customer-lifetime-value-chart"></canvas>
-        <div class="clv__calc-block">
+      <div class="chart__wrapper">
+        <canvas id="customer-lifetime-value-chart" style="float: left;"></canvas>
+        <div class="clv__calc-block" style="float: left;">
           <span>CLV: 123</span>
         </div>
       </div>
