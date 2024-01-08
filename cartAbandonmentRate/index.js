@@ -157,7 +157,8 @@
 
           ctx.save();
           ctx.font = "bolder 40px";
-          ctx.fillStyle = "red";
+          ctx.fontSize = "40px";
+          ctx.fontWeight = "bold";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
           ctx.fillText(`${Math.round(data.datasets[1].data[0])}`, xCoor, yCoor);
