@@ -96,9 +96,13 @@
 
       this.adjustStyles();
       this.addGlobalStyles();
+
+      console.log(before);
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
+      console.log("after", this.dataSet);
+
       if (!this.dataSet || !this.dataSet.data) return;
 
       if (this.chart) {
@@ -195,12 +199,12 @@
           ],
         },
         options: {
-          // layout: {
-          //   padding: {
-          //     right: 10,
-          //     bottom: 30,
-          //   },
-          // },
+          layout: {
+            padding: {
+              right: 10,
+              bottom: 30,
+            },
+          },
           responsive: true,
           // maintainAspectRatio: false,
           plugins: {
@@ -208,7 +212,7 @@
               display: true,
             },
             legend: {
-              position: "top",
+              position: "bottom",
             },
           },
         },
