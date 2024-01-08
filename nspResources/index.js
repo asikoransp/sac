@@ -12065,15 +12065,19 @@
       }
 
       .clv__calc-block {
-        width: 100%;
         height: 5rem;
         font-size: 2.5rem;
         font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absoulte;
-        left: 910px;
+        position: absolute;
+        left: 60rem;
+        top: 5.5rem;
+        width: 27rem;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1rem 0;
       }
 
       .chart__label--target {
