@@ -12072,6 +12072,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: absoulte;
+        left: 910px;
       }
 
       .chart__label--target {
