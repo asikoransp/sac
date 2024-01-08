@@ -13,7 +13,7 @@
         <h2 class="widget__title">Cart Abandonment Rate</h2>
         ${fullScreenButton}
       </div>
-      <div class="chart__wrapper">
+      <div class="chart__wrapper" style="margin-left: 2rem;">
         <canvas id="cart-abandonment-rate-chart"></canvas>
         <span class="chart__label--car">
           <span id="current-car"></span>

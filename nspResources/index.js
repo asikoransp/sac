@@ -12064,6 +12064,16 @@
         height: 800px !important;
       }
 
+      .clv__calc-block {
+        width: 100%;
+        height: 5rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .chart__label--target {
         transform: translateY(-5rem);
         position: absolute;
