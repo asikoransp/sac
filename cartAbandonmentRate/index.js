@@ -208,7 +208,7 @@
               display: true,
             },
             legend: {
-              position: "right",
+              position: "top",
             },
           },
         },
