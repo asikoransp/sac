@@ -15,10 +15,125 @@
       "url": "https://asikoransp.github.io/sac/customerAcquisitionCost/index.js",
       "integrity": "",
       "ignoreIntegrity": true
+    },
+    {
+      "kind": "styling",
+      "tag": "customer-acquisition-cost-sps",
+      "url": "https://asikoransp.github.io/sac/customerAcquisitionCost/styling.js",
+      "integrity": "",
+      "ignoreIntegrity": true
     }
   ],
-  "properties": {},
-  "methods": {},
+
+  "properties": {
+    "lightModeChartPrimaryColor": {
+      "type": "string",
+      "description": "Light mode chart primary color",
+      "default": "#4631ee"
+    },
+    "darkModeChartPrimaryColor": {
+      "type": "string",
+      "description": "Dark mode chart primary color",
+      "default": "#d2d2d2"
+    },
+    "lightModeChartSecondaryColor": {
+      "type": "string",
+      "description": "Light mode chart secondary color",
+      "default": "#4631ee"
+    },
+    "darkModeChartSecondaryColor": {
+      "type": "string",
+      "description": "Dark mode chart secondary color",
+      "default": "#d2d2d2"
+    },
+    "chartTitle": {
+      "type": "string",
+      "description": "Chart title",
+      "default": "Customer Acquisition Cost"
+    }
+  },
+  "methods": {
+    "getLightModeChartPrimaryColor": {
+      "returnType": "string",
+      "description": "Returns light mode chart primary color",
+      "body": "return this.lightModeChartPrimaryColor;"
+    },
+    "setLightModeChartPrimaryColor": {
+      "description": "Set light mode chart primary color",
+      "parameters": [
+        {
+          "name": "newLightModeChartPrimaryColor",
+          "type": "string",
+          "description": "New light mode chart primarycolor"
+        }
+      ],
+      "body": "this.lightModeChartPrimaryColor = newLightModeChartPrimaryColor;"
+    },
+    "getDarkModeChartPrimaryColor": {
+      "returnType": "string",
+      "description": "Returns dark mode chart primary color",
+      "body": "return this.darkModeChartPrimaryColor;"
+    },
+    "setDarkModeChartPrimaryColor": {
+      "description": "Set dark mode chart primary color",
+      "parameters": [
+        {
+          "name": "newDarkModeChartPrimaryColor",
+          "type": "string",
+          "description": "New dark mode chart primary color"
+        }
+      ],
+      "body": "this.darkModeChartPrimaryColor = newDarkModeChartPrimaryColor;"
+    },
+    "getLightModeChartSecondaryColor": {
+      "returnType": "string",
+      "description": "Returns light mode chart secondary color",
+      "body": "return this.lightModeChartSecondaryColor;"
+    },
+    "setLightModeChartScondaryColor": {
+      "description": "Set light mode chart secondary color",
+      "parameters": [
+        {
+          "name": "newLightModeChartSecondaryColor",
+          "type": "string",
+          "description": "New light mode chart secondary color"
+        }
+      ],
+      "body": "this.lightModeChartSecondaryColor = newLightModeChartSecondaryColor;"
+    },
+    "getDarkModeChartSecondaryColor": {
+      "returnType": "string",
+      "description": "Returns dark mode chart secondary color",
+      "body": "return this.darkModeChartSecondaryColor;"
+    },
+    "setDarkModeChartSecondaryColor": {
+      "description": "Set dark mode chart secondary color",
+      "parameters": [
+        {
+          "name": "newDarkModeChartSecondaryColor",
+          "type": "string",
+          "description": "New dark mode chart secondary color"
+        }
+      ],
+      "body": "this.darkModeChartSecondaryColor = newDarkModeChartSecondaryColor;"
+    },
+    "getChartTitle": {
+      "returnType": "string",
+      "description": "Returns chart title",
+      "body": "return this.chartTitle;"
+    },
+    "setChartTitle": {
+      "description": "Set chart title",
+      "parameters": [
+        {
+          "name": "newChartTitle",
+          "type": "string",
+          "description": "New chart title"
+        }
+      ],
+      "body": "this.chartTitle = newChartTitle;"
+    }
+  },
   "events": {},
   "dataBindings": {
     "dataSet": {
