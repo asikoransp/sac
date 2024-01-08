@@ -114,7 +114,6 @@
 
     getData() {
       const data = this.dataSet.data;
-      console.log(data);
 
       const labels = data.map((el) => el.dimensions_0.label);
       const values = data.map((el) => el.measures_0.raw);
