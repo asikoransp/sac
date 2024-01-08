@@ -167,6 +167,15 @@
           responsive: true,
           maintainAspectRatio: false,
           indexAxis: "x",
+          plugins: {
+            title: {
+              display: false,
+            },
+            legend: {
+              display: true,
+              position: "bottom",
+            },
+          },
           scales: {
             y: {
               title: {
