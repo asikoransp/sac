@@ -10,21 +10,11 @@
   tmpl.innerHTML = `
     <div class="widget__wrapper" style="display: none;">
       <div class="widget__header">
-        <h2 class="widget__title">Average Net Margin</h2>
+        <h2 class="widget__title">Customer Lifetime Value</h2>
         ${fullScreenButton}
       </div>
-      <div class="widget__wrapper--flex">
-        <div class="chart__wrapper chart__wrapper--flex">
-          <canvas id="average-net-margin-pie-chart" style="margin-top: -2rem;"></canvas>
-          <span class="chart__label">
-            <span style="margin-right: 0.5rem;">Current target:</span>
-            <span id="current-target"></span>
-            <span>%</span>
-          </span>
-        </div>
-        <div class="chart__wrapper chart__wrapper--flex">
-          <canvas id="average-net-margin-bar-chart"></canvas>
-        </div>
+      <div class="chart__wrapper">
+        <canvas id="customer-lifetime-value-chart"></canvas>
       </div>
     </div>
   `;
@@ -35,8 +25,7 @@
 
   class PerformanceHelp extends HTMLElement {
     template = undefined;
-    barChart = undefined;
-    pieChart = undefined;
+    chart = undefined;
     currentColor = undefined;
     colors = {
       lightMode: {
@@ -72,21 +61,13 @@
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       if (changedProperties) {
-        if (changedProperties.lightModeChartPrimaryColor)
+        if (changedProperties.lightModeChartColor)
           this.colors.lightMode.chart.primary =
-            changedProperties.lightModeChartPrimaryColor;
+            changedProperties.lightModeChartColor;
 
-        if (changedProperties.darkModeChartPrimaryColor)
+        if (changedProperties.darkModeChartColor)
           this.colors.darkMode.chart.primary =
-            changedProperties.darkModeChartPrimaryColor;
-
-        if (changedProperties.lightModeChartSecondaryColor)
-          this.colors.lightMode.chart.secondary =
-            changedProperties.lightModeChartSecondaryColor;
-
-        if (changedProperties.darkModeChartSecondaryColor)
-          this.colors.darkMode.chart.secondary =
-            changedProperties.darkModeChartSecondaryColor;
+            changedProperties.darkModeChartColor;
 
         if (changedProperties.chartTitle)
           this.template.querySelector(".widget__title").innerText =
@@ -108,7 +89,7 @@
     onCustomWidgetAfterUpdate(changedProperties) {
       if (!this.dataSet || !this.dataSet.data) return;
 
-      if (this.barChart && this.pieChart) {
+      if (this.chart) {
         this.updateChartData();
         return;
       }
@@ -118,135 +99,52 @@
 
     updateChartData() {
       const data = this.getData();
-
-      this.barChart.data.datasets[0].data = data.values;
-      this.barChart.data.datasets[1].data = data.targets;
-      this.barChart.data.labels = data.labels;
-      this.barChart.update();
-
-      this.pieChart.data.datasets[1].data = [
-        data.average.target,
-        45 - data.average.target,
-      ];
-      this.pieChart.update();
-
-      this.updateTargetLabel(data);
+      this.chart.data.datasets[0].data = data.values;
+      this.chart.data.labels = data.labels;
+      this.chart.update();
     }
 
     getData() {
-      const dataSet = this.dataSet.data;
+      const data = this.dataSet.data;
+      console.log(data);
 
-      let avgTarget = 0;
-      let avgValue = 0;
-
-      const labels = dataSet.map((el) => el.dimensions_0.label);
-      const values = dataSet.map((el) => {
-        avgValue += el.measures_0.raw;
-        return el.measures_0.raw;
-      });
-      const targets = dataSet.map((el) => {
-        avgTarget += el.measures_1.raw;
-        return el.measures_1.raw;
-      });
+      const labels = data.map((el) => el.dimensions_0.label);
+      const values = data.map((el) => el.measures_0.raw);
 
       return {
         labels,
         values,
-        targets,
-        average: {
-          value: avgValue / values.length,
-          target: avgTarget / targets.length,
-        },
       };
     }
 
     renderChart() {
       const data = this.getData();
 
-      this.createPieChart(data);
-      this.createBarChart(data);
+      const chartElement = this.template
+        .querySelector("canvas")
+        .getContext("2d");
 
-      this.updateTargetLabel(data);
-      this.fullScreenModeHandler();
-    }
-
-    createPieChart(data) {
-      const pieChartElement = this.getChart("average-net-margin-pie-chart");
-
-      this.pieChart = new Chart(pieChartElement, {
-        type: "doughnut",
-        data: {
-          labels: data.labels,
-          datasets: [
-            {
-              data: [15, 15, 15],
-              backgroundColor: [
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "0.6)"),
-                this.currentColor.chart.primary,
-                this.currentColor.chart.primary.replace(/[\d.]+\)$/g, "1)"),
-              ],
-            },
-            {
-              data: [data.average.target, 45 - data.average.target],
-              backgroundColor: [
-                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.8)"),
-                this.currentColor.chart.secondary.replace(/[\d.]+\)$/g, "0.3)"),
-              ],
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          rotation: -90,
-          circumference: 180,
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-          },
-        },
-      });
-    }
-
-    createBarChart(data) {
-      const barChartElement = this.getChart("average-net-margin-bar-chart");
-
-      this.barChart = new Chart(barChartElement, {
+      this.chart = new Chart(chartElement, {
         type: "bar",
         data: {
           labels: data.labels,
           datasets: [
             {
-              label: "Value",
+              label: "Customer Lifetime Value",
               data: data.values,
               backgroundColor: this.currentColor.chart.primary,
               borderWidth: 0,
               borderColor: this.currentColor.chart.primary,
               borderRadius: 5,
+              borderSkipped: false,
             },
-            // {
-            //   label: "Target",
-            //   data: data.targets,
-            //   type: "line",
-            //   tension: 0.4,
-            //   backgroundColor: this.currentColor.chart.secondary,
-            //   borderColor: this.currentColor.chart.secondary,
-            // },
             {
-              label: "Target",
+              label: "Customer Lifetime",
               data: data.targets,
+              type: "line",
+              tension: 0.4,
               backgroundColor: this.currentColor.chart.secondary,
-              borderWidth: 0,
               borderColor: this.currentColor.chart.secondary,
-              borderRadius: 5,
             },
           ],
         },
@@ -277,21 +175,13 @@
               display: false,
             },
             legend: {
-              display: true,
-              position: "bottom",
+              display: false,
             },
           },
         },
       });
-    }
 
-    getChart(chartId) {
-      return this.template.getElementById(chartId).getContext("2d");
-    }
-
-    updateTargetLabel(data) {
-      this.template.getElementById("current-target").innerText =
-        data.average.target;
+      this.fullScreenModeHandler();
     }
 
     adjustStyles() {
@@ -321,7 +211,7 @@
       );
 
       document.addEventListener("fullscreenchange", () => {
-        const widget = document.querySelector("average-net-margin");
+        const widget = document.querySelector("customer-lifetime-value");
         const widgetDOM = widget.shadowRoot;
         const chartWrapper = widgetDOM.querySelector(".chart__wrapper");
         const widgetWrapper = widgetDOM.querySelector(".widget__wrapper");
@@ -335,7 +225,7 @@
       });
 
       fullScreenModeBtn.addEventListener("click", () => {
-        const widget = document.querySelector("average-net-margin");
+        const widget = document.querySelector("customer-lifetime-value");
         if (this.isNotFullScreenMode()) {
           widget.requestFullscreen();
         } else {
@@ -354,5 +244,5 @@
     }
   }
 
-  customElements.define("average-net-margin", PerformanceHelp);
+  customElements.define("customer-lifetime-value", PerformanceHelp);
 })();

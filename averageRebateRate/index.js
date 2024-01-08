@@ -1,5 +1,5 @@
 (function () {
-  const svgButtons = `
+  const fullScreenButton = `
     <button class="full-screen__btn" id="full-screen-mode-btn">
       <div id="expand-btn" class="expand-icon"></div>
       <div id="collapse-btn" class="collapse-icon none-display"></div>
@@ -16,7 +16,7 @@
           <button class="widget__filter-btn" data-percentage="5">5%</button>
           <button class="widget__filter-btn" data-percentage="10">10%</button>
         </div>
-        ${svgButtons}
+        ${fullScreenButton}
       </div>
       <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>

@@ -1,5 +1,5 @@
 (function () {
-  const svgButtons = `
+  const fullScreenButton = `
     <button class="full-screen__btn" id="full-screen-mode-btn">
       <div id="expand-btn" class="expand-icon"></div>
       <div id="collapse-btn" class="collapse-icon none-display"></div>
@@ -10,8 +10,8 @@
   tmpl.innerHTML = `
     <div class="widget__wrapper" style="display: none;">
       <div class="widget__header">
-        <h2 class="widget__title">Average Rebate Rate</h2>
-        ${svgButtons}
+        <h2 class="widget__title">Top 10 products</h2>
+        ${fullScreenButton}
       </div>
       <div class="chart__wrapper">
         <canvas id="average-rebate-rate-chart"></canvas>
