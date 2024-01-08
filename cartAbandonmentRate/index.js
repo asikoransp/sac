@@ -220,8 +220,9 @@
     }
 
     updateTargetLabel(data) {
-      this.template.getElementById("current-car").innerText =
-        data.values[0] / data.values[1];
+      this.template.getElementById("current-car").innerText = Math.round(
+        data.values[0] / (data.values[0] + data.values[1])
+      );
     }
 
     adjustStyles() {
