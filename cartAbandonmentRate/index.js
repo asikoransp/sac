@@ -96,13 +96,9 @@
 
       this.adjustStyles();
       this.addGlobalStyles();
-
-      console.log("before");
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
-      console.log("after", this.dataSet);
-
       if (!this.dataSet || !this.dataSet.data) return;
 
       if (this.chart) {

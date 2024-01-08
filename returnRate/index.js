@@ -60,6 +60,7 @@
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
+      console.log("b");
       if (changedProperties) {
         if (changedProperties.lightModeChartColor)
           this.colors.lightMode.chart.primary =
@@ -87,8 +88,10 @@
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
+      console.log("a", this.dataSet);
+      console.log("a", this.chart);
+
       if (!this.dataSet || !this.dataSet.data) return;
-      console.log(this.chart);
 
       if (this.chart) {
         this.updateChartData();
