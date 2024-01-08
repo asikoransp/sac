@@ -132,6 +132,11 @@
         }
       ],
       "body": "this.chartTitle = newChartTitle;"
+    },
+    "print": {
+      "description": "log data",
+      "parameters": [],
+      "body": "console.log(this.dataBindings); console.log(this.dataSet);"
     }
   },
   "events": {},
