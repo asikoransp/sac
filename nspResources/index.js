@@ -12071,7 +12071,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absoulte;
+        position: absolute;
         left: 60rem;
         top: 5.5rem;
         width: 27rem;
