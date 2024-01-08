@@ -170,15 +170,6 @@
       //   },
       // };
 
-      const chartLegend = {
-        id: "paddingBelowLegends",
-        beforeInit: function (chart, options) {
-          chart.legend.afterFit = function () {
-            this.height = this.height + 50;
-          };
-        },
-      };
-
       this.chart = new Chart(chartElement, {
         type: "doughnut",
         data: {
@@ -217,14 +208,11 @@
               display: true,
             },
             legend: {
-              position: "bottom",
+              position: "left",
             },
           },
         },
-        plugins: [
-          // doughnutCenterLabel,
-          chartLegend,
-        ],
+        // plugins: [doughnutCenterLabel],
       });
 
       this.fullScreenModeHandler();
