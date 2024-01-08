@@ -12072,6 +12072,9 @@
       .chart__label--car {
         position: absolute;
         display: flex;
+        transform: translate(8.5rem,-13.7rem);
+        font-size: 2.5rem;
+        font-weight: bold;
       }
 
       .none-display {

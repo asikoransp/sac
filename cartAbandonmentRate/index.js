@@ -16,8 +16,8 @@
       <div class="chart__wrapper">
         <canvas id="cart-abandonment-rate-chart"></canvas>
         <span class="chart__label--car">
-          <span style="margin-right: 0.5rem;">CAR:</span>
           <span id="current-car"></span>
+          <span>%</span>
         </span>
       </div>
     </div>
@@ -220,7 +220,8 @@
     }
 
     updateTargetLabel(data) {
-      this.template.getElementById("current-car").innerText = data.values[0];
+      this.template.getElementById("current-car").innerText =
+        data.values[0] / data.values[1];
     }
 
     adjustStyles() {
