@@ -14,8 +14,8 @@
         ${fullScreenButton}
       </div>
       <div class="chart__wrapper">
-        <canvas id="customer-lifetime-value-chart" style="float: left;"></canvas>
-        <div class="clv__calc-block" style="float: left;">
+        <canvas id="customer-lifetime-value-chart"></canvas>
+        <div class="clv__calc-block">
           <span>CLV: 123</span>
         </div>
       </div>
