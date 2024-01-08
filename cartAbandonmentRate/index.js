@@ -223,7 +223,7 @@
 
     updateTargetLabel(data) {
       this.template.getElementById("current-car").innerText = Math.round(
-        (data.values[0] / (data.values[0] + data.values[1]) - 1) * 100
+        (data.values[0] / (data.values[0] + data.values[1])) * 100
       );
     }
 
