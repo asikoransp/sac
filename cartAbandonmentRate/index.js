@@ -261,6 +261,7 @@
 
         chartWrapper.classList.toggle("chart__wrapper--full-screen");
         widgetWrapper.classList.toggle("widget__wrapper--full-screen");
+        widgetWrapper.classList.toggle("chart__label--car--full-screen");
         expandBtn.classList.toggle("none-display");
         collapseBtn.classList.toggle("none-display");
       });

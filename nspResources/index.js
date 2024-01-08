@@ -12077,6 +12077,10 @@
         font-weight: bold;
       }
 
+      .chart__label--car--full-screen {
+        transform: translate(22rem,-27rem);
+      }
+
       .none-display {
         display: none;
       }
