@@ -59,7 +59,7 @@
       this.template = shadowRoot;
     }
 
-    onCustomWidgetAfterUpdate(changedProperties) {
+    onCustomWidgetBeforeUpdate(changedProperties) {
       if (changedProperties) {
         if (changedProperties.lightModeChartPrimaryColor)
           this.colors.lightMode.chart.primary =
