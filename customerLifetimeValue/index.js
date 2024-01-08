@@ -146,14 +146,14 @@
               borderRadius: 5,
               borderSkipped: false,
             },
-            {
-              label: "Customer Lifetime",
-              data: data.targets,
-              type: "line",
-              tension: 0.4,
-              backgroundColor: this.currentColor.chart.secondary,
-              borderColor: this.currentColor.chart.secondary,
-            },
+            // {
+            //   label: "Customer Lifetime",
+            //   data: data.targets,
+            //   type: "line",
+            //   tension: 0.4,
+            //   backgroundColor: this.currentColor.chart.secondary,
+            //   borderColor: this.currentColor.chart.secondary,
+            // },
           ],
         },
         options: {
