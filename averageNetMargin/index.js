@@ -16,7 +16,7 @@
       <div class="widget__wrapper--flex">
         <div class="chart__wrapper chart__wrapper--flex">
           <canvas id="average-net-margin-pie-chart" style="margin-top: -2rem;"></canvas>
-          <span class="chart__label">
+          <span class="chart__label--target">
             <span style="margin-right: 0.5rem;">Current target:</span>
             <span id="current-target"></span>
             <span>%</span>

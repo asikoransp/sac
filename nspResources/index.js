@@ -12063,8 +12063,13 @@
         height: 800px !important;
       }
 
-      .chart__label {
+      .chart__label--target {
         transform: translateY(-5rem);
+        position: absolute;
+        display: flex;
+      }
+
+      .chart__label--car {
         position: absolute;
         display: flex;
       }
