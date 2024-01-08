@@ -15,6 +15,10 @@
       </div>
       <div class="chart__wrapper">
         <canvas id="cart-abandonment-rate-chart"></canvas>
+        <span class="chart__label--car">
+          <span id="current-car"></span>
+          <span>%</span>
+        </span>
       </div>
     </div>
   `;
@@ -111,6 +115,7 @@
       this.chart.data.datasets[1].data = data.newCustomers;
       // this.chart.data.labels = data.labels;
       this.chart.update();
+      this.updateTargetLabel(data);
     }
 
     getData() {
@@ -143,26 +148,29 @@
         .querySelector("canvas")
         .getContext("2d");
 
-      const doughnutCenterLabel = {
-        id: "doughnutCenterLabel",
-        beforeDraw: (chart) => {
-          const { ctx, data } = chart;
-          const xCoor =
-            chart.chartArea.left +
-            (chart.chartArea.right - chart.chartArea.left) / 2;
-          const yCoor =
-            chart.chartArea.top +
-            (chart.chartArea.bottom - chart.chartArea.top) / 2;
-          // const value = chart.config.data.datasets[1].data;
+      // const doughnutCenterLabel = {
+      //   id: "doughnutCenterLabel",
+      //   beforeDraw: (chart) => {
+      //     const { ctx, data } = chart;
+      //     const xCoor =
+      //       chart.chartArea.left +
+      //       (chart.chartArea.right - chart.chartArea.left) / 2;
+      //     const yCoor =
+      //       chart.chartArea.top +
+      //       (chart.chartArea.bottom - chart.chartArea.top) / 2;
+      //     // const value = chart.config.data.datasets[1].data;
 
-          ctx.save();
-          ctx.size = "40";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(`${Math.round(data.datasets[1].data[0])}`, xCoor, yCoor);
-          ctx.restore();
-        },
-      };
+      //     ctx.save();
+      //     ctx.font = "bolder 20px";
+      //     ctx.fillStyle = "red";
+      //     ctx.textAlign = "center";
+      //     ctx.textBaseline = "middle";
+      //     ctx.fillText(`CAR: ${data.datasets[1].data[0]}`, xCoor, yCoor);
+      //     ctx.restore();
+      //   },
+      // };
+
+      console.log(data);
 
       this.chart = new Chart(chartElement, {
         type: "doughnut",
@@ -181,11 +189,11 @@
                 this.currentColor.chart.primary,
               ],
             },
-            {
-              label: "CAR",
-              data: data.change,
-              hidden: true,
-            },
+            // {
+            //   label: "CAR",
+            //   data: data.change,
+            //   hidden: true,
+            // },
           ],
         },
         options: {
@@ -206,10 +214,17 @@
             },
           },
         },
-        plugins: [doughnutCenterLabel],
+        // plugins: [doughnutCenterLabel],
       });
 
       this.fullScreenModeHandler();
+      this.updateTargetLabel(data);
+    }
+
+    updateTargetLabel(data) {
+      this.template.getElementById("current-car").innerText = Math.round(
+        (data.values[0] / (data.values[0] + data.values[1]) - 1) * 100
+      );
     }
 
     adjustStyles() {
