@@ -135,7 +135,7 @@
     },
     "print": {
       "description": "log data",
-      "body": "console.log(this.dataBindings); console.log(this.dataSet);"
+      "body": "console.log(this.dataBindings);"
     }
   },
   "events": {},
