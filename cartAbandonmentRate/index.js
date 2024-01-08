@@ -170,7 +170,14 @@
       //   },
       // };
 
-      console.log(data);
+      const chartLegend = {
+        id: "paddingBelowLegends",
+        beforeInit: function (chart, options) {
+          chart.legend.afterFit = function () {
+            this.height = this.height + 50;
+          };
+        },
+      };
 
       this.chart = new Chart(chartElement, {
         type: "doughnut",
@@ -197,12 +204,12 @@
           ],
         },
         options: {
-          layout: {
-            padding: {
-              right: 10,
-              bottom: 30,
-            },
-          },
+          // layout: {
+          //   padding: {
+          //     right: 10,
+          //     bottom: 30,
+          //   },
+          // },
           responsive: true,
           // maintainAspectRatio: false,
           plugins: {
@@ -214,7 +221,10 @@
             },
           },
         },
-        // plugins: [doughnutCenterLabel],
+        plugins: [
+          // doughnutCenterLabel,
+          chartLegend,
+        ],
       });
 
       this.fullScreenModeHandler();
